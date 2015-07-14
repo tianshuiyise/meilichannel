@@ -1,0 +1,86 @@
+/* CSS Document */
+html, body, div, p, ul, li, dl, dt, dd, h1, h2, h3, h4, h5, h6, form, input, select, button, textarea, iframe, table, th, td{ margin:0; padding:0;}
+.main_role{ display: inline;
+    float: left;
+    margin-top: 5px;
+    overflow: hidden;
+    width: 98%;
+	padding-left:32px;}
+.role_name{ width:750px; margin-top:20px; margin-bottom:20px;}
+.text3{ margin-top:-5px;}
+.role_name #roleName{ width:150px; margin-top:-20px; margin-right:130px;float:right;clear:both; height:20px;}
+
+.left-menu-role {
+    display: block;
+}
+.left-menu-role:after {
+    clear: both;
+    content: ".";
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+.main_left_role {
+    float: left;
+    margin-right: 5%;
+    width: 30%;
+	clear:both;
+	margin-top:20px;
+}
+
+#main_role h3 {
+    
+    font-size: 14px;
+    height: 18px;
+    padding: 3px 10px;
+}
+h3 {
+	background: none repeat scroll 0 0 #3366CC;
+    color: #FFFFFF;
+    font-size: 13px;
+    line-height: 1.6em;
+    padding: 2px;
+	text-align:center;
+	width:100%;
+}
+
+.main_left_role ul, .main_right_role ul,.main_right1_role ul{
+    padding: 15px 5px 0 0;
+    text-decoration: none;
+}
+.main_left_role .title, .main_right_role .title,.main_right1_role .title{
+    font-size: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+	width:100%;
+}
+.main_left_role li, .main_right_role li,.main_right1_role li{
+    border-bottom: 1px dashed #C2D5E3;
+    list-style-type: none;
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+	 padding-top:2px; 
+	 margin-left:30px;
+}
+
+
+.main_right_role {
+    float: left;
+    width: 30%;
+	margin-right:5%;
+	margin-top:20px;
+}
+.main_right1_role{float: left;
+    width:  30%;
+	margin-top:20px;
+	}
+
+.main_left_role li #font_role, .main_right_role li #font_role,.main_right1_role li #font_role{  font-family:"ËÎÌו"; font-size:12px;}
+
+.btn-submit{width:90%;text-align:center; margin-top:20px;}
+.fontRole{margin-top:-16px;margin-left:23px}
+
+.main_right1_role7{float: left;
+    width:30%;
+	margin-top:20px;}

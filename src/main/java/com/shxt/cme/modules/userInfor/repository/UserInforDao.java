@@ -1,0 +1,441 @@
+package com.shxt.cme.modules.userInfor.repository;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.jdbc.core.simple.ParameterizedRowMapper;
+import org.springframework.stereotype.Repository;
+
+import com.google.common.collect.Maps;
+import com.shxt.cme.domain.AcademicActivity;
+import com.shxt.cme.domain.Member;
+import com.shxt.cme.domain.Subject;
+import com.shxt.cme.domain.TrainingCourse;
+import com.shxt.cme.domain.Unit;
+import com.shxt.cme.domain.User;
+import com.shxt.cme.domain.UserInfo;
+import com.shxt.framework.persistence.jdbc.support.BaseDao;
+import com.shxt.framework.utils.DbUtils;
+
+@Repository
+public class UserInforDao extends BaseDao {
+
+	public Page<UserInfo> findWithPage(Pageable pageable,
+			TrainingCourse subTrainingCourseInfo,User user) {
+
+		
+		StringBuffer sql = new StringBuffer();
+		sql.append("SELECT * ");
+		sql.append(" FROM t_user ");
+		Object[] args=new Object[]{};
+		return queryForPage(sql.toString(), pageable,
+				new UserInfoRowMapper(), args);
+
+	}
+
+	
+	private class UserInfoRowMapper implements ParameterizedRowMapper<UserInfo>{
+
+		@Override
+		public UserInfo mapRow(ResultSet rs, int rowNum) throws SQLException {
+			UserInfo userInfo =new UserInfo();
+			userInfo.setUser_name(rs.getString("user_name"));
+			return userInfo;
+		}
+		
+	}
+
+	/**
+	 * 
+	 * @Description: 查询到所有单位
+	 */
+	public List<Unit> getAllUnit() {
+		// TODO Auto-generated method stub
+
+		String sql = " select unitKey,unitCode,unitName ,postcode,unitState,upUnitKey,telephone,email,unitAddress,createrKey,createDate,modifierKey,modifyDate,deleteFlag from tb_unit"
+				+ " where deleteFlag = 0 order by unitCode ";
+		return query(sql, null, Unit.class);
+
+	}
+
+
+
+
+	public int updateTrainingCourse(TrainingCourse trainingCourse, User user) {
+		String sql = "UPDATE tb_training_class " + "SET projectName='"
+				+ trainingCourse.getProjectName() + "' ,inSubject='"
+				+ trainingCourse.getInSubject() + "', " + "hostPurpose='"
+				+ trainingCourse.getHostPurpose() + "' ,topicAndDescribe='"
+				+ trainingCourse.getTopicAndDescribe() + "', "
+				+ "levelAndStatus='" + trainingCourse.getLevelAndStatus()
+				+ "' ,relatedJobDescribe='"
+				+ trainingCourse.getRelatedJobDescribe() + "', " + "hostWay='"
+				+ trainingCourse.getHostWay() + "' ,endingTime='"
+				+ trainingCourse.getEndingTime() + "', " + "startingTime='"
+				+ trainingCourse.getStartingTime() + "' ,hostDeadline='"
+				+ trainingCourse.getHostDeadline() + "', "
+				+ "evaluationMethod='" + trainingCourse.getEvaluationMethod()
+				+ "' ,participant='" + trainingCourse.getParticipant() + "', "
+				+ "takeInNumber='" + trainingCourse.getTakeInNumber()
+				+ "' ,period='" + trainingCourse.getPeriod() + "', "
+				+ "theoryPeriod='" + trainingCourse.getTheoryPeriod()
+				+ "' ,experimentPeriod='"
+				+ trainingCourse.getExperimentPeriod() + "', " + "hostPlace='"
+				+ trainingCourse.getHostPlace() + "' ,grantCredit='"
+				+ trainingCourse.getGrantCredit() + "', " + "hostUnitKey='"
+				+ trainingCourse.getHostUnitKey() + "', " + "projectType='"
+				+ trainingCourse.getProjectType() + "' , declareTime='"
+				+ DbUtils.getTime() + "'," + "roleType=" + user.getUserType()
+				+ "," + "modifierKey='" + user.getUserId() + "',modifyDate='"
+				+ DbUtils.getTime() + "',hostSecondPlace='"+trainingCourse.getHostSecondPlace()+"',standbyPlace='"+trainingCourse.getStandbyPlace()+"'  " + "WHERE trainingKey='"
+				+ trainingCourse.getTrainingKey() + "' AND deleteFlag=0";
+		return update(sql, null);
+	}
+
+	public int updatetMember1(TrainingCourse trainingCourse, User user,
+			String trainingKey, String memberType) {
+		String sql = "UPDATE tb_member SET NAME='" + trainingCourse.getName1()
+				+ "' ,POSITION='" + trainingCourse.getPosition1()
+				+ "', placeUnitKey='" + trainingCourse.getPlaceUnitKey1()
+				+ "', " + "teachTopic='" + trainingCourse.getTeachTopic1()
+				+ "',postalAddress='" + trainingCourse.getPostalAddress1()
+				+ "',postcode='" + trainingCourse.getPostcode1()
+				+ "', phone='" + trainingCourse.getPhone1() + "',  period='"
+				+ trainingCourse.getPeriod1() + "',upPosition='"+trainingCourse.getPosition21()+"',notInUnit='"+trainingCourse.getNotInUnit1()+"'  "
+				+ "WHERE deleteFlag=0 AND memberType=" + memberType
+				+ " AND projectKey='" + trainingKey + "'";
+		return update(sql, null);
+	}
+
+	public int updatetMember2(TrainingCourse trainingCourse, User user,
+			String trainingKey, String memberKey2, String memberType2) {
+		if (trainingCourse.getPeriod2()==null) {
+			return 0;
+		} else {
+			String sql = "UPDATE tb_member SET NAME='"
+					+ trainingCourse.getName2() + "' ,POSITION='"
+					+ trainingCourse.getPosition2() + "', placeUnitKey='"
+					+ trainingCourse.getPlaceUnitKey2() + "', "
+					+ "teachTopic='" + trainingCourse.getTeachTopic2()
+					+ "',period='" + trainingCourse.getPeriod2() + "',upPosition='"+trainingCourse.getPosition22()+"',notInUnit='"+trainingCourse.getNotInUnit2()+"'  "
+					+ "WHERE deleteFlag=0 AND memberKey='" + memberKey2
+					+ "' AND memberType=" + memberType2 + " AND projectKey='"
+					+ trainingKey + "'";
+
+			return update(sql, null);
+		}
+	}
+
+	public int updatetMember3(TrainingCourse trainingCourse, User user,
+			String trainingKey, String memberKey3, String memberType3) {
+		if (trainingCourse.getPeriod3()==null) {
+			return 0;
+		} else {
+			String sql = "UPDATE tb_member SET NAME='"
+					+ trainingCourse.getName3() + "' ,POSITION='"
+					+ trainingCourse.getPosition3() + "', placeUnitKey='"
+					+ trainingCourse.getPlaceUnitKey3() + "', "
+					+ "teachTopic='" + trainingCourse.getTeachTopic3()
+					+ "',period='" + trainingCourse.getPeriod3() + "',upPosition='"+trainingCourse.getPosition23()+"',notInUnit='"+trainingCourse.getNotInUnit3()+"'  "
+					+ "WHERE deleteFlag=0 AND memberKey='" + memberKey3
+					+ "'  AND memberType='" + memberType3
+					+ "' AND projectKey='" + trainingKey + "'";
+			return update(sql, null);
+		}
+	}
+
+	public int updatetMember4(TrainingCourse trainingCourse, User user,
+			String trainingKey, String memberKey4, String memberType4) {
+		if (trainingCourse.getPeriod4()==null) {
+			return 0;
+		} else {
+			String sql = "UPDATE tb_member SET NAME='" + trainingCourse.getName4()
+		
+				+ "' ,POSITION='" + trainingCourse.getPosition4()
+				+ "', placeUnitKey='" + trainingCourse.getPlaceUnitKey4()
+				+ "', " + "teachTopic='" + trainingCourse.getTeachTopic4()
+				+ "',period='" + trainingCourse.getPeriod4() + "',upPosition='"+trainingCourse.getPosition24()+"',notInUnit='"+trainingCourse.getNotInUnit4()+"'  "
+				+ "WHERE deleteFlag=0 AND memberKey='" + memberKey4
+					+ "' AND memberType=" + memberType4
+				+ " AND projectKey='" + trainingKey + "'";
+		return update(sql, null);}
+	}
+
+	public int updatetMember5(TrainingCourse trainingCourse, User user,
+			String trainingKey, String memberKey5, String memberType5) {
+		if (trainingCourse.getPeriod5()==null) {
+			return 0;
+		} else {String sql = "UPDATE tb_member SET NAME='" + trainingCourse.getName5()
+				+ "' ,POSITION='" + trainingCourse.getPosition5()
+				+ "', placeUnitKey='" + trainingCourse.getPlaceUnitKey5()
+				+ "', " + "teachTopic='" + trainingCourse.getTeachTopic5()
+				+ "',period='" + trainingCourse.getPeriod5() + "',upPosition='"+trainingCourse.getPosition25()+"',notInUnit='"+trainingCourse.getNotInUnit5()+"'  "
+				+ "WHERE deleteFlag=0 AND memberKey='" + memberKey5
+					+ "' AND memberType=" + memberType5
+				+ " AND projectKey='" + trainingKey + "'";
+		return update(sql, null);}
+	}
+
+	public int updatetMember6(TrainingCourse trainingCourse, User user,
+			String trainingKey, String memberKey6, String memberType6) {
+		if (trainingCourse.getPeriod6()==null) {
+			return 0;
+		} else {String sql = "UPDATE tb_member SET NAME='" + trainingCourse.getName6()
+				+ "' ,POSITION='" + trainingCourse.getPosition6()
+				+ "', placeUnitKey='" + trainingCourse.getPlaceUnitKey6()
+				+ "', " + "teachTopic='" + trainingCourse.getTeachTopic6()
+				+ "',period='" + trainingCourse.getPeriod6() + "',upPosition='"+trainingCourse.getPosition26()+"',notInUnit='"+trainingCourse.getNotInUnit6()+"'  "
+				+ "WHERE deleteFlag=0 AND memberKey='" + memberKey6
+					+ "' AND memberType=" + memberType6
+				+ " AND projectKey='" + trainingKey + "'";
+		return update(sql, null);}
+	}
+
+	public int updatetMember7(TrainingCourse trainingCourse, User user,
+			String trainingKey, String memberKey7, String memberType7) {
+		if (trainingCourse.getPeriod7()==null) {
+			return 0;
+		} else {String sql = "UPDATE tb_member SET NAME='" + trainingCourse.getName7()
+				+ "' ,POSITION='" + trainingCourse.getPosition7()
+				+ "', placeUnitKey='" + trainingCourse.getPlaceUnitKey7()
+				+ "', " + "teachTopic='" + trainingCourse.getTeachTopic7()
+				+ "',period='" + trainingCourse.getPeriod7() + "',upPosition='"+trainingCourse.getPosition27()+"',notInUnit='"+trainingCourse.getNotInUnit7()+"'  "
+				+ "WHERE deleteFlag=0 AND memberKey='" + memberKey7
+					+ "' AND memberType=" + memberType7
+				+ " AND projectKey='" + trainingKey + "'";
+		return update(sql, null);}
+	}
+
+	public int updatetMember8(TrainingCourse trainingCourse, User user,
+			String trainingKey, String memberKey8, String memberType8) {
+		if (trainingCourse.getPeriod8()==null) {
+			return 0;
+		} else {String sql = "UPDATE tb_member SET NAME='" + trainingCourse.getName8()
+				+ "' ,POSITION='" + trainingCourse.getPosition8()
+				+ "', placeUnitKey='" + trainingCourse.getPlaceUnitKey8()
+				+ "', " + "teachTopic='" + trainingCourse.getTeachTopic8()
+				+ "',period='" + trainingCourse.getPeriod8() + "',upPosition='"+trainingCourse.getPosition28()+"',notInUnit='"+trainingCourse.getNotInUnit8()+"'  "
+				+ "WHERE deleteFlag=0 AND memberKey='" + memberKey8
+					+ "' AND memberType=" + memberType8
+				+ " AND projectKey='" + trainingKey + "'";
+		return update(sql, null);}
+	}
+
+	public int updatetMember9(TrainingCourse trainingCourse, User user,
+			String trainingKey, String memberKey9, String memberType9) {
+		if (trainingCourse.getPeriod9()==null) {
+			return 0;
+		} else {String sql = "UPDATE tb_member SET NAME='" + trainingCourse.getName9()
+				+ "' ,POSITION='" + trainingCourse.getPosition9()
+				+ "', placeUnitKey='" + trainingCourse.getPlaceUnitKey9()
+				+ "', " + "teachTopic='" + trainingCourse.getTeachTopic9()
+				+ "',period='" + trainingCourse.getPeriod9() + "',upPosition='"+trainingCourse.getPosition29()+"',notInUnit='"+trainingCourse.getNotInUnit9()+"'  "
+				+ "WHERE deleteFlag=0 AND memberKey='" + memberKey9
+					+ "'AND memberType=" + memberType9
+				+ " AND projectKey='" + trainingKey + "'";
+		return update(sql, null);}
+	}
+
+	public int updatetMember10(TrainingCourse trainingCourse, User user,
+			String trainingKey, String memberKey10, String memberType10) {
+		if (trainingCourse.getPeriod10()==null) {
+			return 0;
+		} else {String sql = "UPDATE tb_member SET NAME='" + trainingCourse.getName10()
+				+ "' ,POSITION='" + trainingCourse.getPosition10()
+				+ "', placeUnitKey='" + trainingCourse.getPlaceUnitKey10()
+				+ "', " + "teachTopic='" + trainingCourse.getTeachTopic10()
+				+ "',period='" + trainingCourse.getPeriod10() + "',upPosition='"+trainingCourse.getPosition30()+"',notInUnit='"+trainingCourse.getNotInUnit10()+"'  "
+				+ "WHERE deleteFlag=0 AND memberKey='" + memberKey10
+					+ "' AND memberType=" + memberType10
+				+ " AND projectKey='" + trainingKey + "'";
+		return update(sql, null);}
+	}
+
+	public int updatetMember11(TrainingCourse trainingCourse, User user,
+			String trainingKey, String memberKey11, String memberType11) {
+		if (trainingCourse.getPeriod11()==null) {
+			return 0;
+		} else {String sql = "UPDATE tb_member SET NAME='" + trainingCourse.getName11()
+				+ "' ,POSITION='" + trainingCourse.getPosition11()
+				+ "', placeUnitKey='" + trainingCourse.getPlaceUnitKey11()
+				+ "', " + "teachTopic='" + trainingCourse.getTeachTopic11()
+				+ "',period='" + trainingCourse.getPeriod11() + "',upPosition='"+trainingCourse.getPosition31()+"',notInUnit='"+trainingCourse.getNotInUnit11()+"'  "
+				+ "WHERE deleteFlag=0 AND memberKey='" + memberKey11
+					+ "' AND memberType=" + memberType11
+				+ " AND projectKey='" + trainingKey + "'";
+		return update(sql, null);}
+	}
+
+	public int updatetMember12(TrainingCourse trainingCourse, User user,
+			String trainingKey, String memberKey12, String memberType12) {
+		if (trainingCourse.getPeriod12()==null) {
+			return 0;
+		} else {String sql = "UPDATE tb_member SET NAME='" + trainingCourse.getName12()
+				+ "' ,POSITION='" + trainingCourse.getPosition12()
+				+ "', placeUnitKey='" + trainingCourse.getPlaceUnitKey12()
+				+ "', " + "teachTopic='" + trainingCourse.getTeachTopic12()
+				+ "',period='" + trainingCourse.getPeriod12() + "',upPosition='"+trainingCourse.getPosition32()+"',notInUnit='"+trainingCourse.getNotInUnit12()+"'  "
+				+ "WHERE deleteFlag=0 AND memberKey='" + memberKey12
+					+ "' AND memberType=" + memberType12
+				+ " AND projectKey='" + trainingKey + "'";
+		return update(sql, null);}
+	}
+
+	public int updatetMember13(TrainingCourse trainingCourse, User user,
+			String trainingKey, String memberKey13, String memberType13) {
+		if (trainingCourse.getPeriod13()==null) {
+			return 0;
+		} else {String sql = "UPDATE tb_member SET NAME='" + trainingCourse.getName13()
+				+ "' ,POSITION='" + trainingCourse.getPosition13()
+				+ "', placeUnitKey='" + trainingCourse.getPlaceUnitKey13()
+				+ "', " + "teachTopic='" + trainingCourse.getTeachTopic13()
+				+ "',period='" + trainingCourse.getPeriod13() + "',upPosition='"+trainingCourse.getPosition33()+"',notInUnit='"+trainingCourse.getNotInUnit13()+"'  "
+				+ "WHERE deleteFlag=0 AND memberKey='" + memberKey13
+					+ "' AND memberType=" + memberType13
+				+ " AND projectKey='" + trainingKey + "'";
+		return update(sql, null);}
+	}
+	
+	private class SubjectRowMapper implements ParameterizedRowMapper<Subject>{
+
+		@Override
+		public Subject mapRow(ResultSet rs, int rowNum) throws SQLException {
+			// TODO Auto-generated method stub
+			Subject s=new Subject();
+			s.setSubjectKey(rs.getString("subjectKey"));
+			s.setRelateSubjectKey(rs.getString("relateSubjectKey"));
+			s.setSubjectLevel(rs.getString("subjectLevel"));
+			s.setSubjectName(rs.getString("subjectName"));
+			s.setSubjectNumber(rs.getString("subjectNumber"));
+			s.setSubjectType(rs.getString("subjectType"));
+			return s;
+		}
+		
+	}
+	
+	private class UnitRowMapper implements ParameterizedRowMapper<Unit>{
+
+		@Override
+		public Unit mapRow(ResultSet rs, int rowNum) throws SQLException {
+			// TODO Auto-generated method stub
+			Unit u=new Unit();
+			u.setCreateDate(rs.getString("createDate"));
+			u.setCreaterKey(rs.getString("createrKey"));
+			u.setDeleteFlag(rs.getString("deleteFlag"));
+			u.setEmail(rs.getString("email"));
+			u.setModifierKey(rs.getString("modifierKey"));
+			u.setModifyDate(rs.getString("modifyDate"));
+			u.setPostcode(rs.getString("postcode"));
+			u.setQq(rs.getString("qq"));
+			u.setTelephone(rs.getString("telephone"));
+			u.setUnitAddress(rs.getString("unitAddress"));
+			u.setUnitCode(rs.getString("unitCode"));
+			u.setUnitKey(rs.getString("unitKey"));
+			u.setUpUnitKey(rs.getString("upUnitKey"));
+			u.setUnitName(rs.getString("unitName"));		
+			return u;
+		}
+		
+	}
+	public List<Subject> getSecondList(String projectType) {
+		// TODO Auto-generated method stub
+		StringBuffer sql=new StringBuffer();
+		sql.append("select * from tb_subject where subjectType=? and subjectLevel='二级'");
+		Object[] args=new Object[]{projectType};
+		return query(sql.toString(), args, new SubjectRowMapper());
+	}
+
+	public List<Subject> getThirdList(String secondSubject) {
+		// TODO Auto-generated method stub
+		StringBuffer sql=new StringBuffer();
+		sql.append("select * from tb_subject where relateSubjectKey=? ");
+		Object[] args=new Object[]{secondSubject};
+		return query(sql.toString(), args, new SubjectRowMapper());
+	}
+
+	public Subject getSubjectById(String inSubject) {
+		// TODO Auto-generated method stub
+		StringBuffer sql=new StringBuffer();
+		sql.append("select * from tb_subject where subjectKey=? ");
+		Object[] args=new Object[]{inSubject};
+		return queryForObject(sql.toString(), args, new SubjectRowMapper());
+	}
+
+	public Unit getUnitById(String hostUnitKey) {
+		// TODO Auto-generated method stub
+		StringBuffer sql=new StringBuffer();
+		sql.append("select * from tb_unit where unitKey=? ");
+		Object[] args=new Object[]{hostUnitKey};
+		return queryForObject(sql.toString(), args, new UnitRowMapper());
+	}
+
+	public void batchDeclare(String[] trainingBatchKeys, User user) {
+		// TODO Auto-generated method stub
+		StringBuffer sql = new StringBuffer();
+		sql.append(" update tb_training_class set declareState = 1 where trainingKey = ? ");
+		List<Object[]> batchArgs = new ArrayList<Object[]>();
+		for(String trainBatchKey: trainingBatchKeys){
+			Object[] args = {trainBatchKey};
+			batchArgs.add(args);			
+
+		}
+		jdbcTemplate.batchUpdate(sql.toString(), batchArgs);
+	}
+
+	public void insertOpinion(String trainingBatchKey, User user) {
+		// TODO Auto-generated method stub
+		StringBuffer sql = new StringBuffer();
+		sql.append(" insert into  tb_opinion(opinionKey,userKey,unitOpinion,approvalTime,projectKey,createrKey,createDate,modifierKey,modifyDate,deleteFlag) ");
+		sql.append("values(?,?,?,?,?,?,?,?,?,?) ");
+		Object[] args=new Object[]{DbUtils.getKey(),user.getUserId(),1,new Date(),trainingBatchKey,user.getUserId(),new Date(),null,null,0};
+		
+		update(sql.toString(), args);
+		
+	}
+
+	public int singleDelete(String key) {
+		// TODO Auto-generated method stub
+		String sql="delete  from tb_training_class where trainingKey='"+key+"'";
+		
+		return update(sql, null);
+	}
+
+
+	public int deleteMember(String key) {
+		// TODO Auto-generated method stub
+		String sql="delete  from tb_member where projectKey='"+key+"'";
+		
+		return update(sql, null);
+	}
+
+
+	public int deleteOpinion(String key) {
+		// TODO Auto-generated method stub
+		String sql="delete  from tb_opinion where projectKey='"+key+"'";
+		
+		return update(sql, null);
+	}
+
+	public void deleteMemberByKey(String memberKey) {
+		// TODO Auto-generated method stub
+		String sql="delete  from tb_member where memberKey='"+memberKey+"'";
+		
+		update(sql, null);
+	}
+
+    public int updateByPrimaryKeySelective(User user){		
+
+    	String sql= "UPDATE  t_user " + "SET "+ "user_name='"+user.getUserName()+"' ,message='"+user.getMessage()+"' ,user_email='"+user.getUserEmail()+"'" + "WHERE user_id='"+user.getUserId()+"'";
+    	System.out.println("sql==="+sql);
+    	int ss=update(sql, null);
+    	System.out.println("结果ss=="+ss);
+    	return ss;
+	}
+
+}

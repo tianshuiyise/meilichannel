@@ -1,0 +1,105 @@
+/*登录等界面背景*/
+.login{
+	width:1208px;
+	height:479px;
+	margin:24px auto 0;
+	position:relative;
+	background:url(../images/login_bg.png);
+	}
+/*登录等界面背景end*/
+
+/*找回密码step1*/
+/*填写你需要找回的账号*/
+#account{
+	position:absolute;
+	left:431px;
+	top:143px;
+	font-family: "微软雅黑";
+	font-size: 12px;
+	color:#999697;
+	}
+/*账号输入框*/
+#account1{
+	position:absolute;
+	left:574px;
+	top:143px;
+	background:#f2f4f4;
+	border-radius:5px;
+	border:1px solid #f2f4f4;
+	height:16px;
+	width:193px;
+	outline:medium;
+	}
+#veri_code{
+	position: absolute;
+	top: 174px;
+	left: 501px;
+	font-family: "微软雅黑";
+	font-size: 12px;
+	color: #87898a;
+	}
+#veri_code input{
+	width:70px;
+	height:16px;
+	border-radius:5px;
+	background:#eaeced;
+	border:1px solid #eaeced;
+	outline:medium;
+	}
+#send{
+	position:absolute;
+	top:174px;
+	left:654px;
+	}
+/*下一步*/
+#next{
+	position:absolute;
+	left:573px;
+	top:201px;
+	background:url(../images/next1.png);
+	width:160px;
+	height:18px;
+	border-radius:5px;
+	border:0px;
+	outline:medium;
+	}
+/*找回密码step1_end*/
+
+/*找回密码step2*/
+#new_pw{
+	position: absolute;
+	top: 140px;
+	left: 501px;
+	font-family: "微软雅黑";
+	font-size: 12px;
+	color: #87898a;
+	}
+#new_pw input,#verify_pw input{
+    border-radius:5px;
+	background:#eaeced;
+	border:1px solid #eaeced;
+	width:220px;
+	height:16px;
+	outline:medium;
+	}
+#verify_pw{
+	position: absolute;
+	left: 501px;
+	top: 170px;
+	font-family: "微软雅黑";
+	font-size: 12px;
+	color: #87898a;
+	}
+#verify{
+	position:absolute;
+	top:202px;
+	left:566px;
+	width:220px;
+	height:18px;
+	background:url(../images/verify.png);
+	outline:medium;
+	border-radius:5px;
+	border:0px;
+	}
+
+/*找回密码step2_end*/

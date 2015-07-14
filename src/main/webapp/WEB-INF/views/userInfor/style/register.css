@@ -1,0 +1,127 @@
+/*登录等界面背景*/
+.login{
+	width:1208px;
+	height:479px;
+	margin:24px auto 0;
+	position:relative;
+	background:url(../images/login_bg.png);
+	}
+/*登录等界面背景end*/
+
+
+/*邮箱注册 */
+/*您的邮箱email*/
+#email{
+	position: absolute;
+	left: 483px;
+	top: 143px;
+	font-family: "微软雅黑";
+	font-size: 12px;
+	color: #87898a;
+	}
+#email input{
+	width:218px;
+	height:16px;
+	border-radius:5px;
+	border:1px solid #eaeced;
+	background:#eaeced;
+	position: absolute;
+	left: 91px;
+	outline:medium;
+	}
+/*验证码verify_code*/
+#verify_code{
+	position: absolute;
+	top: 173px;
+	left: 483px;
+	font-family: "微软雅黑";
+	font-size: 12px;
+	color: #87898a;
+	}
+#verify_code input{
+	width:130px;
+	height:16px;
+	border-radius:5px;
+	border:1px solid #eaeced;
+	background:#eaeced;
+	position: absolute;
+	left: 91px;
+	outline:medium;
+	}
+#get_code{
+	position:absolute;
+	left:714px;
+	top:173px;
+	width:80px;
+	height:18px;
+	border-radius:5px;
+	border:0px;
+	background:url(../images/get_code.png);
+	}
+/*必填内容remark*/
+#remark{
+	position: absolute;
+	left: 307px;
+	top: 203px;
+	font-family: "微软雅黑";
+	color: #00adef;
+	font-size: 12px;
+	}
+/*协议agreement*/
+#agreement{position:absolute;left:410px;top:205px;_top:203px;}
+#agr{
+	position: absolute;
+	left: 439px;
+	top: 203px;
+	font-family: "微软雅黑";
+	font-size: 12px;
+	color: #87898a;
+	}
+#agr a{text-decoration:none;color: #87898a;}
+/*下一步next*/
+#next{
+	position:absolute;
+	left:574px;
+	top:200px;
+	background:url(../images/next2.png);
+	width:220px;
+	height:18px;
+	border-radius:5px;
+	border:0;
+	outline:medium;
+	}
+/*跳转*/
+#skip{position:absolute;right:414px;top:263px;}
+#skp{
+	position:absolute;
+	right:458px;
+	top:261px;
+	font-family: "微软雅黑";
+	font-size: 12px;
+	color: #87898a;
+	}
+/*邮箱注册end */
+
+
+/*手机注册*/
+/*您的邮箱email*/
+#mobile{
+	position: absolute;
+	left: 483px;
+	top: 143px;
+	font-family: "微软雅黑";
+	font-size: 12px;
+	color: #87898a;
+	}
+#mobile img{position:absolute;left:91px;}
+#mobile input{
+	width:176px;
+	height:16px;
+	border-radius:5px;
+	border:1px solid #eaeced;
+	background:#eaeced;
+	position: absolute;
+	left: 135px;
+	outline:medium;
+	}
+/*手机注册end*/

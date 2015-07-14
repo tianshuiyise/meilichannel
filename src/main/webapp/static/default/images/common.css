@@ -1,0 +1,195 @@
+@charset "utf-8";
+/* CSS Document */
+html, body, div, span, applet, object, iframe,h1, h2, h3, h4, h5, h6, p, blockquote, pre,a, abbr, acronym, address, big, cite, code,del, dfn, em, font, img, ins, kbd, q, s, samp,small, strike, strong, sub, sup, tt, var,dl, dt, dd, ol, ul, li,fieldset, form, label, legend,table, caption, tbody, tfoot, thead, tr, th
+{  
+margin: 0;  
+padding: 0;  
+border: 0;  
+outline: 0;   
+font-size: 100%;  
+}  
+:focus {  
+outline: 0;  
+}  
+body {
+font-family:"宋体",Arial, Helvetica, sans-serif; margin:0px; padding:0px; color:#000; background:#f1f1f2;
+}
+body,td,div,p,br,b,strong,i,em,a,pre,img,dl,dt,dd,li,form,th,tr,span { font-family:"宋体",Arial, Helvetica, sans-serif; font-size:12px;}
+ol, ul {  
+list-style: none;
+}    
+a,a:visited { color:#000; text-decoration: none;}
+a:hover { color:#000; text-decoration: underline;}
+.box { width:1000px; margin:0px auto;}
+.clr {clear:both; overflow:hidden; height:1px; margin-top:-1px;}
+.hid { display:none;}
+.margin_ten { margin-top:10px;}
+.over_hid { overflow:hidden;}
+.en { font-family:Arial, Helvetica, sans-serif;}
+.yahei {font-family:"微软雅黑","宋体",Arial, Helvetica, sans-serif;}
+.fbg { background:#fff;}
+
+/*头部*/
+.user {
+	height:31px;
+	position:relative;
+	zoom:1;
+}
+.top-app {
+	padding-left:22px;
+}
+.top-app a {
+	line-height:31px;
+}
+.user_box {
+	position:absolute;
+	top:0px;
+	right:0px;
+}
+.user_box span {
+	line-height: 31px;
+	float:left;
+}
+.user_box a.u {
+	display:block;
+	float:left;
+	height:31px;
+	line-height:31px;
+	padding-right:10px;
+	background:url(top_user.jpg) no-repeat right center;
+}
+.user_box em {
+	display:block;
+	line-height:31px;
+	float:left;
+	padding:0px 10px;
+	font-style:normal;
+}
+.user_box a.q {
+	display:block;
+	float:left;
+	height:31px;
+	line-height:31px;
+}
+
+/*导航*/
+.menu {
+	height:72px;
+	background:#1ca1e2;
+}
+.menu .box {
+	height:72px;
+	position:relative;
+	zoom:1;
+	overflow:hidden;
+}
+.menu .box h1 {
+	display:block;
+	width:272px;
+	height:31px;
+	position:absolute;
+	top:20px;
+	left:12px;
+	background:url(logo.png) no-repeat;
+	cursor:pointer;
+}
+.menu .box ul {
+	display:block;
+	width:651px;
+	height:72px;
+	position:absolute;
+	top:0px;
+	right:0px;
+}
+.menu .box ul li {
+	display:inline;
+	width:83px;
+	height:72px;
+	float:left;
+	margin:0px 5px;
+}
+.menu .box ul li i{
+	padding:0px 7px;
+}
+.menu .box ul li a,.menu .box ul li a:visited {
+	display:block;
+	width:83px;
+	height:72px;
+	line-height:72px;
+	text-align:center;
+	font-size:14px;
+	color:#fff;
+}
+.menu .box ul li a:hover,.menu .box ul li a.menu-on {
+	background:url(menu_on.jpg) no-repeat;
+	text-decoration:none;
+}
+/*导航企业级CSS*/
+#menu-qy {
+	background:#044889;
+}
+#menu-qy .box ul li a:hover,#menu-qy .box ul li a.menu-on {
+	background:url(menu_on_qy.jpg) no-repeat;
+	text-decoration:none;
+}
+/*导航精英级CSS*/
+#menu-jy {
+	background:#d54d35;
+}
+#menu-jy .box ul li a:hover,#menu-jy .box ul li a.menu-on {
+	background:url(menu_on_jy.jpg) no-repeat;
+	text-decoration:none;
+}
+
+/*头部幻灯*/
+.top-slide { 
+	height:150px; 
+	margin-top:20px; 
+	position:relative; 
+	zoom:1; 
+	overflow:hidden;
+}
+.top-slide .changeBox_a1 { 
+	width:1000px; 
+	height:150px; 
+	position:relative; 
+	zoom:1;
+}
+.top-slide .changeBox_a1 .changeDiv { 
+	position:absolute; 
+	left:0px; 
+	top:0px;
+}
+.top-slide .changeBox_a1 .ul_change_a2 { 
+	display:block; 
+	height:12px; 
+	position:absolute; 
+	bottom:10px; 
+	right:24px;
+}
+.top-slide .changeBox_a1 .ul_change_a2 li { 
+	display:inline-block; 
+	width:12px; 
+	height:12px; 
+	margin:0px 4px; 
+	float:left;
+}
+.top-slide .changeBox_a1 .ul_change_a2 li span { 
+	display:block; 
+	width:12px; 
+	height:12px; 
+	cursor:pointer;
+	overflow:hidden; 
+	background:url(slide_off.png) no-repeat;_background:url(slide_off.gif) no-repeat;
+}
+.top-slide .changeBox_a1 .ul_change_a2 li span.on { 
+	background:url(slide_on.png) no-repeat;_background:url(slide_on.gif) no-repeat;
+}
+
+/*底部*/
+.foot {
+	margin-top:22px;
+	border-top:1px solid #c0c0c0;
+	padding-top:15px;
+	text-align:center;
+}

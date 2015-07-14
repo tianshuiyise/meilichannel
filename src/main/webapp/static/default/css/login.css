@@ -1,0 +1,21 @@
+/* CSS Document */
+body{background:url(../images/bg_login.png) repeat-x fixed left top #E7EAFC; font-family:"ËÎÌו"; font-size:12px;margin:0; padding:0; width:100%;  }
+div, ul, dl, dt, dd, form, p, h1, h2, h3{ margin:0; padding:0;}
+select{ width:170px;height:20px;}
+#LoginContent{ width:560px;margin-top:180px;height:155px;}
+.loginLogo{ width:103px; height:131px; background:url(../images/logo_login.png) no-repeat; margin-left:-440px;}
+.loginArea{ border-left:2px solid #C0DCE8; width:419px; height:155px; float:right; margin-top:-131px;}
+.loginCon{ width:385px; height:150px; margin-left:30px; border:1px solid #9BC1CA;background:url(../images/loginasd.png) no-repeat center top;background-size:100% 100%;}
+.loginFaceArea{ width:109px; height:99px; float:left;}
+.error{ width:120px;float:left; clear:both; margin-top:-35px; margin-left:20px; color:red;}
+.loginFaceImg{ width:85px; height:84px; margin-top:15px; margin-left:13px;}
+.loginFormArea{ width:276px; float:left;}
+.loginFormUl{ margin-top:20px; list-style:none; margin-left:10px; font-family:"ËÎÌו";font-size:12px;}
+.loginFormUl li{ margin-bottom:10px;}
+.loginFormUl li a:link,.loginFormUl li a:visited{ text-decoration:none;}
+.txt{ border:1px solid #B2BEC5; font-family:Arial,Helvetica,sans-serif; font-size:12px; height:19px; line-height:18px; width:193px;}
+.btn{ width:64px; margin-left:10px; cursor:pointer;}
+#Footer{ text-align:center;width:100%;}
+#Footer p{color:balck; font-size:12px; line-height:18px; margin-left:160px;}
+#Footer #pp{ font-family:Arial,Helvetica,sans-serif;}
+#Footer #ppp{ font-family:"÷ÚÌו";}

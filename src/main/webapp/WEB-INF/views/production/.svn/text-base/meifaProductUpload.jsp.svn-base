@@ -1,0 +1,131 @@
+<%@ page contentType="text/html;charset=UTF-8"%>
+<%@ include file="/WEB-INF/include/common.jsp"%>
+
+<tags:wjs items="checkbox.js"></tags:wjs>
+<tags:wcss items="message.css"></tags:wcss>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<script type="text/javascript">
+	function changeBelongExamBatch(path) {
+		$("#searchForm").action = path;
+		$("#searchForm").submit();
+	}
+
+	function dispatchTrainingCourse(controllerUrl, trainingKey) {
+		//window.open(controllerUrl+"?academicKey="+academicKey,"_blank");
+		window.location.href = controllerUrl + "?trainingKey=" + trainingKey;
+
+	}
+	function detailTrainingCourse(controllerUrl, trainingKey) {
+		window.open(controllerUrl + "?trainingKey=" + trainingKey, "_blank",
+				"scrollbars=1","alwaysRaised=1");
+		//window.top.location.href=controllerUrl+"?academicKey="+academicKey;
+
+	}
+	
+	function skip(controllerUrl, keyString) {
+		var alertMessage = "您没有勾选要操作的记录，请先勾选！";
+		//判断是否勾选复选框，如果没有勾选，提示alertMessage的信息
+		var obj = document.getElementsByName("chk_sub_checkBox");
+		var j = 0;
+		for(var i=0;i<obj.length;i++) {
+			if(obj[i].checked==true) {
+				j ++;
+				break;
+			}
+		}
+		if(j < 1) {
+			alert(alertMessage);
+			return false;
+		}
+			var specialKeys=document.getElementsByName("chk_sub_checkBox");
+			var keyString = "?keys=";
+		    for(var i=0;i<specialKeys.length;i++){
+		    	if(specialKeys[i].checked && specialKeys[i].value != ""){
+		    		keyString+=specialKeys[i].value+=",";
+		    	}
+		    }
+		    //controller对应的url加上传过去多条记录的主键keys
+		    var url = controllerUrl+keyString;
+		    window.location.href=url;
+		
+	}
+</script>
+
+<!--导航区 -->
+<div class="top">
+	<ul>
+		<li>美发</li>
+		<p>美发>>美发作品</p>
+	</ul>
+</div>
+
+<!--这里是操作完成的消息提示区  -->
+<c:import url="/WEB-INF/include/message.jsp"></c:import>
+<form id="searchForm" action="${ctx}/meifaProduct/testFileUpload" method="POST" enctype="multipart/form-data">
+	<div class="gly-top">
+	</div>
+	<input type="text" name="name" />
+			<input type="file" name="file" />
+<input type="submit">
+
+
+	<!-- 列表区 -->
+	<table id="table1">
+		<thead>
+			<tr id="tr1">
+				<td id="title"><input id="chk_all" type="checkbox"
+					width="10px;" onclick="javascript:allCheck()"></td>
+				<td id="title" style="width: 50px;">序号</td>
+				<td id="title">题目</td>
+				<td id="title">项目类型</td>
+				<td id="title">申报状态</td>
+				<td id="title">修改状态</td>
+				<td id="title">操作</td>
+			</tr>
+		</thead>
+		<tbody>
+			<c:forEach items="${productList.content}" var="productList"
+				varStatus="status">
+				<tr>
+					<td id="title" width="30px"><input type="checkbox"
+						id="chk_sub_checkBox" name="chk_sub_checkBox"
+						value="${productList.pro_name}"
+						onclick="javascript:checkT_F()" /></td>
+					<td id="title" style="width: 50px;">${status.count}</td>
+					<td id="left">${productList.pro_name}</td>
+					<td id="left">
+						</td>
+					
+					<td id="left"> <input type="file" name="file"/>
+						</td>
+						
+					<td id="left"><input type="text" name="desc"/>
+						</td>
+					<%-- 
+					<fmt:parseDate value="${work.birthday}" var="birthday" ></fmt:parseDate>
+					<td id="left"> <fmt:formatDate value="${birthday}" pattern="yyyy-MM-dd"/></td>
+				 --%>
+					<td id="left"></td>
+					<td id="left"><input type="button" value="上传"
+						onclick="" />
+						<input type="button" value="详情"
+						onclick="" />
+						<input type="button"  value="删除" onclick=""/>
+
+					</td>
+				</tr>
+			</c:forEach>
+		</tbody>
+	</table>
+
+	<!-- 分页组件区 -->
+	<!-- TODO：后期这里可能会持续改进 -->
+	<tags:pagination page="${productList}" />
+
+	<!-- 按钮区  -->
+	<div class="content" align="center">
+		<span class="add"><input class="btn" type="button" value="提交上报"
+			id="" onclick="skip('${ctx}/trainingCourseMng/batchDeclare')" /></span>
+		<p>
+	</div>
+</form>

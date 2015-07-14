@@ -1,0 +1,243 @@
+/* CSS Document */
+body {
+	font-family: "SimSun";
+	font-size: 13px;
+	width: 95%;
+	position: absolute;
+}
+
+.top {
+	width: 100%;
+	height: 100%;
+}
+
+.top ul {
+	width: 100%;
+	height: 100%;
+	margin-top: 25px;
+}
+
+.top ul li {
+	list-style: none;
+	border-bottom: 1px solid #e0e2e3;
+	margin-left: -20px;
+	font-family: "microsoft yahei";
+	font-size: 32px;
+	color:#9f9f9f;
+}
+
+.top ul p {
+	font-family: "SimHei";
+	font-size: 15px;
+	float: right;
+	margin-right: 50px;
+	margin-top: -25px;
+}
+
+.title1{background:#6e7070;color:#fff;font-size:16px;}
+.title2{background:#616263;color:#fff;font-size:16px;}
+.title3{background:#f4f4f4;}
+.title4{background:#eaeced}
+
+select {
+	width: 150px;
+}
+
+text {
+	width: 200px;
+}
+
+.gly-top {
+	width: 1050px;
+	float: left;
+	margin-left: 60px;
+	margin-bottom: 20px;
+	margin-top: 20px;
+}
+/* #td1{ width:200px;} */
+#td2 {
+	width: 80px;
+}
+
+#td3 {
+	text-align: left;
+	border: 1px dotted #666666;
+	background: #f2f2f2;
+}
+/*table{ width:100%;border-collapse: collapse;border-spacing: 0; margin-left:25px; margin-bottom:15px;}*/
+#table1 {
+	width: 100%;
+	border-collapse: collapse;
+	border-spacing: 0;
+	float: left;
+	margin-left: 23px;
+	margin-bottom: 15px;
+	border: 1px solid #666666;
+	bordercolor: #858587
+}
+
+#table3{
+	width: 100%;
+	border-collapse: collapse;
+	border-spacing: 0;
+	margin-left: 23px;
+	margin-bottom: 15px;
+	border: 0px solid #666666;
+}
+
+#table2 {
+	width: 100%;
+	border-collapse: collapse;
+	border-spacing: 0;
+	float: left;
+	margin-left: 23px;
+	margin-bottom: 15px;
+	border-top: 1px solid #858587;
+	border-bottom: 1px solid #858587;
+}
+
+#s-table {
+	width: 100%;
+	margin-left: -40px;
+}
+
+#title {
+	text-align: center;
+	border: 1px dotted #666666;
+}
+
+.inputBlue {
+	width: 40px;
+}
+
+.add {
+	margin-left: 60px
+}
+
+.export {
+	margin-left: 40px;
+}
+
+#s-td {
+	text-align: left;
+}
+
+#s-td #btn {
+	width: 38%;
+}
+
+a:link,a:visited {
+	color: #000000;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+	cursor: pointer
+}
+
+#btn1 {
+	width: 5%;
+}
+
+#btn2 {
+	width: 7%;
+}
+
+#btn3 {
+	width: 10%;
+}
+
+tr {
+	height: 26px;
+}
+
+#tr1 {
+	background: #d8d8d8;
+	height: 35px;
+}
+
+#tr2 {
+	background: #f2f2f2;
+}
+
+.btn {
+	min-width: 80px;
+	overflow: visible!ie;
+}
+
+.btn2 {
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.right {
+	width: 100px;
+	float: right;
+}
+
+/*----------course_details--------*/
+.tab_con1 {
+	background: #666666;
+	width: 100%;
+	cursor: pointer;
+}
+
+.add1 {
+	float: right;
+}
+
+#left {
+	text-align: left;
+	border: 1px dotted #666666;
+}
+
+#right {
+	text-align: right;
+	border: 1px dotted #666666;
+}
+
+#name {
+	width: 100px;
+}
+
+.content {
+	float: left;
+	width: 100%;
+}
+
+.tabs1 {
+	width: 100%;
+}
+
+.star {
+	width: 10px;
+	color: red;
+	margin-left: 175px;
+	margin-top: -18px;
+}
+
+.headFont {
+	font-size: 15px;
+	font-family: "SimHei";
+	font-weight: bold;
+}
+
+.textSize {
+	width: 305px;
+}
+.textSize2 {
+	width: 40px;
+}
+.textTemptop {
+	font-size: 18px;
+	margin-left: 350px;
+}
+
+.xiahuaxian {
+	color: rgb(0, 0, 0);
+	border-left: medium none;
+	border-right: medium none;
+	border-top: medium none;
+	border-bottom: 2px solid black;
+	background-image: (../images/top-line.png)
+}

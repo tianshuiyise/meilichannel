@@ -1,0 +1,19 @@
+/* CSS Document */
+
+.content_nb{ width:100%; margin-left:25px; margin-top:20px;}
+.tab_box{ width:100%; margin:0 auto;}
+.tab_box .tab{ background:#CCCCCC; margin-top:20px; cursor:pointer; height: 30px; line-height: 30px; vertical-align: center;}
+.tab_box #tab1{ background:#CCCCCC; margin-top:20px; cursor:pointer;}
+.tabs{ width:100%;}
+.tabs1{ width:100%;}
+#table1_nb{width:100%;border-collapse: collapse;border-spacing: 0; margin-bottom:15px; border:1px solid #666666; bordercolor:#858587; font-size:13px;}
+#title{ text-align:center; border:1px dotted #666666;}
+#tr1{ background:#d8d8d8; height:35px;}
+#tr2{ background:#f2f2f2;}
+#btn{ width:7%;}
+
+
+
+/*.tab_box #tab1 #font1{ width:15px; height:15px; float:right;background:url(../images/triangle.png) no-repeat;}*/
+.tab_box .tab .down{ width:15px; height:15px; float:right; background:url(../../../static/default/images/triangle.png) no-repeat;}
+.tab_box .tab .up{ width:15px; height:15px; float:right;background:url(../../../static/default/images/triangle1.png) no-repeat;}

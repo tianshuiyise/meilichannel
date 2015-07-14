@@ -1,0 +1,26 @@
+/* CSS Document */
+body{ width:100%; height:105px; margin:0 auto;filter: progid:DXImageTransform.Microsoft.gradient(startcolorstr=#00108B,endcolorstr=white,gradientType=1);/*IE*/
+-ms-filter:progid:DXImageTransform.Microsoft.gradient(startcolorstr=#00108B,endcolorstr=white,gradientType=1);/*IE8*/
+background:white; /* 一些不支持背景渐变的浏览器 */
+background:-o-linear-gradient(left,#00108B 0%,white);/*opera*/
+background:-moz-linear-gradient(left, #00108B, white);/*firefox*/
+background:-webkit-gradient(linear, left top, right top, from(#00108B), to(rgba(0, 0, 255, 0)));/*chrome,safari*/
+background:-ms-linear-gradient(left,  #00108B, white);}/*IE10*/
+/*.bg-left{ background:url(../images/bg-left.jpg) no-repeat; width:100%; height:79px; margin-top:-8px; margin-left:-10px;}*/
+.bg-right{ width:100%; height:79px;margin-left:-250px;}
+.logo{ width:191px; height:59px; background:url(../images/logo.png) no-repeat; margin-top:-70px; margin-left:10px;}
+.logo1{ width:300px; height:28px; background:url(../images/) no-repeat; margin-top:-42px; margin-left:242px;}
+.logo2{ width:363px; height:11px; background:url(../images/logo2.png) no-repeat; margin-top:8px; margin-left:81px;}
+.logo3{ width:152px; height:18px; background:url(../images/logo3.png) no-repeat; margin-top:-56px; margin-left:598px;}
+.right{ width:180px; height:18px; float:right; margin-right:100px; margin-top:28px;}
+
+
+.navigation{ background:url(../images/navigation.png) repeat-x; margin-top:48px; margin-left:-30px; height:27px;}
+.navigation ul{ margin-left:250px; padding-top:2px;}
+.navigation ul #shouye{margin-left:20px;}
+.navigation ul li{ display:inline; list-style:none; margin-left:10px;}
+.navigation ul li a:link,.navigation ul li a:visited{ text-decoration:none; color:#FFFFFF; font-family:"SimHei"; font-size:14px;}
+.navigation ul li a:hover{ text-decoration:underline;}
+span{ color:#FFFFFF; margin-left:10px;}
+
+

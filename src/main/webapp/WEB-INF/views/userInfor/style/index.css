@@ -1,0 +1,129 @@
+
+/*公共*/
+body{background:#f4f5f6;width:100%;_background-attachment:fixed;_background-image:url(about:blank);}
+.comWidth{width:1200px;}
+
+
+/*主体r*/
+#container{background:#fff;width:1200px;position:relative;height:2018px;}
+/*主体投影效果*/
+#main{width:1208px;_width:1214px;background:url(../images/shadow/shadow.jpg) repeat-y;_background:url(../images/shadow/shadoow.jpg) repeat-y;}
+/*广告banner*/
+.bannerbox{
+	top:4px;
+	left:10px;
+	position:absolute;
+	width:939px;
+	height:272px;
+	overflow:hidden;
+	}
+#focus { width: 939px; height: 272px; clear: both; overflow: hidden; position: relative; float: left; }
+#focus ul { width: 939px; height: 272px; float: left; position: absolute; clear: both; padding: 0px; margin: 0px; }
+#focus ul li { float: left; width: 939px; height: 272px; overflow: hidden; position: relative; padding: 0px; margin: 0px; }
+#focus .preNext { width: 150px; height: 272px; position: absolute; top: 0px; cursor: pointer; }
+#focus .pre { left: 0px; background: url(../images/banner_icon3.png) no-repeat 50px center; }
+#focus .next { right: 0px; background: url(../images/banner_icon4.png) no-repeat 50px center; }
+#btn_rong{
+	position:absolute;
+	top:0;
+	left:388px;
+	width:51px;
+	height:17px;
+	background:url(../images/banner/banner_icon10.png);
+	border:0px;
+	}
+#btn_fa{
+	position:absolute;
+	top:0;
+	left:445px;
+	width:51px;
+	height:17px;
+	background:url(../images/banner/banner_icon6.png);
+	border:0px;
+	}
+#btn_jia{
+	position:absolute;
+	top:0;
+	left:501px;
+	width:51px;
+	height:17px;
+	background:url(../images/banner/banner_icon5.png);
+	border:0px;
+	}
+/*广告end*/
+
+/*公告栏sidebar*/
+#sidebar{right:9px;top:4px;position:absolute;}
+/*店铺shop*/
+.shop1,.shop2,.shop3,.shop4,.shop5,.shop6,.shop7,.shop8{
+	width:275px;
+	height:220px;
+	background:#fff;
+	box-shadow:0px 1px 1px 1px #e2e4e5;
+	overflow:hidden;
+	}
+.shop1 img,.shop2 img,.shop3 img,.shop4 img,.shop5 img,.shop6 img,.shop7 img,.shop8 img{width:275px;}
+.shop1{position:absolute;top:12px;left:7px;}
+.shop2{position:absolute;top:12px;left:307px;;}
+.shop3{position:absolute;top:12px;left:607px;;}
+.shop4{position:absolute;top:12px;left:907px;;}
+.shop5{position:absolute;top:250px;left:7px;;}
+.shop6{position:absolute;top:250px;left:307px;;}
+.shop7{position:absolute;top:250px;left:607px;;}
+.shop8{position:absolute;top:250px;left:907px;;}
+/*遮罩*/
+.shade{ position:absolute;top:-220px;left:0;}
+
+/*美容*/
+#rong_t{top:287px;left:7px;position:absolute;z-index:5;}
+#meirong{
+	height:474px;
+	width:1187px;
+	left:7px;
+	top:315px;
+	position:absolute;
+	background:#eaeced;
+	border-top-right-radius:5px;
+	}
+#more1{top:789px;position:absolute;left:7px;}
+
+/*美发*/
+#fa_t{top:843px;left:7px;position:absolute;z-index:5;}
+#meifa{
+	height:474px;
+	width:1187px;
+	left:7px;
+	top:875px;
+	position:absolute;
+	background:#eaeced;
+	border-top-right-radius:5px;
+	}
+#more2{top:1349px;position:absolute;left:7px;}
+/*美甲*/
+#jia_t{top:1403px;left:7px;position:absolute;z-index:5;}
+#meijia{
+	height:474px;
+	width:1187px;
+	left:7px;
+	top:1436px;
+	position:absolute;
+	background:#eaeced;
+	border-top-right-radius:5px;}
+#more3{top:1910px;position:absolute;left:7px;}
+
+
+/*底部footer*/
+#footer{width:1200px;height:270px;background:#ffd7de;}
+/*投影效果*/
+#foot{width:1208px;_width:1214px;}
+/*底部end*/
+
+#return{
+	position:fixed;
+	left:50%;
+	margin-left:600px;
+	bottom:30px;
+    display:none;
+	_position:absolute; _top:expression((offsetParent.scrollTop)+380); _left:expression((offsetParent.scrollLeft)+670);
+	}
+

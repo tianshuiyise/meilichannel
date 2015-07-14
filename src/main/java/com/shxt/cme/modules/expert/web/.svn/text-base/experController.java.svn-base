@@ -1,0 +1,135 @@
+package com.shxt.cme.modules.expert.web;
+
+import java.io.IOException;
+
+import javax.servlet.http.HttpSession;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import ch.qos.logback.core.db.dialect.DBUtil;
+
+import com.shxt.cme.domain.Experts;
+import com.shxt.cme.domain.User;
+import com.shxt.cme.modules.blog.web.BlogController;
+import com.shxt.cme.modules.expert.service.expertService;
+import com.shxt.framework.utils.DbUtils;
+import com.shxt.framework.web.base.BaseController;
+
+/** 
+* CopyRright (c)2014-:   大连校联科技有限公司 
+* Project:                                         
+* Module ID: ${type_name}
+* Comments:                                             
+* JDK version used:      JDK1.7                              
+* Author：      邓千                
+* Create Date：  ${date} 
+* Modified By：                                           
+* Modified Date:                                      
+* Why & What is modified      
+* Version: 1.0                       
+*/
+@Controller
+@RequestMapping(value="Experts") 
+public class experController extends BaseController{
+	Logger logger =  LoggerFactory.getLogger(BlogController.class);
+	
+	@Autowired
+	private expertService expertservice;
+	
+	
+	@RequestMapping("Qlist")
+public String Qlist(Model model,Experts experts) throws IOException{
+	model.addAttribute("expert",expertservice.QList(experts));
+	return "experts/expertsUI";
+}
+
+	
+	/**查询出所有专家的信息
+	 * 返回专家ListUI界面
+	 */
+	@RequestMapping("listUI")
+	public String listUI(Model model) throws IOException
+	{	
+		model.addAttribute("expert",expertservice.list());
+		return "experts/expertsUI";
+	}
+	
+	
+	/**为添加更新对象查询和跳转操作
+	 * @return 添加页面或者是更新页面
+	 */
+	
+	@RequestMapping("input")
+	public String input(String expertKey,Model model){
+		String skip;
+		if(expertKey==null||expertKey.isEmpty()){
+			Experts expert=new Experts();
+			expert.setExpertYear(DbUtils.getYear());
+			model.addAttribute("expert",expert);
+			skip="experts/addExpers";
+			}
+		else {
+			model.addAttribute("expert",expertservice.queryForExpert(expertKey));
+			skip="experts/updateExpers";
+		}
+		return skip;
+	}
+	
+	
+	/**添加一个专家方法
+	 * 返回ListUi界面
+	 */
+	@RequestMapping("add")
+	public String	add(Experts experts,HttpSession session,Model model)throws IOException{
+		User user=getCurrentUser(session);
+		boolean flag=expertservice.add(experts,user.getUserKey());
+		if(flag==true){
+			model.addAttribute("message", "用户添加成功");
+		   return listUI(model);
+		}else{
+			model.addAttribute("message", "创建失败，用户名已经存在");
+		
+		   return "experts/addExpers";
+		}
+		
+	}
+	
+	/**更新一个专家
+	 * 返回ListUi界面
+	 */
+	@RequestMapping("update")
+	public String	update(Experts experts,Model model)throws IOException{
+		
+		boolean flag= expertservice.update(experts);
+		
+		if(flag==true){
+			model.addAttribute("message", "用户修改成功");
+		  
+		}else{
+			model.addAttribute("message", "修改失败，用户名已经存在");
+		
+			
+		}
+		
+		 return listUI(model);
+	}
+
+	/**删除一个专家
+	 * 返回ListUi界面
+	 */
+	@RequestMapping("delete")
+	public String	delete(String expertKey,Model model)throws IOException{
+		expertservice.delete(expertKey);
+		return listUI(model);
+	}
+	
+	
+	
+
+	
+}

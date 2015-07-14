@@ -1,0 +1,10 @@
+/* CSS Document */
+body{ width:100%; margin:0 auto; padding:0;}
+.book{ background:url(../images/bg_book.jpg) no-repeat; width:853px; height:386px; margin-top:60px; padding-top:94px;}
+.book #left_404{ background:url(../images/left.png) no-repeat; width:169px; height:105px; margin-right:270px;}
+.book #right_msg{ background:url(../images/right_msg.png) no-repeat; width:220px; height:66px; margin-top:-100px; margin-left:270px;}
+.book #num_msg{ color:#FF0000; font-size:24px; font-family:"ËÎÌו";margin-top:20px; margin-left:60px; }
+.book #right_msg1{ background:url(../images/right_msg1.png) no-repeat; width:219px; height:28px; margin-left:310px; margin-top:-27px;}
+
+
+
