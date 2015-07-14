@@ -85,7 +85,7 @@ $('#changeAvatar').on('click', function(){
         maxmin: true,
         shadeClose: true, //点击遮罩关闭层
         area : ['420px' , '520px'],
-        content: '/cme/static/iframe.jsp'
+        content: '${ctx}/static/iframe.jsp'
     });
 });
 </script>

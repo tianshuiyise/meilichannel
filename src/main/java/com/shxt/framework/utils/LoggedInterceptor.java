@@ -31,7 +31,7 @@ public class LoggedInterceptor extends HandlerInterceptorAdapter {
 	//读取配置文件中的系统ip和port
 	Properties p = new PropertiesLoader("classpath:/application.development.properties", "classpath:/application.properties")
 	.getProperties();
-	private String BASEPATH = "http://" + p.getProperty("system.ip") + ":" + p.getProperty("system.port") + "/cme";
+	private String BASEPATH = "http://" + p.getProperty("system.ip") + ":" + p.getProperty("system.port") + "/meilichannel";
 	
 	/**
 	 * controller之前执行
@@ -48,7 +48,7 @@ public class LoggedInterceptor extends HandlerInterceptorAdapter {
         String uri = request.getRequestURI();
       
         //初始登录url不拦截
-        if(!uri.equals("/cme/") && !uri.equals("/")) {
+        if(!uri.equals("/meilichannel/") && !uri.equals("/")) {
         	boolean beFilter = true;  
             for (String s : noFilters) {  
                 if (uri.indexOf(s) != -1) {  

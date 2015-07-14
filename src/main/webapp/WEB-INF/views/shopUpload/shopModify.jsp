@@ -99,7 +99,7 @@ DD_belatedPNG.fix('#logo,.navBar,#top1,#top2,#top3,#top4,.nav_icon1,.nav_icon2,.
 			maxmin : true,
 			shadeClose : true, //点击遮罩关闭层
 			area : [ '420px', '520px' ],
-			content : '/cme/static/iframe.jsp'
+			content : '${ctx}/static/iframe.jsp'
 		});
 	});
 </script>

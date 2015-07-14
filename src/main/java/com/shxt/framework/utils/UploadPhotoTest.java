@@ -88,7 +88,7 @@ public class UploadPhotoTest {
 		//截图
 		abscut(srcImageFile,desImageFile,x,y,width,height,300,300);
 		
-		return "/cme" + "/static" + "/" + "photo" + "/" + affterImageName;
+		return "/meilichannel" + "/static" + "/" + "photo" + "/" + affterImageName;
 	}
 
 

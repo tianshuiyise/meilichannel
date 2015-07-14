@@ -45,7 +45,7 @@
 		jQuery.ajax({
 			type : 'GET',
 			contentType : 'application/json',
-			url : '/cme/trainingDeclare/getSecondSubject?myCol2='
+			url : '${ctx}/trainingDeclare/getSecondSubject?myCol2='
 					+ projectType1,
 			dataType : 'json',
 			success : function(data) {
@@ -81,7 +81,7 @@
 			.ajax({
 				type : 'GET',
 				contentType : 'application/json',
-				url : '/cme/expertChooseUI/ObtainSum?str='
+				url : '${ctx}/expertChooseUI/ObtainSum?str='
 						+ str,
 				dataType : 'json',
 				success : function(data) {
@@ -111,7 +111,7 @@
 				.ajax({
 					type : 'GET',
 					contentType : 'application/json',
-					url : '/cme/trainingDeclare/getThirdSubject?myCol='
+					url : '${ctx}/trainingDeclare/getThirdSubject?myCol='
 							+ secondSubject,
 					dataType : 'json',
 					success : function(data) {

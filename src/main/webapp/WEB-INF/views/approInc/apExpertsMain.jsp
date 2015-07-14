@@ -7,8 +7,8 @@
 </head>
 <script type="text/javascript">
 $(function() {
-     window.open("/cme/reviewConditions.htm","_blank","alwaysRaised=1,scrollbars=1");
-     window.open("/cme/valuationPrinciple.htm","_blank","alwaysRaised=1,scrollbars=1");
+     window.open("${ctx}/reviewConditions.htm","_blank","alwaysRaised=1,scrollbars=1");
+     window.open("${ctx}/valuationPrinciple.htm","_blank","alwaysRaised=1,scrollbars=1");
   });
 </script>
 

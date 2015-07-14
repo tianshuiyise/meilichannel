@@ -30,7 +30,7 @@ $(function() {
 		var src=$('#avatar_pic img').attr('src');
 		
 		$.ajax({
-			url:'/cme/shop/photoSave',
+			url:'${ctx}/shop/photoSave',
 			type:"post",
 			async:false,
 			dataType:"text",
@@ -58,10 +58,10 @@ $(function() {
 	});
 
 	
-	
+	//在js中可以写el表达式，只要这段js代码写在jsp文件中就可以了
     $("#file_upload").uploadify({
-        'swf'      : '/cme/static/uploadify/uploadify.swf',
-        'uploader' : '/cme/shop/upload',
+        'swf'      : '${ctx}/static/uploadify/uploadify.swf',
+        'uploader' : '${ctx}/shop/upload',
         'multi':false,
 		'fileSizeLimit':'2MB',
 		'fileTypeExts':'*.jpg;*.jpge;*.gif;*.png',
