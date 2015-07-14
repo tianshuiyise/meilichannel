@@ -22,7 +22,7 @@
 		<thead>
 			<tr id="tr1">
 				<td class="title1" id="title" style="width: 50px;">序号</td>
-				<td class="title2" id="title">作品名称</td>
+				<td class="title2" id="title">作品的名称</td>
 				<td class="title1" id="title">作品价格</td>
 				<td class="title2" id="title">作品优惠价格</td>
 				<td class="title1" id="title">作品简介</td>
