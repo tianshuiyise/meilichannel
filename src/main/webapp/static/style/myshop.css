@@ -98,16 +98,7 @@ td{
     }
 /*作品信息end*/
 
-/*店铺信息*/
-#shopinfor{text-align:center;margin-top:30px;}
-.shopin{width:500px;margin-bottom:13px;}
-.shopin span{font-family: "微软雅黑";font-size:12px;float:left;}
-.shopin input{width:371px;height:18px;background:#eaeced;}
-.shopin textarea{width:367px;height:151px;background:#eaeced;}
-#shopinfor h4{font-family: "微软雅黑";font-size:8px;}
-#changeAvatar{width:371px;height:20px;background:#69cff6;color:#fff;margin:-5px auto auto 70px;}
-#saveinfo{background:#ff3c98;color:#fff;width:371px;height:20px;margin-left:70px;}
-/*店铺信息end*/
+
 
 /*人员信息*/
 #container .works{margin-top:200px;}
@@ -151,7 +142,7 @@ top:380px;
 left:30px;
 }
 #contain1 {width:960px;}
- #title {
+#title {
 height: 28px;
 }
  #title li {

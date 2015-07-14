@@ -7,6 +7,6 @@
 <title>美丽频道</title>
 </head>
 <body>
-sorry，你没有权限开此家店铺！
+sorry�
 </body>
 </html>

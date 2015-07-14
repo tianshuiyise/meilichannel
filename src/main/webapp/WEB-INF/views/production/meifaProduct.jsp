@@ -42,9 +42,9 @@
 					<td class="title4" id="title" style="width: 70px;">${productList.disPrice}
 						</td>
 					<td class="title3" id="title" style="width: 170px;">${productList.introduction}</td>
-					<td class="title4" id="title" style="width: 170px;"><input type="button" value="修改"
+					<td class="title4" id="title" style="width: 170px;"><input class="change" type="button" value="修改"
 						onclick="dispatchTrainingCourse('${ctx}/product/modifyPro','${productList.proId}')" />
-						<input type="button"  value="删除" onclick="dispatchTrainingCourse('${ctx}/product/deletePro','${productList.proId}')"/>
+						<input class="del" type="button"  value="删除" onclick="dispatchTrainingCourse('${ctx}/product/deletePro','${productList.proId}')"/>
 
 					</td>
 				</tr>

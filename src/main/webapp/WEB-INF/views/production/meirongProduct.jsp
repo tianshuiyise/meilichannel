@@ -9,13 +9,16 @@
 <div class="top">
 	<ul>
 		<li>美容</li>
-		<p><a href="${ctx }/product/inselectMeirongPro" >添加</a></p>
+		
 	</ul>
 </div>
 
 <!--这里是操作完成的消息提示区  -->
 <c:import url="/WEB-INF/include/message.jsp"></c:import>
 <form id="searchForm" action="" method="post">
+    <div class="gly-top">
+	</div>
+	
 	<div class=".gly-top"></div>
 	<!-- 列表区 -->
 	<table id="table1">
@@ -40,15 +43,16 @@
 					<td class="title4" id="title" style="width: 70px;">${productList.disPrice}
 						</td>
 					<td class="title3" id="title" style="width: 170px;">${productList.introduction}</td>
-					<td class="title4" id="title" style="width: 170px;"><input type="button" value="修改"
+					<td class="title4" id="title" style="width: 170px;"><input class="change" type="button" value="修改"
 						onclick="dispatchTrainingCourse('${ctx}/product/modifyPro','${productList.proId}')" />
-						<input type="button"  value="删除" onclick="dispatchTrainingCourse('${ctx}/product/deletePro','${productList.proId}')"/>
+						<input class="del" type="button"  value="删除" onclick="dispatchTrainingCourse('${ctx}/product/deletePro','${productList.proId}')"/>
 
 					</td>
 				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
+	<div id="add"><p><a href="${ctx }/product/inselectMeirongPro">添加</a></p></div>
 
 	<!-- 分页组件区 -->
 	<!-- TODO：后期这里可能会持续改进 -->

@@ -5,8 +5,8 @@
 <tags:wcss items="message.css"></tags:wcss>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <head>
-<link rel="stylesheet" type="text/css" href="${ctx}/static/style/myshop.css" />
-<link rel="stylesheet" type="text/css" href="${ctx}/static/style/nav.css" />
+<link rel="stylesheet" type="text/css" href="${ctx}/static/style/upload.css" />
+
 <style type="text/css">
 #localImag img {
 	width: 100%;
@@ -29,10 +29,10 @@ DD_belatedPNG.fix('#logo,.navBar,#top1,#top2,#top3,#top4,.nav_icon1,.nav_icon2,.
 			method="post">
 			<input type="hidden" name="shopId" value="${shop.shopId}">
 			<div id="shopinfor">
-			  <div id="shopName" class="shopin"><span>*&nbsp;店铺名称：</span><input type="text" name="shopName" value="${shop.shopName}" /></div>
-			  <div id="shopQq" class="shopin"><span>&nbsp;*&nbsp;店铺QQ：</span><input type="text" name="shopQq" value="${shop.shopQq}" /></div>
-			  <div id="introduction" class="shopin"><span>*&nbsp;店铺描述：<br/><h4>(500字以内)</h4></span><textarea name="introduction" value="${shop.introduction}" ></textarea></div>
-			  <div id="shopPic" class="shopin"><span>*&nbsp;店铺图片：</span><div class="box">
+			  <div class="shopin"><span><i>*</i>店铺名称：</span><input type="text" name="shopName" value="${shop.shopName}" /></div>
+			  <div class="shopin"><span><i>*</i>店铺QQ：</span><input type="text" name="shopQq" value="${shop.shopQq}" /></div>
+			  <div class="shopin"><span><i>*</i>店铺描述：<br/><h4>(500字以内)</h4></span><textarea name="introduction" value="${shop.introduction}" ></textarea></div>
+			  <div class="shopin"><span><i>*</i>店铺图片：</span><div class="box">
 							<div id="info_pic">
 								<img src='${ctx}/static/images/blank.jpg '
 									width="371" height="371"> <input id="image_address"
