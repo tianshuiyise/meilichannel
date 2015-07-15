@@ -14,9 +14,25 @@ import com.shxt.framework.persistence.jdbc.support.BaseDao;
 import com.shxt.framework.utils.DbUtils;
 
 
+/** 
+	* @Project:  美丽频道    
+	* @author：   ASus
+	* @class： MngBeautyShopDao   
+	* @Description:   类描述  TODO
+	* @date： 2015-7-15 下午5:04:06 
+	* @version： 1.0 
+ */
 @Repository
 public class MngBeautyShopDao  extends BaseDao {
 
+	/**
+	 * @Description: TODO
+	 * @param pageable
+	 * @param shop
+	 * @param user
+	 * @return  
+	 * @return Page<Shop>
+	 */
 	public Page<Shop> findWithPage(Pageable pageable, Shop shop, User user) {
 		StringBuffer sql = new StringBuffer();
 		sql.append(" SELECT * ");
@@ -30,6 +46,15 @@ public class MngBeautyShopDao  extends BaseDao {
 	}
 
 
+	/**
+	 * 
+		* @Project:  美丽频道    
+		* @author：   ASus
+		* @class： ShopRowMapper   
+		* @Description:   类描述  TODO
+		* @date： 2015-7-15 下午5:04:23 
+		* @version： 1.0
+	 */
 	private class ShopRowMapper implements
 			ParameterizedRowMapper<Shop> {
 		@Override
@@ -53,12 +78,24 @@ public class MngBeautyShopDao  extends BaseDao {
 	}
 
 
+	/**
+	 * @Description: TODO
+	 * @param shop_id
+	 * @return  
+	 * @return Shop
+	 */
 	public Shop getShopById(String shop_id) {
 		String sql = "SELECT  *  FROM t_shop WHERE shop_id='"+shop_id+"'  AND deleteFlag=0";
 		return queryForObject(sql, null, new ShopRowMapper());
 	}
 
 
+	/**
+	 * @Description: TODO
+	 * @param shop
+	 * @return  
+	 * @return int
+	 */
 	public int modifyShop(Shop shop) {
 		String sql = "UPDATE t_shop SET shop_cord=?,shop_add=?,"
 				+ " shop_type=?, image_address=?,image_name=?,shop_qq=?,merchont_id=?, "
@@ -81,6 +118,12 @@ public class MngBeautyShopDao  extends BaseDao {
 	}
 
 
+	/**
+	 * @Description: TODO
+	 * @param shop_id
+	 * @return  
+	 * @return int
+	 */
 	public int delete(String shop_id) {
 		String sql=" update t_shop set  deleteFlag=1 where shop_id=?";
 		Object[] args=new Object[]{shop_id};
@@ -88,6 +131,13 @@ public class MngBeautyShopDao  extends BaseDao {
 	}
 
 
+	/**
+	 * @Description: TODO
+	 * @param shop
+	 * @param user
+	 * @return  
+	 * @return int
+	 */
 	public int add(Shop shop, User user) {
 		String sql=" INSERT INTO t_shop"
 				+ "(deleteFlag,shop_id,shop_cord,shop_add,shop_name,shop_type,introduction,image_address,image_name,shop_qq,merchont_id) "
