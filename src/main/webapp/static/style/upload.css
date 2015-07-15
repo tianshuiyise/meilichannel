@@ -1,0 +1,33 @@
+﻿@charset "utf-8";
+/*店铺信息*/
+#shopinfor{text-align:center;margin-top:30px;}
+.shopin{width:500px;margin:0px auto 13px auto;}
+.shopin span{font-family: "微软雅黑";font-size:12px;float:left;width:100px;text-align:right;margin-top:2px;}
+.shopin span i{color:red;margin-right:8px;}
+.shopin input{width:371px;height:18px;background:#eaeced;border:0px;}
+.shopin textarea{width:367px;height:151px;background:#eaeced;border:0px;}
+#shopinfor h4{font-family: "微软雅黑";font-size:8px;margin:0;}
+#changeAvatar{width:371px;height:20px;background:#69cff6;color:#fff;margin:-5px auto auto 100px;}
+#saveinfo{background:#ff3c98;color:#fff;width:371px;height:20px;margin-left:100px;border:0px;}
+/*店铺信息end*/
+
+/*添加作品信息*/
+#workinfor{text-align:center;margin-top:30px;}
+.workin{width:500px;margin:0px auto 13px auto;}
+.workin span{font-family: "微软雅黑";font-size:12px;float:left;width:100px;text-align:right;margin-top:2px;}
+.workin span i{color:red;margin-right:8px;}
+.workin input{width:371px;height:18px;background:#eaeced;border:0px;}
+.workin textarea{width:367px;height:151px;background:#eaeced;border:0px;}
+#workinfor h4{font-family: "微软雅黑";font-size:8px;margin:0;}
+#reset{width:371px;height:20px;background:#69cff6;color:#fff;border:0px;margin:0 auto auto 100px;}
+/*添加作品信息end*/
+
+/*添加服务人员信息*/
+#personinfor{text-align:center;margin-top:30px;}
+.personin{width:500px;margin:0px auto 13px auto;}
+.personin span{font-family: "微软雅黑";font-size:12px;float:left;width:100px;text-align:right;margin-top:2px;}
+.personin span i{color:red;margin-right:8px;}
+.personin input{width:371px;height:18px;background:#eaeced;border:0px;}
+.personin textarea{width:367px;height:151px;background:#eaeced;border:0px;}
+#personinfor h4{font-family: "微软雅黑";font-size:8px;margin:0;}
+/*添加服务人员信息end*/
