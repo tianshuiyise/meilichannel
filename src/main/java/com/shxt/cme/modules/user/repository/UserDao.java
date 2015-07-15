@@ -9,7 +9,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import com.google.common.collect.Maps;
-import com.shxt.cme.domain.Unit;
 import com.shxt.cme.domain.User;
 import com.shxt.framework.persistence.jdbc.support.BaseDao;
 import com.shxt.framework.serivce.BusinessLogger;
@@ -233,23 +232,6 @@ public class UserDao extends BaseDao{
 		
 		return result1;
 	}
-	
-	public int  editUserInfo2(Unit unit){
-		//更新单位信息
-		
-				StringBuffer sql2 = new StringBuffer();
-				sql2.append(" update tb_unit set postcode=?,telephone=?,email=?,unitAddress=?,qq=? ");
-				sql2.append(" where unitKey = ? ");
-				Object[] args2 = new Object[]{unit.getPostcode(),				
-				unit.getTelephone(),unit.getEmail(),unit.getUnitAddress(),
-				unit.getQq(),unit.getUnitKey()};
-				int result2 = update(sql2.toString(), args2);
-				
-				return result2;
-				
-		
-	}
-	
 	
 	
 	

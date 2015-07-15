@@ -13,7 +13,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.shxt.cme.domain.Product;
 import com.shxt.cme.domain.Shop;
-import com.shxt.cme.domain.TrainingCourse;
 import com.shxt.cme.domain.User;
 import com.shxt.cme.domain.Merchont;
 import com.shxt.cme.modules.shop.repository.ShopDao;
@@ -25,16 +24,7 @@ public class ShopService {
 	private ShopDao shopDao;
 	Logger logger = LoggerFactory.getLogger(ShopService.class);
 	
-	public Page<Shop> findWithPage(Pageable pageable,
-			TrainingCourse subTrainingCourseInfo,User user) {
-
-		return shopDao.findWithPage(pageable, subTrainingCourseInfo,user);
-	}
-	public Shop findShopInfo(Pageable pageable,
-			TrainingCourse subTrainingCourseInfo,User user) {
-
-		return shopDao.findShopInfo(pageable, subTrainingCourseInfo,user);
-	}
+	
 	public boolean insertShop1(Shop shop,User user){
 		shopDao.insertShop1(shop,user);
 		return true;

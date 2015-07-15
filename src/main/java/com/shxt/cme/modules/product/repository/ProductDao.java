@@ -13,22 +13,17 @@ import org.springframework.jdbc.core.simple.ParameterizedRowMapper;
 import org.springframework.stereotype.Repository;
 
 import com.google.common.collect.Maps;
-import com.shxt.cme.domain.AcademicActivity;
 import com.shxt.cme.domain.Member;
 import com.shxt.cme.domain.Merchont;
 import com.shxt.cme.domain.Product;
 import com.shxt.cme.domain.Shop;
-import com.shxt.cme.domain.Subject;
-import com.shxt.cme.domain.TrainingCourse;
-import com.shxt.cme.domain.Unit;
 import com.shxt.cme.domain.User;
 import com.shxt.framework.persistence.jdbc.support.BaseDao;
 import com.shxt.framework.utils.DbUtils;
 
 @Repository
 public class ProductDao extends BaseDao{
-	public Page<Product> findWithPage1(Pageable pageable,
-			TrainingCourse subTrainingCourseInfo,User user) {
+	public Page<Product> findWithPage1(Pageable pageable,User user) {
 
 		
 		StringBuffer sql = new StringBuffer();
@@ -40,8 +35,7 @@ public class ProductDao extends BaseDao{
 				new ProductRowMapper(), args);
 
 	}
-	public Page<Product> findWithPage2(Pageable pageable,
-			TrainingCourse subTrainingCourseInfo,User user) {
+	public Page<Product> findWithPage2(Pageable pageable,User user) {
 
 		
 		StringBuffer sql = new StringBuffer();
@@ -52,8 +46,7 @@ public class ProductDao extends BaseDao{
 		return queryForPage(sql.toString(), pageable,
 				new ProductRowMapper(), args);
 
-	}	public Page<Product> findWithPage3(Pageable pageable,
-			TrainingCourse subTrainingCourseInfo,User user) {
+	}	public Page<Product> findWithPage3(Pageable pageable,User user) {
 
 		
 		StringBuffer sql = new StringBuffer();

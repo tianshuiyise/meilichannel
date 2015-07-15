@@ -21,7 +21,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.shxt.cme.domain.Experts;
 import com.shxt.cme.domain.Menu;
 import com.shxt.cme.domain.User;
 import com.shxt.cme.modules.login.repository.LoginDao;
@@ -63,10 +62,10 @@ public class LoginService {
 	* @Description: 专家用户登录
 	* @param user
 	* @return User
-	*/
+	*//*
 	public Experts findExpertsInfo(User user) {
 		// TODO Auto-generated method stub
 		user.setPassword(DbUtils.NankaiEncrypt(user.getPassword()));
 		return loginDao.findExpertsInfo(user);
-	}
+	}*/
 }

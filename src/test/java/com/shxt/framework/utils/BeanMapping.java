@@ -12,7 +12,6 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.shxt.cme.domain.Specialty;
 
 public class BeanMapping<T> {
 	
@@ -108,9 +107,7 @@ public class BeanMapping<T> {
     	
     	map.put("nameCh", "计算机科学与技术");
     
-		Specialty specialty = convertMap(Specialty.class, map);
-			
-		System.out.println(specialty.getNameCh());
+		
 			
     }
 }

@@ -2,7 +2,7 @@ package com.shxt.framework.web.base;
 
 import javax.servlet.http.HttpSession;
 
-import com.shxt.cme.domain.Experts;
+
 import com.shxt.cme.domain.User;
 
 /**
@@ -165,9 +165,9 @@ public class BaseController {
 	 * 获取当前用户
 	 * @param session
 	 * @return
-	 */
+	 *//*
 	protected Experts getCurrentExperts(HttpSession session) {
 		Experts user = (Experts)session.getAttribute("user");
 		return user;
-	}
+	}*/
 }

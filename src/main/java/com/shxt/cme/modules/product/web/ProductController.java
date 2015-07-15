@@ -28,7 +28,6 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 import com.shxt.cme.domain.Product;
-import com.shxt.cme.domain.TrainingCourse;
 import com.shxt.cme.domain.User;
 import com.shxt.cme.domain.Shop;
 import com.shxt.cme.modules.product.service.ProductService;
@@ -58,11 +57,9 @@ public class ProductController extends BaseController implements ServletContextA
 		Map<String, Object> searchParams = Servlets.getParametersStartingWith(
 				request, "search_");
 		User user=getCurrentUser(session);
-		// 将接受的Map对象转化成实体对象
-		TrainingCourse subTrainingCourseInfo = BeanMapper.convertMap(
-				TrainingCourse.class, searchParams);
+		
 		// 获取分页对象
-		Page<Product> productList = productService.findWithPage1(pageable, subTrainingCourseInfo,user);
+		Page<Product> productList = productService.findWithPage1(pageable,user);
 		model.addAttribute("productList", productList);
 		model.addAttribute("searchParams", Servlets
 				.encodeParameterStringWithPrefix(searchParams, "search_"));
@@ -77,11 +74,8 @@ public class ProductController extends BaseController implements ServletContextA
 		Map<String, Object> searchParams = Servlets.getParametersStartingWith(
 				request, "search_");
 		User user=getCurrentUser(session);
-		// 将接受的Map对象转化成实体对象
-		TrainingCourse subTrainingCourseInfo = BeanMapper.convertMap(
-				TrainingCourse.class, searchParams);
 		// 获取分页对象
-		Page<Product> productList = productService.findWithPage1(pageable, subTrainingCourseInfo,user);
+		Page<Product> productList = productService.findWithPage1(pageable,user);
 		model.addAttribute("productList", productList);
 		model.addAttribute("searchParams", Servlets
 				.encodeParameterStringWithPrefix(searchParams, "search_"));
@@ -95,11 +89,8 @@ public class ProductController extends BaseController implements ServletContextA
 		Map<String, Object> searchParams = Servlets.getParametersStartingWith(
 				request, "search_");
 		User user=getCurrentUser(session);	
-		// 将接受的Map对象转化成实体对象
-		TrainingCourse subTrainingCourseInfo = BeanMapper.convertMap(
-				TrainingCourse.class, searchParams);
 		// 获取分页对象
-		Page<Product> productList = productService.findWithPage2(pageable, subTrainingCourseInfo,user);
+		Page<Product> productList = productService.findWithPage2(pageable,user);
 		model.addAttribute("productList", productList);
 		model.addAttribute("searchParams", Servlets
 				.encodeParameterStringWithPrefix(searchParams, "search_"));
@@ -115,11 +106,8 @@ public class ProductController extends BaseController implements ServletContextA
 				request, "search_");
 		User user=getCurrentUser(session);
 		
-		// 将接受的Map对象转化成实体对象
-		TrainingCourse subTrainingCourseInfo = BeanMapper.convertMap(
-				TrainingCourse.class, searchParams);
 		// 获取分页对象
-		Page<Product> productList = productService.findWithPage3(pageable, subTrainingCourseInfo,user);
+		Page<Product> productList = productService.findWithPage3(pageable,user);
 		model.addAttribute("productList", productList);
 		model.addAttribute("searchParams", Servlets
 				.encodeParameterStringWithPrefix(searchParams, "search_"));
@@ -135,11 +123,8 @@ public class ProductController extends BaseController implements ServletContextA
 				request, "search_");
 		User user=getCurrentUser(session);
 		
-		// 将接受的Map对象转化成实体对象
-		TrainingCourse subTrainingCourseInfo = BeanMapper.convertMap(
-				TrainingCourse.class, searchParams);
 		// 获取分页对象
-		Page<Product> productList = productService.findWithPage1(pageable, subTrainingCourseInfo,user);
+		Page<Product> productList = productService.findWithPage1(pageable,user);
 		model.addAttribute("productList", productList);
 		model.addAttribute("searchParams", Servlets
 				.encodeParameterStringWithPrefix(searchParams, "search_"));

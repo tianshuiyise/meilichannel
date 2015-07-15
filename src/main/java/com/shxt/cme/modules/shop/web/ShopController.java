@@ -30,7 +30,6 @@ import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 import com.shxt.cme.domain.Product;
 import com.shxt.cme.domain.Shop;
-import com.shxt.cme.domain.TrainingCourse;
 import com.shxt.cme.domain.User;
 import com.shxt.cme.domain.Merchont;
 import com.shxt.cme.domain.UserInfo;

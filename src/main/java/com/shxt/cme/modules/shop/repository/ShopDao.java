@@ -13,12 +13,8 @@ import org.springframework.jdbc.core.simple.ParameterizedRowMapper;
 import org.springframework.stereotype.Repository;
 
 import com.google.common.collect.Maps;
-import com.shxt.cme.domain.AcademicActivity;
 import com.shxt.cme.domain.Product;
 import com.shxt.cme.domain.Shop;
-import com.shxt.cme.domain.Subject;
-import com.shxt.cme.domain.TrainingCourse;
-import com.shxt.cme.domain.Unit;
 import com.shxt.cme.domain.User;
 import com.shxt.cme.domain.Merchont;
 import com.shxt.framework.persistence.jdbc.support.BaseDao;
@@ -56,18 +52,7 @@ public class ShopDao extends BaseDao{
 		
 		update(sql.toString(), args);
 	}
-	public Page<Shop> findWithPage(Pageable pageable,
-			TrainingCourse subTrainingCourseInfo,User user) {
-		
-		StringBuffer sql = new StringBuffer();
-		sql.append("SELECT * ");
-		sql.append(" FROM t_shop ");
-		sql.append(" WHERE merchont_id='"+user.getUserId()+"' ");
-		Object[] args=new Object[]{};
-		return queryForPage(sql.toString(), pageable,
-				new ShopRowMapper(), args);
-
-	}
+	
 
 	private class ShopRowMapper implements
 			ParameterizedRowMapper<Shop> {
@@ -108,8 +93,7 @@ public class ShopDao extends BaseDao{
 	return merchont;
 	}
 	}
-	public Shop findShopInfo(Pageable pageable,
-			TrainingCourse subTrainingCourseInfo,User user){
+	public Shop findShopInfo(Pageable pageable,User user){
 		StringBuffer sql = new StringBuffer();
 		sql.append("SELECT * ");
 		sql.append(" FROM t_shop ");

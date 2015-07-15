@@ -25,8 +25,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-
-import com.shxt.cme.domain.Unit;
 import com.shxt.cme.domain.User;
 import com.shxt.cme.modules.login.service.LoginService;
 import com.shxt.cme.modules.user.service.UserService;
@@ -99,9 +97,9 @@ public class UserInfoController extends BaseController{
 	 * @return String
 	 */
 	@RequestMapping("editUserInfo")
-	public String editUserInfo(Model model,User user,Unit unit,HttpSession session){
+	public String editUserInfo(Model model,User user,HttpSession session){
 		String message="";
-		boolean i=userService.editUserInfo(user,unit);
+		boolean i=userService.editUserInfo(user);
 		if(i==true){
 			message="修改成功";
 		}else{

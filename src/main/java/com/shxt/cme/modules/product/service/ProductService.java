@@ -13,7 +13,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.shxt.cme.domain.Product;
 import com.shxt.cme.domain.Shop;
-import com.shxt.cme.domain.TrainingCourse;
 import com.shxt.cme.domain.User;
 import com.shxt.cme.modules.product.repository.ProductDao;
 
@@ -24,20 +23,17 @@ public class ProductService {
 	Logger logger = LoggerFactory.getLogger(ProductService.class);
 	@Autowired
 	private ProductDao productDao;
-	public Page<Product> findWithPage1(Pageable pageable,
-			TrainingCourse subTrainingCourseInfo,User user) {
+	public Page<Product> findWithPage1(Pageable pageable,User user) {
 
-		return productDao.findWithPage1(pageable, subTrainingCourseInfo,user);
+		return productDao.findWithPage1(pageable,user);
 	}
-	public Page<Product> findWithPage2(Pageable pageable,
-			TrainingCourse subTrainingCourseInfo,User user) {
+	public Page<Product> findWithPage2(Pageable pageable,User user) {
 
-		return productDao.findWithPage2(pageable, subTrainingCourseInfo,user);
+		return productDao.findWithPage2(pageable,user);
 	}
-	public Page<Product> findWithPage3(Pageable pageable,
-			TrainingCourse subTrainingCourseInfo,User user) {
+	public Page<Product> findWithPage3(Pageable pageable,User user) {
 
-		return productDao.findWithPage3(pageable, subTrainingCourseInfo,user);
+		return productDao.findWithPage3(pageable,user);
 	}
 	public Product findInfoPro(Product product) {
 

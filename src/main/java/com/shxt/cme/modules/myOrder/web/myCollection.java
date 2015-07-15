@@ -27,10 +27,8 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 import com.shxt.cme.domain.Order;
-import com.shxt.cme.domain.TrainingCourse;
 import com.shxt.cme.domain.User;
 import com.shxt.cme.modules.myOrder.service.non_payOrderService;
-import com.shxt.framework.utils.mapper.BeanMapper;
 import com.shxt.framework.web.Servlets;
 import com.shxt.framework.web.base.BaseController;
 
@@ -58,11 +56,8 @@ public class myCollection extends BaseController implements ServletContextAware 
 				request, "search_");
 		User user=getCurrentUser(session);
 		
-		// 将接受的Map对象转化成实体对象
-		TrainingCourse subTrainingCourseInfo = BeanMapper.convertMap(
-				TrainingCourse.class, searchParams);
 		// 获取分页对象
-		Page<Order> OrderList = non_payOrderService.findWithPage(pageable, subTrainingCourseInfo,user);
+		Page<Order> OrderList = non_payOrderService.findWithPage(pageable,user);
 
 		model.addAttribute("OrderList", OrderList);
 		model.addAttribute("searchParams", Servlets
@@ -83,11 +78,8 @@ public class myCollection extends BaseController implements ServletContextAware 
 				request, "search_");
 		User user=getCurrentUser(session);
 		
-		// 将接受的Map对象转化成实体对象
-		TrainingCourse subTrainingCourseInfo = BeanMapper.convertMap(
-				TrainingCourse.class, searchParams);
 		// 获取分页对象
-		Page<Order> productList = non_payOrderService.findWithPage(pageable, subTrainingCourseInfo,user);
+		Page<Order> productList = non_payOrderService.findWithPage(pageable,user);
 System.out.println("productList===="+productList);
 		model.addAttribute("productList", productList);
 		model.addAttribute("searchParams", Servlets

@@ -22,9 +22,7 @@ import org.springframework.jdbc.core.simple.ParameterizedRowMapper;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.servlet.tags.EscapeBodyTag;
 
-import com.shxt.cme.domain.Experts;
 import com.shxt.cme.domain.Menu;
-import com.shxt.cme.domain.Unit;
 import com.shxt.cme.domain.User;
 import com.shxt.framework.persistence.jdbc.support.BaseDao;
 
@@ -167,7 +165,7 @@ public class LoginDao extends BaseDao {
 	* @Description: 专家登录
 	* @param user
 	* @return User
-	*/
+	*//*
 	public Experts findExpertsInfo(User user) {
 		// TODO Auto-generated method stub
 		String sql="SELECT expertKey,expertName,expertPhone,expertBank,"
@@ -203,5 +201,5 @@ public class LoginDao extends BaseDao {
 			return experts;
 		}
 	}
-	
+	*/
 }

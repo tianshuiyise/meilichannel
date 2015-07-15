@@ -13,20 +13,15 @@ import org.springframework.jdbc.core.simple.ParameterizedRowMapper;
 import org.springframework.stereotype.Repository;
 
 import com.google.common.collect.Maps;
-import com.shxt.cme.domain.AcademicActivity;
 import com.shxt.cme.domain.Member;
 import com.shxt.cme.domain.Product;
-import com.shxt.cme.domain.Subject;
-import com.shxt.cme.domain.TrainingCourse;
-import com.shxt.cme.domain.Unit;
 import com.shxt.cme.domain.User;
 import com.shxt.framework.persistence.jdbc.support.BaseDao;
 import com.shxt.framework.utils.DbUtils;
 
 @Repository
 public class MemberDao extends BaseDao {
-	public Page<Member> findWithPage(Pageable pageable,
-			TrainingCourse subTrainingCourseInfo,User user) {
+	public Page<Member> findWithPage(Pageable pageable,User user) {
 		StringBuffer sql = new StringBuffer();
 		sql.append(" SELECT * ");
 		sql.append(" FROM t_member ");
@@ -35,8 +30,7 @@ public class MemberDao extends BaseDao {
 				new MemberRowMapper(), args);
 
 	}
-	public Page<Member> findWithPage1(Pageable pageable,
-			TrainingCourse subTrainingCourseInfo,User user) {
+	public Page<Member> findWithPage1(Pageable pageable,User user) {
 		StringBuffer sql = new StringBuffer();
 		sql.append(" SELECT * ");
 		sql.append(" FROM t_member ");
@@ -46,8 +40,7 @@ public class MemberDao extends BaseDao {
 				new MemberRowMapper(), args);
 
 	}
-	public Page<Member> findWithPage2(Pageable pageable,
-			TrainingCourse subTrainingCourseInfo,User user) {
+	public Page<Member> findWithPage2(Pageable pageable,User user) {
 		StringBuffer sql = new StringBuffer();
 		sql.append(" SELECT * ");
 		sql.append(" FROM t_member ");
@@ -57,8 +50,7 @@ public class MemberDao extends BaseDao {
 				new MemberRowMapper(), args);
 
 	}
-	public Page<Member> findWithPage3(Pageable pageable,
-			TrainingCourse subTrainingCourseInfo,User user) {
+	public Page<Member> findWithPage3(Pageable pageable,User user) {
 		StringBuffer sql = new StringBuffer();
 		sql.append(" SELECT * ");
 		sql.append(" FROM t_member ");

@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.shxt.cme.domain.Unit;
 import com.shxt.cme.domain.User;
 import com.shxt.cme.modules.user.repository.UserDao;
 import com.shxt.framework.utils.DbUtils;
@@ -86,15 +85,12 @@ public class UserService {
 	 * @param user
 	 * @return int
 	 */
-	public boolean editUserInfo(User user,Unit unit){
+	public boolean editUserInfo(User user){
 		user.setPassword(DbUtils.NankaiEncrypt(user.getPassword()));
 		
 		int i= userDao.editUserInfo(user);
-		int j= userDao.editUserInfo2(unit);
 		
-			System.out.println("i= "+i);
-			System.out.println("j= "+j);
-		 return i>0 && j>0  ? true :false;
+		 return i>0 ? true :false;
 		 
 	}
 	

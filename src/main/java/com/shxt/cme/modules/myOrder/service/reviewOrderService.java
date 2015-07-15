@@ -11,7 +11,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.shxt.cme.domain.Order;
-import com.shxt.cme.domain.TrainingCourse;
 import com.shxt.cme.domain.User;
 import com.shxt.cme.modules.myOrder.repository.reviewOrderDao;
 
@@ -21,10 +20,9 @@ public class reviewOrderService {
 	Logger logger = LoggerFactory.getLogger(reviewOrderService.class);
 	@Autowired
 	private reviewOrderDao reviewOrderDao;
-	public Page<Order> findWithPage(Pageable pageable,
-			TrainingCourse subTrainingCourseInfo,User user) {
+	public Page<Order> findWithPage(Pageable pageable,User user) {
 
-		return reviewOrderDao.findWithPage(pageable, subTrainingCourseInfo,user);
+		return reviewOrderDao.findWithPage(pageable,user);
 	}
 
 }

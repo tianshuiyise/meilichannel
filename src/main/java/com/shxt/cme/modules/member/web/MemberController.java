@@ -29,7 +29,6 @@ import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 import com.shxt.cme.domain.Member;
 import com.shxt.cme.domain.Product;
-import com.shxt.cme.domain.TrainingCourse;
 import com.shxt.cme.domain.User;
 import com.shxt.cme.modules.member.service.MemberService;
 import com.shxt.framework.utils.mapper.BeanMapper;
@@ -60,11 +59,8 @@ public class MemberController extends BaseController implements ServletContextAw
 				request, "search_");
 		User user=getCurrentUser(session);
 		
-		// 将接受的Map对象转化成实体对象
-		TrainingCourse subTrainingCourseInfo = BeanMapper.convertMap(
-				TrainingCourse.class, searchParams);
 		// 获取分页对象
-		Page<Member> memberList = memberService.findWithPage(pageable, subTrainingCourseInfo,user);
+		Page<Member> memberList = memberService.findWithPage(pageable,user);
 		System.out.println("memberList===="+memberList);
 		model.addAttribute("memberList", memberList);
 		model.addAttribute("searchParams", Servlets
@@ -81,11 +77,9 @@ public class MemberController extends BaseController implements ServletContextAw
 				request, "search_");
 		User user=getCurrentUser(session);
 		
-		// 将接受的Map对象转化成实体对象
-		TrainingCourse subTrainingCourseInfo = BeanMapper.convertMap(
-				TrainingCourse.class, searchParams);
+		
 		// 获取分页对象
-		Page<Member> memberList = memberService.findWithPage1(pageable, subTrainingCourseInfo,user);
+		Page<Member> memberList = memberService.findWithPage1(pageable,user);
 		System.out.println("memberList===="+memberList);
 		model.addAttribute("memberList", memberList);
 		model.addAttribute("searchParams", Servlets
@@ -102,11 +96,9 @@ public class MemberController extends BaseController implements ServletContextAw
 				request, "search_");
 		User user=getCurrentUser(session);
 		
-		// 将接受的Map对象转化成实体对象
-		TrainingCourse subTrainingCourseInfo = BeanMapper.convertMap(
-				TrainingCourse.class, searchParams);
+		
 		// 获取分页对象
-		Page<Member> memberList = memberService.findWithPage2(pageable, subTrainingCourseInfo,user);
+		Page<Member> memberList = memberService.findWithPage2(pageable,user);
 		System.out.println("memberList===="+memberList);
 		model.addAttribute("memberList", memberList);
 		model.addAttribute("searchParams", Servlets
@@ -123,11 +115,9 @@ public class MemberController extends BaseController implements ServletContextAw
 				request, "search_");
 		User user=getCurrentUser(session);
 		
-		// 将接受的Map对象转化成实体对象
-		TrainingCourse subTrainingCourseInfo = BeanMapper.convertMap(
-				TrainingCourse.class, searchParams);
+		
 		// 获取分页对象
-		Page<Member> memberList = memberService.findWithPage3(pageable, subTrainingCourseInfo,user);
+		Page<Member> memberList = memberService.findWithPage3(pageable,user);
 		System.out.println("memberList===="+memberList);
 		model.addAttribute("memberList", memberList);
 		model.addAttribute("searchParams", Servlets
@@ -144,11 +134,9 @@ public class MemberController extends BaseController implements ServletContextAw
 				request, "search_");
 		User user=getCurrentUser(session);
 		
-		// 将接受的Map对象转化成实体对象
-		TrainingCourse subTrainingCourseInfo = BeanMapper.convertMap(
-				TrainingCourse.class, searchParams);
+		
 		// 获取分页对象
-		Page<Member> memberList = memberService.findWithPage(pageable, subTrainingCourseInfo,user);
+		Page<Member> memberList = memberService.findWithPage(pageable,user);
 System.out.println("memberList===="+memberList);
 		model.addAttribute("productList", memberList);
 		model.addAttribute("searchParams", Servlets

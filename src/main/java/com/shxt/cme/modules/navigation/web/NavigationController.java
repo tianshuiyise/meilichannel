@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.shxt.framework.web.base.BaseController;
-import com.shxt.cme.domain.Experts;
 import com.shxt.cme.domain.Menu;
 import com.shxt.cme.domain.User;
 import com.shxt.cme.modules.login.service.LoginService;
@@ -124,7 +123,7 @@ public class NavigationController extends BaseController {
 		
 		return "navigation/left6";
 	}
-	
+	/*
 	
 	//添加
 	protected Experts getCurrentExpert(HttpSession session) {
@@ -132,7 +131,7 @@ public class NavigationController extends BaseController {
 		return experts;
 	}
 	
-
+*/
 	public NavigationService getNavigationService() {
 		return navigationService;
 	}

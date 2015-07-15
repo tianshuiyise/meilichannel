@@ -13,7 +13,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.shxt.cme.domain.Member;
 import com.shxt.cme.domain.Product;
-import com.shxt.cme.domain.TrainingCourse;
 import com.shxt.cme.domain.User;
 import com.shxt.cme.modules.member.repository.MemberDao;
 
@@ -23,25 +22,21 @@ public class MemberService {
 	Logger logger = LoggerFactory.getLogger(MemberService.class);
 	@Autowired
 	private MemberDao memberDao;
-	public Page<Member> findWithPage(Pageable pageable,
-			TrainingCourse subTrainingCourseInfo,User user) {
+	public Page<Member> findWithPage(Pageable pageable,User user) {
 
-		return memberDao.findWithPage(pageable, subTrainingCourseInfo,user);
+		return memberDao.findWithPage(pageable,user);
 	}
-	public Page<Member> findWithPage1(Pageable pageable,
-			TrainingCourse subTrainingCourseInfo,User user) {
+	public Page<Member> findWithPage1(Pageable pageable,User user) {
 
-		return memberDao.findWithPage1(pageable, subTrainingCourseInfo,user);
+		return memberDao.findWithPage1(pageable,user);
 	}
-	public Page<Member> findWithPage2(Pageable pageable,
-			TrainingCourse subTrainingCourseInfo,User user) {
+	public Page<Member> findWithPage2(Pageable pageable,User user) {
 
-		return memberDao.findWithPage2(pageable, subTrainingCourseInfo,user);
+		return memberDao.findWithPage2(pageable,user);
 	}	
-	public Page<Member> findWithPage3(Pageable pageable,
-			TrainingCourse subTrainingCourseInfo,User user) {
+	public Page<Member> findWithPage3(Pageable pageable,User user) {
 
-		return memberDao.findWithPage3(pageable, subTrainingCourseInfo,user);
+		return memberDao.findWithPage3(pageable,user);
 	}
 	public boolean addInfo1(Member member,User user) {
 		memberDao.insertSelective1(member,user);

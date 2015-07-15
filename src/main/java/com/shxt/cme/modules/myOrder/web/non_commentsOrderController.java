@@ -1,16 +1,10 @@
 package com.shxt.cme.modules.myOrder.web;
 
 
-import java.io.File;
-import java.io.IOException;
-import java.util.Date;
-import java.util.Iterator;
 import java.util.Map;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletRequest;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -21,20 +15,11 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.context.ServletContextAware;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
-import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
-import com.shxt.cme.domain.Order;
-import com.shxt.cme.domain.review_Order;
-import com.shxt.cme.domain.review;
-import com.shxt.cme.domain.TrainingCourse;
 import com.shxt.cme.domain.User;
+import com.shxt.cme.domain.review_Order;
 import com.shxt.cme.modules.myOrder.service.non_commentsOrderService;
-import com.shxt.framework.utils.mapper.BeanMapper;
 import com.shxt.framework.web.Servlets;
 import com.shxt.framework.web.base.BaseController;
 
@@ -62,11 +47,8 @@ public abstract class non_commentsOrderController extends BaseController impleme
 				request, "search_");
 		User user=getCurrentUser(session);
 		
-		// 将接受的Map对象转化成实体对象
-		TrainingCourse subTrainingCourseInfo = BeanMapper.convertMap(
-				TrainingCourse.class, searchParams);
 		// 获取分页对象
-		Page<review_Order> review_OrderList = non_commentsOrderService.findWithPage(pageable, subTrainingCourseInfo,user);
+		Page<review_Order> review_OrderList = non_commentsOrderService.findWithPage(pageable,user);
 
 		model.addAttribute("review_OrderList", review_OrderList);
 		model.addAttribute("searchParams", Servlets
