@@ -7,85 +7,40 @@ import org.springframework.stereotype.Service;
 
 import com.shxt.cme.domain.Shop;
 import com.shxt.cme.domain.User;
+import com.shxt.cme.modules.IService;
 import com.shxt.cme.modules.MngBeautyShop.repository.MngBeautyShopDao;
 
-/** 
-	* @Project:  美丽频道    
-	* @author：   ASus
-	* @class： MngBeautyShopService   
-	* @Description:   类描述  TODO
-	* @date： 2015-7-15 下午5:03:14 
-	* @version： 1.0 
- */
 @Service
-public class MngBeautyShopService {
+public class MngBeautyShopService implements IService<Shop>{
 
 	@Autowired
 	private MngBeautyShopDao mngBeautyShopDao;
 	
-	/**
-	 * @Description: TODO
-	 * @param pageable
-	 * @param shop
-	 * @param user
-	 * @return  
-	 * @return Page<Shop>
-	 */
+	@Override
 	public Page<Shop> findWithPage(Pageable pageable, Shop shop, User user) {
 		
 		return mngBeautyShopDao.findWithPage( pageable,  shop,  user) ;
 	}
-	
-	/**
-	 * @Description: TODO
-	 * @param shop_id
-	 * @return  
-	 * @return Shop
-	 */
-	public Shop getShopById(String shop_id) {
-		return mngBeautyShopDao.getShopById( shop_id);
+	@Override
+	public Shop getById(String shop_id) {
+		return mngBeautyShopDao.getById( shop_id);
 	}
-
-	/**
-	 * @Description: TODO
-	 * @param shop
-	 * @return  
-	 * @return int
-	 */
-	public int modifyShop(Shop shop) {
+	@Override
+	public int modify(Shop shop) {
 		
-		return mngBeautyShopDao.modifyShop( shop) ;
+		return mngBeautyShopDao.modify( shop) ;
 	}
-
-	/**
-	 * @Description: TODO
-	 * @param shop_id
-	 * @return  
-	 * @return int
-	 */
+	@Override
 	public int delete(String shop_id) {
 		// TODO Auto-generated method stub
 		return mngBeautyShopDao.delete( shop_id);
 	}
-
-	/**
-	 * @Description: TODO
-	 * @param shop_id
-	 * @return  
-	 * @return Shop
-	 */
+	@Override
 	public Shop detail(String shop_id) {
 		// TODO Auto-generated method stub
-		return mngBeautyShopDao.getShopById(shop_id);
+		return mngBeautyShopDao.getById(shop_id);
 	}
-
-	/**
-	 * @Description: TODO
-	 * @param shop
-	 * @param user
-	 * @return  
-	 * @return int
-	 */
+	@Override
 	public int add(Shop shop, User user) {
 		// TODO Auto-generated method stub
 		return mngBeautyShopDao.add(shop,user);

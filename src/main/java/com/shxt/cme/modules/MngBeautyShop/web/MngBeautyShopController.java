@@ -29,14 +29,6 @@ import com.shxt.framework.web.Servlets;
 import com.shxt.framework.web.base.BaseController;
 
 
-/** 
-	* @Project:  美丽频道    
-	* @author：   ASus
-	* @class： MngBeautyShopController   
-	* @Description:   类描述  TODO
-	* @date： 2015-7-15 下午5:01:41 
-	* @version： 1.0 
- */
 @Controller
 @RequestMapping(value = "beautyShopMng")
 public class MngBeautyShopController extends BaseController{
@@ -47,16 +39,6 @@ public class MngBeautyShopController extends BaseController{
 	private MngBeautyShopService mngBeautyShopService;
 	
 
-	/**
-	 * @Description: TODO
-	 * @param model
-	 * @param shopType
-	 * @param pageable
-	 * @param request
-	 * @param session
-	 * @return  
-	 * @return String
-	 */
 	@RequestMapping("/{shopType}")
 	public String list(Model model,@PathVariable("shopType") String shopType, Pageable pageable, ServletRequest request,HttpSession session) {
 		// 从请求中取得search_开头的参数及其值，并封装到map中，供后续查询使用
@@ -74,63 +56,31 @@ public class MngBeautyShopController extends BaseController{
 		return "beautyShopMng/listBeautyShop";
 	}
 	
-	/**
-	 * @Description: TODO
-	 * @param model
-	 * @param shopType
-	 * @param shopId
-	 * @return  
-	 * @return String
-	 */
 	@RequestMapping("/{shopType}/preModify" )   
     public String preModify(Model model,@PathVariable("shopType") String shopType,String shopId) { 
 		
-    	Shop shop = mngBeautyShopService.getShopById(shopId);
+    	Shop shop = mngBeautyShopService.getById(shopId);
 		model.addAttribute("shop", shop);
 		model.addAttribute("shopType", shopType);
 		
         return "beautyShopMng/modifyBeautyShop";  
     }  
 	
-	/**
-	 * @Description: TODO
-	 * @param model
-	 * @param shopType
-	 * @param shop
-	 * @param session
-	 * @return  
-	 * @return String
-	 */
     @RequestMapping("/{shopType}/modify")
 	public String modify(Model model,@PathVariable("shopType") String shopType,Shop shop,HttpSession session){
         
-		int i= mngBeautyShopService.modifyShop(shop);
+		int i= mngBeautyShopService.modify(shop);
 		model.addAttribute("message", i==1?MODIFY_SUCCEED:MODIFY_FAIL);
 		return "forward:/beautyShopMng/"+shopType;
 	}
     
-    /**
-     * @Description: TODO
-     * @param model
-     * @param shopType
-     * @return  
-     * @return String
-     */
+    
     @RequestMapping("/{shopType}/preAdd" )   
     public String preAdd(Model model,@PathVariable("shopType") String shopType) { 
 		model.addAttribute("shopType", shopType);
         return "beautyShopMng/addBeautyShop";  
     }  
 	
-    /**
-     * @Description: TODO
-     * @param model
-     * @param shopType
-     * @param shop
-     * @param session
-     * @return  
-     * @return String
-     */
     @RequestMapping("/{shopType}/add")
 	public String add(Model model,@PathVariable("shopType") String shopType,Shop shop,HttpSession session){
     	User user=getCurrentUser(session);
@@ -140,15 +90,6 @@ public class MngBeautyShopController extends BaseController{
 		return "forward:/beautyShopMng/"+shopType;
 	}
     
-    /**
-     * @Description: TODO
-     * @param model
-     * @param shopType
-     * @param shopId
-     * @param session
-     * @return  
-     * @return String
-     */
     @RequestMapping("/{shopType}/delete")
 	public String delete(Model model,@PathVariable("shopType") String shopType,String shopId,HttpSession session){
         
@@ -157,14 +98,6 @@ public class MngBeautyShopController extends BaseController{
 		return "forward:/beautyShopMng/"+shopType;
 	}
     
-    /**
-     * @Description: TODO
-     * @param model
-     * @param shopType
-     * @param shopId
-     * @return  
-     * @return String
-     */
     @RequestMapping("/{shopType}/detail")
 	public String detail(Model model,@PathVariable("shopType") String shopType,String shopId){
         
@@ -176,18 +109,6 @@ public class MngBeautyShopController extends BaseController{
 		return "beautyShopMng/showDetailBeautyShop";
 	}
     
-    /**
-     * @Description: TODO
-     * @param model
-     * @param shop
-     * @param session
-     * @param request
-     * @param response
-     * @param file
-     * @throws IllegalStateException
-     * @throws IOException  
-     * @return void
-     */
 	@RequestMapping("/upload")
 	public void upload(Model model, Shop shop, HttpSession session,
 			HttpServletRequest request, HttpServletResponse response,
@@ -203,13 +124,6 @@ public class MngBeautyShopController extends BaseController{
 		
 	}
 	
-	/**
-	 * @Description: TODO
-	 * @param request
-	 * @param data
-	 * @param response  
-	 * @return void
-	 */
 	@RequestMapping("/photoSave")
 	public void photoSave(HttpServletRequest request,
 			String data,
@@ -240,15 +154,5 @@ public class MngBeautyShopController extends BaseController{
 		
 	}
 	
-	
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
 }

@@ -48,7 +48,10 @@ public class LoggedInterceptor extends HandlerInterceptorAdapter {
         String uri = request.getRequestURI();
       
         //初始登录url不拦截
-        if(!uri.equals("/meilichannel/") && !uri.equals("/")) {
+        
+        //所有登录过的路径都包含一个 onLogin ，如 、/meilichannel/onLogin/XZXXXXX,如果有，则说明已经登陆啦
+        
+        if(uri.contains("/onLogin")) {
         	boolean beFilter = true;  
             for (String s : noFilters) {  
                 if (uri.indexOf(s) != -1) {  
@@ -73,6 +76,32 @@ public class LoggedInterceptor extends HandlerInterceptorAdapter {
                 } 
             }  
         }
+        
+        /*if(!uri.equals("/meilichannel/") && !uri.equals("/")) {
+        	boolean beFilter = true;  
+            for (String s : noFilters) {  
+                if (uri.indexOf(s) != -1) {  
+                    beFilter = false;  
+                    break;  
+                }
+            }  
+            if (beFilter) {  
+                Object obj = request.getSession().getAttribute("user"); 
+                if (null == obj&&!request.getRequestURL().toString().contains("/help")) {  
+                    // 未登录  
+                	PrintWriter out = response.getWriter();  
+                    StringBuilder builder = new StringBuilder();  
+                    builder.append("<script type=\"text/javascript\" charset=\"UTF-8\">");  
+                    builder.append("alert(\"页面过期，请重新登录\");");  
+                    builder.append("window.top.location.href=\"");  
+                    builder.append(BASEPATH);  
+                    builder.append("\";</script>");  
+                    out.print(builder.toString());  
+                    out.close();  
+                    return false;  
+                } 
+            }  
+        }*/
         
         return super.preHandle(request, response, handler);  
     }  
