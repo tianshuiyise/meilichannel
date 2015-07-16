@@ -24,11 +24,9 @@
         	  <constructor-arg value="UTF-8" />
      	  </bean>
       </mvc:message-converters>
-
     </mvc:annotation-driven>
     
     <!-- 用户登录校验 -->
- 
 	<mvc:interceptors>
 		<bean class="com.shxt.framework.utils.LoggedInterceptor"></bean>
 	</mvc:interceptors>
@@ -36,11 +34,14 @@
 	<!-- 将无法mapping到Controller的path交给default servlet handler处理 -->		
 	<mvc:default-servlet-handler/>
 	
+	<!-- 訪問靜態資源 -->
 	<mvc:resources location="/static/**" mapping="/static/"/>
 	
 	<!-- 定义无Controller的path<->view直接映射 -->
-	<mvc:view-controller path="/" view-name="/index"/>
-	<mvc:view-controller path="/login" view-name="/login/login"/>
+	<!-- 映射到首頁 -->
+	<mvc:view-controller path="/" view-name="/staticPage/shouye"/>
+	
+	
     <mvc:view-controller path="/inc/main" view-name="/inc/main"/>
     <mvc:view-controller path="/inc/top" view-name="/inc/top"/>
     <mvc:view-controller path="/inc/foot" view-name="/inc/foot"/>
@@ -53,6 +54,9 @@
     <mvc:view-controller path="/approInc/apExpertsTop" view-name="/approInc/apExpertsTop"/>
     <mvc:view-controller path="/approInc/apJjwMain" view-name="/approInc/apJjwMain"/>
     <mvc:view-controller path="/approInc/apJjwTop" view-name="/approInc/apJjwTop"/>
+    
+    
+    
 	<!-- 定义JSP文件的位置 -->
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/views/"/>

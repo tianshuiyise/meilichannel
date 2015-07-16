@@ -7,7 +7,7 @@ body{background:#f4f5f6;width:100%;_background-attachment:fixed;_background-imag
 /*主体r*/
 #container{background:#fff;width:1200px;position:relative;height:2018px;}
 /*主体投影效果*/
-#main{background:url(../images/shadow/shadow.jpg) repeat-y;_background:url(../images/shadow/shadoow.jpg) repeat-y;}
+#main{width:1208px;_width:1214px;background:url(../images/shadow/shadow.jpg) repeat-y;_background:url(../images/shadow/shadoow.jpg) repeat-y;}
 /*广告banner*/
 .bannerbox{
 	top:4px;
@@ -111,12 +111,13 @@ body{background:#f4f5f6;width:100%;_background-attachment:fixed;_background-imag
 	border-top-right-radius:5px;}
 #more3{top:1910px;position:absolute;left:7px;}
 
-
 /*底部footer*/
 #footer{width:1200px;height:270px;background:#ffd7de;}
 /*投影效果*/
 #foot{width:1208px;_width:1214px;}
 /*底部end*/
+
+
 
 #return{
 	position:fixed;
@@ -126,18 +127,16 @@ body{background:#f4f5f6;width:100%;_background-attachment:fixed;_background-imag
     display:none;
 	_position:absolute; _top:expression((offsetParent.scrollTop)+380); _left:expression((offsetParent.scrollLeft)+670);
 	}
-	
-	
-/*������ҳ*/
-#ranking{position:relative;width:1170px;height:auto;border:1px solid #000;position:absolute;top:300px;margin-left:15px;padding-bottom:15px;font-size:16px;font-family:"΢���ź�";}
+
+/*美容主页*/
+#ranking{position:relative;width:1170px;height:auto;border:1px solid #000;position:absolute;top:300px;margin-left:15px;padding-bottom:15px;font-size:16px;font-family:"微软雅黑";}
 #ranktext{border-bottom:1px solid #000;height:30px;line-height:30px;padding-left:10px;}
 #ranktext span a{text-decoration: none;margin-left:20px;color:#000001;}
 .rank-shop{margin-top:20px;padding:0px 20px;position:relative;}
 .rank-shop span{position:absolute;left:340px;top:10px;}
-.rank-shop p{position:absolute;left:340px;top:50px;width:800px;background:#ffd7de;}
+.rank-shop p{position:absolute;left:340px;top:50px;width:800px;background:#ffd7de;height:130px;}
 .rank-shop span a{text-decoration: none;color:#000001;}
 .delete{position:absolute;left:1000px;top:10px;}
 .delete input{border:1px solid #000;margin:0px 5px;}
 #pages{position:absolute;top:1400px;left:300px;}
-/*������ҳend*/
-
+/*美容主页end*/

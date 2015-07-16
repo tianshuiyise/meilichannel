@@ -4,7 +4,7 @@
 <title>美丽频道</title>
 <%@ include file="/WEB-INF/include/common.jsp"%>
 <tags:wcss items="login.css"></tags:wcss>
-<link href="css/login.css" rel="stylesheet" type="text/css">
+<link href="${ctx}/static/css/login.css" rel="stylesheet" type="text/css">
 <link href="${ctx}/static/default/images/common.css" type="text/css"
 	rel="stylesheet" />
 	<link href="${ctx}/static/style/index.css" rel="stylesheet" type="text/css" />
@@ -14,14 +14,18 @@
 <!--头部-->
 <div class="headerBar">
   <div class="header comWidth">
-    <div class="fl"><img src="images/header/logo.png" alt="logo" id="logo" /></div>
+    <div class="fl">
+    	<a href="${ctx}/test">
+    		<img src="images/header/logo.png" alt="logo" id="logo" />
+    	</a>
+    </div>
     <div class="rightArea fr">
       <div class="topBar">
         <ul>
-          <li id="top1"><a href="#">注册</a></li>
+          <li id="top1"><a href="${ctx}/register/preRegisterByPhone">注册</a></li>
           <li id="top2"><a href="${ctx}/login/preLogin">登录</a></li>
           <li id="top3"><a href="#">我的频道</a></li>
-          <li id="top4"><a href="#">申请商家入驻</a></li>
+          <li id="top4"><a href="${ctx}/applySellerIn/preApplySellerIn">申请商家入驻</a></li>
         </ul>
       </div>
       <div class="navBar">

@@ -10,7 +10,7 @@
 #apply_icon7{position:absolute;right:461px;bottom:0;}
 #apply_icon8{position:absolute;right:226px;bottom:0;}
 
-/*鐧诲綍绛夌晫闈㈣儗鏅�/ 
+/*登录等界面背景*/
 .login{
 	width:1208px;
 	height:479px;
@@ -18,19 +18,19 @@
 	padding-top:128px;
 	position:relative;
 	background:url(../images/login_bg.png) no-repeat;
-	font-family:"寰蒋闆呴粦";
+	font-family:"微软雅黑";
 	font-size:12px;
 	color:#6b6b6b;
 	}
-/*鐧诲綍绛夌晫闈㈣儗鏅痚nd*/
+/*登录等界面背景end*/
 
-/*鐢宠鍏ラ┗step1*/
+/*申请入驻step1*/
 #apply_icon5{position:absolute;left:210px;bottom:0;}
-/*灏忓ご鍍�/
+/*小头像*/
 #login_icon1{position:absolute;left:494px;top:140px;}
-/*灏忛攣*/
+/*小锁*/
 #login_icon2{position:absolute;left:494px;top:170px;}
-/*鐢ㄦ埛鍚嶅強瀵嗙爜杈撳叆妗�/
+/*用户名及密码输入框*/
 #usename,#password{
 	background:#f2f4f4;
 	border-radius:5px;
@@ -43,18 +43,18 @@
 #usename{top:140px;}
 #password{top:170px;}
 #password1{position:absolute;top:172px;_top:170px;left:724px;}
-/*璁颁綇瀵嗙爜銆佸繕璁板瘑鐮�/
+/*记住密码、忘记密码*/
 .password2{
 	position:absolute;
 	top:170px;
 	left:740px;
-	font-family:"寰蒋闆呴粦";
+	font-family:"微软雅黑";
 	font-size:12px;
 	color:#6b6b6b;
 	}
 .password2 a{
     text-decoration:none;
-	font-family:"寰蒋闆呴粦";
+	font-family:"微软雅黑";
 	font-size:12px;
 	color:#6b6b6b;
     }
@@ -69,9 +69,9 @@
 	top:199px;
 	border:1px solid #f2f4f4;
 	}
-/*楠岃瘉鐮佸浘*/
+/*验证码图*/
 #code{position:absolute;left:621px;top:199px;}
-/*鐧诲綍*/
+/*登录*/
 #login_icon3{
 	position:absolute;
 	left:519px;
@@ -83,18 +83,18 @@
 	border:0px;
 	outline:medium;
 	}
-/*浣跨敤qq鐧诲綍銆佹敞鍐�/
+/*使用qq登录、注册*/
 .login4{position:absolute;left:714px;top:230px;}
 .login4 a{
 	text-decoration:none;
-	font-family:"寰蒋闆呴粦";
+	font-family:"微软雅黑";
 	font-size:12px;
 	color:#6b6b6b;
 	}
 
-/*鐢宠鍏ラ┗step1-end*/
+/*申请入驻step1-end*/
 
-/*鐢宠鍏ラ┗step2*/
+/*申请入驻step2*/
 .lline{width:600px;height:18px;margin-top:12px;margin-left:307px;}
 .lline2 input,.lline3 input,.lline4 input{
 	border-radius:5px;
@@ -121,9 +121,9 @@
 	height:18px;
 	outline:medium;
 	_margin-left:-62px;}
-/*鐢宠鍏ラ┗step2-end*/
+/*申请入驻step2-end*/
 
-/*鐢宠鍏ラ┗step3*/
+/*申请入驻step3*/
 .createshop{
 	width:1208px;
 	height:2028px;
@@ -131,7 +131,7 @@
 	position:relative;
 	background:url(../images/cs_bg.png);
 	}
-.createshop span{font-family:"寰蒋闆呴粦";font-size:12px;color:#6b6b6b;letter-spacing:1px;}
+.createshop span{font-family:"微软雅黑";font-size:12px;color:#6b6b6b;letter-spacing:1px;}
 #service_type{position:absolute;top:113px;left:341px;}
 #tp{position:absolute;left:414px;top:113px;}
 #shop_name span{position:absolute;top:142px;left:341px;}
@@ -236,9 +236,9 @@
 	height:18px;
 	border:0px;
 	}
-/*鐢宠鍏ラ┗step3-end*/
+/*申请入驻step3-end*/
 
-/*鐢宠鍏ラ┗step4*/
+/*申请入驻step4*/
 .pay img{position:absolute;top:140px;left:494px;}
 #pay{
 	position:absolute;
@@ -258,4 +258,4 @@
 	border:0px;
 	background:url(../images/no-pay.png);
 	}
-/*鐢宠鍏ラ┗step4-end*/
+/*申请入驻step4-end*/

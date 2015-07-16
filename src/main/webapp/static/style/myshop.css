@@ -98,7 +98,17 @@ td{
     }
 /*作品信息end*/
 
-
+/*店铺信息*/
+#container input{border:1px solid #333;}
+#container .text{width:200px;float:left;margin:40px auto auto 180px;}
+#container .text li{width:200px;height:30px;list-style:none;text-align:right;}
+#container .futu{margin-top:200px;}
+#container .input {width:600px;float:left;margin:40px auto auto 10px;}
+#container .input li{height:30px;list-style:none;text-align:left;}
+#container .box{border:1px solid #000;width:200px;height:200px;margin-right:10px;float:left;}
+#container .bb{margin:0 10px 10px 0;width:250px;float:left;}
+#saveinfo{margin:30px auto auto 400px;}
+/*店铺信息end*/
 
 /*人员信息*/
 #container .works{margin-top:200px;}
@@ -142,7 +152,7 @@ top:380px;
 left:30px;
 }
 #contain1 {width:960px;}
-#title {
+ #title {
 height: 28px;
 }
  #title li {

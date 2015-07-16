@@ -9,25 +9,24 @@ input,select,textarea{outline:none;border:none; background:none;}
 textarea{resize:none;}
 a{text-decoration: none;}
 
-/*Çå¸¡¶¯*/
+/*æ¸…æµ®åŠ¨*/
 .clearfix:after{content:"";display:block;clear:both;}
 .clearfix{zoom:1;}
 .fl{float:left;}
 .fr{float:right;}
 
-/*¹«¹²*/
-body{background:#fff;width:100%;_background-attachment:fixed;_background-image:url(about:blank);}
+/*å…¬å…±*/
+body{background:#f4f5f6;width:100%;_background-attachment:fixed;_background-image:url(about:blank);}
 .comWidth{width:1200px;}
 
-/*Í·²¿*/
-
+/*å¤´éƒ¨*/
 .headerBar{background:url(../images/header/headerbg.jpg);}
-.header{margin:0 auto;height:100px;position:relative;}
+.header{margin:0 auto;height:100px;}
 .headerBar .rightArea{width:1015px;height:100px;position:relative;}
 .topBar{position:absolute;top:0px;right:0px;_left:600px;}
 .topBar ul{height:26px;line-height:26px;}
 .topBar li{float: left;display:inline-block;padding:3px 0 0 45px;}
-.topBar li a{color: #abadae;font-family: "ËÎÌå";font-size: 14px;}
+.topBar li a{color: #abadae;font-family: "å®‹ä½“";font-size: 14px;}
 #top0{margin-right:12px;}
 #top1{background:url(../images/header/icon.png) no-repeat 0 -160px;margin-right:12px;}
 #top2{background:url(../images/header/icon.png) no-repeat 0 -194px;margin-right:12px;}
@@ -43,7 +42,7 @@ body{background:#fff;width:100%;_background-attachment:fixed;_background-image:u
 	background:url(../images/header/navbg.png) no-repeat;}
 .navBar ul{margin-left:-30px;_margin-left:-120px;display:inline-block;}
 .navBar li{float: left;margin-left:100px;margin-top:7px;width:64px;height:16px;line-height:16px;}
-.navBar li a{color: #535455;font-family: "Î¢ÈíÑÅºÚ";font-size: 14px;padding-left:31px;}
+.navBar li a{color: #535455;font-family: "å¾®è½¯é›…é»‘";font-size: 14px;padding-left:31px;}
 .nav_icon1{background:url(../images/header/icon.png) no-repeat 0 0;}
 .nav_icon2{background:url(../images/header/icon.png) no-repeat 0 -20px;}
 .nav_icon3{background:url(../images/header/icon.png) no-repeat 0 -42px;}
@@ -67,5 +66,5 @@ body{background:#fff;width:100%;_background-attachment:fixed;_background-image:u
 	color:#abadae;} 
 #search_btn{width:43px;height:31px;background:url(../images/header/icon.png) no-repeat 0 -120px;float:left;}
 #headersd{width:100%;text-align:center;height:11px;background:url(../images/header/headersd.jpg);}
-/*Í·²¿end*/
+/*å¤´éƒ¨end*/
 
