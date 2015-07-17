@@ -18,6 +18,15 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.web.multipart.MultipartFile;
 
+/**
+ * 
+	* @Project:  美丽频道    
+	* @author：   ASus
+	* @class： UploadPhotoTest   
+	* @Description:   类描述  TODO
+	* @date： 2015-7-16 下午3:35:24 
+	* @version： 1.0
+ */
 public class UploadPhotoTest {
 
 	/*
@@ -57,6 +66,13 @@ public class UploadPhotoTest {
 		return pathSys;
 	}
 
+	/**
+	 * @Description: TODO
+	 * @param realPath
+	 * @param data
+	 * @return  
+	 * @return: String
+	 */
 	public static String cutPhoto(String realPath, String data) {
 
 		String x1 = "";
@@ -93,6 +109,18 @@ public class UploadPhotoTest {
 
 
 
+	/**
+	 * @Description: TODO
+	 * @param srcImageFile
+	 * @param desImageFile
+	 * @param x
+	 * @param y
+	 * @param width
+	 * @param height
+	 * @param finalWidth
+	 * @param finalHeight  
+	 * @return: void
+	 */
 	public static void abscut(String srcImageFile,String desImageFile, int x, int y,int width, int height, int finalWidth,int finalHeight) {           
 		try {               
 			Image img;               
