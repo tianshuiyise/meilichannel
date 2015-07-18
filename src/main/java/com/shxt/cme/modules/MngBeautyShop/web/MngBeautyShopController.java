@@ -39,6 +39,15 @@ public class MngBeautyShopController extends BaseController{
 	private MngBeautyShopService mngBeautyShopService;
 	
 
+	/** @Description: TODO
+	 * @param model
+	 * @param shopType
+	 * @param pageable
+	 * @param request
+	 * @param session
+	 * @return  
+	 * @return: String
+	*/
 	@RequestMapping("/{shopType}")
 	public String list(Model model,@PathVariable("shopType") String shopType, Pageable pageable, ServletRequest request,HttpSession session) {
 		// 从请求中取得search_开头的参数及其值，并封装到map中，供后续查询使用
