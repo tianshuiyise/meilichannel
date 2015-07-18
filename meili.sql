@@ -16,28 +16,6 @@ CREATE DATABASE /*!32312 IF NOT EXISTS*/`meilichannel` /*!40100 DEFAULT CHARACTE
 
 USE `meilichannel`;
 
-/*Table structure for table `t_admin` */
-
-DROP TABLE IF EXISTS `t_admin`;
-
-CREATE TABLE `t_admin` (
-  `admin_id` int(20) NOT NULL,
-  `admin_name` varchar(20) DEFAULT NULL,
-  `password` varchar(30) DEFAULT NULL,
-  `type` int(4) DEFAULT NULL,
-  `userKey` varchar(10) DEFAULT NULL,
-  `createrKey` varchar(36) DEFAULT NULL,
-  `modifyKey` varchar(36) DEFAULT NULL,
-  `deleteFlag` varchar(11) DEFAULT NULL,
-  `createDate` datetime DEFAULT NULL,
-  `modifyDate` datetime DEFAULT NULL,
-  PRIMARY KEY (`admin_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-/*Data for the table `t_admin` */
-
-insert  into `t_admin`(`admin_id`,`admin_name`,`password`,`type`,`userKey`,`createrKey`,`modifyKey`,`deleteFlag`,`createDate`,`modifyDate`) values (1,'王企鹅','111',1,'1',NULL,NULL,NULL,NULL,NULL),(2,'王岐山','222',1,'2',NULL,NULL,NULL,NULL,NULL);
-
 /*Table structure for table `t_collection` */
 
 DROP TABLE IF EXISTS `t_collection`;
@@ -73,7 +51,7 @@ CREATE TABLE `t_gt_dictionary` (
 
 /*Data for the table `t_gt_dictionary` */
 
-insert  into `t_gt_dictionary`(`DictionaryKey`,`GroupCode`,`GroupLabel`,`ItemCode`,`ItemLabel`,`ItemSequence`,`Remark`) values ('0b0dde6e-0b51-4ce2-8ffe-0c40914b','payState','付款状态',3,'交易成功',3,'成功'),('0b0dde6e-0b51-4ce2-8ffe-0c40919b','payState','付款状态',2,'已付款',2,'已付款'),('0b0dde6e-0b51-4ce2-8ffe-0c40979b','payState','付款状态',1,'待付款',1,''),('0b0dde6e-0b51-4ce2-8ffe-7c40919b','payState','付款状态',4,'交流失败，已取消订单',4,NULL);
+insert  into `t_gt_dictionary`(`DictionaryKey`,`GroupCode`,`GroupLabel`,`ItemCode`,`ItemLabel`,`ItemSequence`,`Remark`) values ('0b0dde6e-0b51-4ce2-8afe-7c40919b','shopType','店铺类型',1,'美容',1,NULL),('0b0dde6e-0b51-4ce2-8ffa-0c40914b','shopType','店铺类型',2,'美发',2,NULL),('0b0dde6e-0b51-4ce2-8ffe-0c40914b','payState','付款状态',3,'交易成功',3,'成功'),('0b0dde6e-0b51-4ce2-8ffe-0c40919b','payState','付款状态',2,'已付款',2,'已付款'),('0b0dde6e-0b51-4ce2-8ffe-0c40979b','payState','付款状态',1,'待付款',1,''),('0b0dde6e-0b51-4ce2-8ffe-7c40919b','payState','付款状态',4,'交流失败，已取消订单',4,NULL),('0b0dde6e-0b51-4ce6-8ffa-0c40914b','shopType','店铺类型',3,'美甲',3,NULL);
 
 /*Table structure for table `t_login_log` */
 
@@ -147,19 +125,19 @@ insert  into `t_merchont`(`merchont_id`,`accout_num`,`real_name`,`merchont_type`
 DROP TABLE IF EXISTS `t_order`;
 
 CREATE TABLE `t_order` (
-  `order_id` varchar(32) NOT NULL COMMENT '订单编号',
-  `order_state` varchar(3) DEFAULT NULL COMMENT '订单状态：1是选择，2是已同意，3是已拒绝',
+  `order_id` varchar(36) NOT NULL COMMENT '订单编号',
+  `order_state` int(11) DEFAULT NULL COMMENT '订单状态：1是选择，2是已同意，3是已拒绝',
   `order_time` datetime DEFAULT NULL COMMENT '订单时间',
   `appoint_time` datetime DEFAULT NULL COMMENT '预约时间',
-  `order_price` varchar(10) DEFAULT NULL COMMENT '订单价格',
-  `pro_id` varchar(20) DEFAULT NULL COMMENT '作品ID',
-  `member_id` varchar(20) DEFAULT NULL COMMENT '员工ID',
-  `user_id` varchar(20) DEFAULT NULL COMMENT '用户ID',
-  `createrKey` varchar(36) DEFAULT NULL,
+  `order_price` float DEFAULT NULL COMMENT '订单价格',
+  `pro_id` char(36) DEFAULT NULL COMMENT '作品ID',
+  `member_id` char(36) DEFAULT NULL COMMENT '员工ID',
+  `user_id` char(36) DEFAULT NULL COMMENT '用户ID',
+  `createrKey` char(36) DEFAULT NULL,
   `createDate` datetime DEFAULT NULL,
-  `modifierKey` varchar(36) DEFAULT NULL,
+  `modifierKey` char(36) DEFAULT NULL,
   `modifyDate` datetime DEFAULT NULL,
-  `deleteFlag` varchar(11) DEFAULT NULL,
+  `deleteFlag` int(11) DEFAULT NULL,
   `out_price` varchar(255) DEFAULT NULL COMMENT '支出',
   `into_price` varchar(255) DEFAULT NULL COMMENT '收入',
   `usefor` varchar(255) DEFAULT NULL COMMENT '用途',
@@ -170,7 +148,7 @@ CREATE TABLE `t_order` (
 
 /*Data for the table `t_order` */
 
-insert  into `t_order`(`order_id`,`order_state`,`order_time`,`appoint_time`,`order_price`,`pro_id`,`member_id`,`user_id`,`createrKey`,`createDate`,`modifierKey`,`modifyDate`,`deleteFlag`,`out_price`,`into_price`,`usefor`,`outstyle`,`payState`) values ('1','1','2015-06-19 15:57:32','2015-06-19 15:57:35','120','3','1','1',NULL,'2015-06-19 15:58:42',NULL,'2015-06-19 15:58:35',NULL,'1000','111','消费','支付宝',1),('12','3','2015-06-02 14:58:21','2015-06-03 14:58:24','27','4','2','4',NULL,'2015-06-12 14:58:43',NULL,'2015-06-08 14:58:46',NULL,'1','34','消费','支付宝',2),('2','2','2015-06-19 15:59:00','2015-06-19 15:59:03','100','5','1','1',NULL,'2015-06-19 15:59:25',NULL,'2015-06-19 15:59:29',NULL,'200','0','消费','支付宝',3),('21','5','2015-06-03 14:07:42','2015-06-14 14:07:48','231','6','32','12',NULL,'2015-05-26 14:08:07',NULL,'2015-06-03 14:08:14',NULL,'231','21','消费','支付宝',1),('3','3','2015-06-19 15:59:40','2015-06-19 15:59:45','100','7','1','1',NULL,'2015-06-19 15:59:58',NULL,'2015-06-19 16:00:00',NULL,'300','200','消费','支付宝',2),('3242','2','2015-06-07 17:56:43','2015-06-16 17:56:39','2342','4','231','2312',NULL,'2015-06-02 17:56:01',NULL,'2015-06-10 17:56:10',NULL,'32','32','消费','支付宝',3),('4','4','2015-06-19 16:00:09','2015-06-19 16:00:13','100','5','1','1',NULL,'2015-06-19 16:00:39',NULL,'2015-06-19 16:00:41',NULL,'432','43','消费','支付宝',2);
+insert  into `t_order`(`order_id`,`order_state`,`order_time`,`appoint_time`,`order_price`,`pro_id`,`member_id`,`user_id`,`createrKey`,`createDate`,`modifierKey`,`modifyDate`,`deleteFlag`,`out_price`,`into_price`,`usefor`,`outstyle`,`payState`) values ('1',1,'2015-06-19 15:57:32','2015-06-19 15:57:35',120,'3','1','1',NULL,'2015-06-19 15:58:42',NULL,'2015-06-19 15:58:35',NULL,'1000','111','消费','支付宝',1),('12',3,'2015-06-02 14:58:21','2015-06-03 14:58:24',27,'4','2','4',NULL,'2015-06-12 14:58:43',NULL,'2015-06-08 14:58:46',NULL,'1','34','消费','支付宝',2),('2',2,'2015-06-19 15:59:00','2015-06-19 15:59:03',100,'5','1','1',NULL,'2015-06-19 15:59:25',NULL,'2015-06-19 15:59:29',NULL,'200','0','消费','支付宝',3),('21',5,'2015-06-03 14:07:42','2015-06-14 14:07:48',231,'6','32','12',NULL,'2015-05-26 14:08:07',NULL,'2015-06-03 14:08:14',NULL,'231','21','消费','支付宝',1),('3',3,'2015-06-19 15:59:40','2015-06-19 15:59:45',100,'7','1','1',NULL,'2015-06-19 15:59:58',NULL,'2015-06-19 16:00:00',NULL,'300','200','消费','支付宝',2),('3242',2,'2015-06-07 17:56:43','2015-06-16 17:56:39',2342,'4','231','2312',NULL,'2015-06-02 17:56:01',NULL,'2015-06-10 17:56:10',NULL,'32','32','消费','支付宝',3),('4',4,'2015-06-19 16:00:09','2015-06-19 16:00:13',100,'5','1','1',NULL,'2015-06-19 16:00:39',NULL,'2015-06-19 16:00:41',NULL,'432','43','消费','支付宝',2);
 
 /*Table structure for table `t_pmrelation` */
 
@@ -194,95 +172,76 @@ CREATE TABLE `t_pmrelation` (
 DROP TABLE IF EXISTS `t_production`;
 
 CREATE TABLE `t_production` (
-  `pro_id` varchar(80) NOT NULL COMMENT '作品ID',
-  `pro_name` varchar(20) DEFAULT NULL COMMENT '作品名字',
-  `pro_price` varchar(10) DEFAULT NULL COMMENT '作品价格',
-  `dis_price` varchar(10) DEFAULT NULL COMMENT '打折价格',
+  `pro_id` char(36) NOT NULL COMMENT '作品ID',
+  `pro_name` char(20) DEFAULT NULL COMMENT '作品名字',
+  `pro_price` float DEFAULT NULL COMMENT '作品价格',
+  `dis_price` float DEFAULT NULL COMMENT '打折价格',
   `pro_type` int(4) DEFAULT NULL COMMENT '作品类型',
-  `introduction` varchar(50) DEFAULT NULL COMMENT '作品简介',
-  `shop_id` varchar(32) DEFAULT NULL COMMENT '商店ID',
-  `image_address` varchar(255) DEFAULT NULL COMMENT '作品图片存储地址',
-  `image_name` varchar(20) DEFAULT NULL COMMENT '作品图品名称',
+  `introduction` varchar(1000) DEFAULT NULL COMMENT '作品简介',
+  `shop_id` varchar(36) DEFAULT NULL COMMENT '商店ID',
+  `image_address` varchar(500) DEFAULT NULL COMMENT '作品图片存储地址',
+  `image_name` varchar(100) DEFAULT NULL COMMENT '作品图品名称',
   `createKey` varchar(36) DEFAULT NULL,
   `createDate` datetime DEFAULT NULL,
   `modifierKey` varchar(36) DEFAULT NULL,
-  `deleteFlag` varchar(11) DEFAULT NULL,
+  `deleteFlag` int(11) DEFAULT '0',
   `modifyDate` datetime DEFAULT NULL,
   PRIMARY KEY (`pro_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='作品信息表';
 
 /*Data for the table `t_production` */
 
-insert  into `t_production`(`pro_id`,`pro_name`,`pro_price`,`dis_price`,`pro_type`,`introduction`,`shop_id`,`image_address`,`image_name`,`createKey`,`createDate`,`modifierKey`,`deleteFlag`,`modifyDate`) values ('0e73b848-4f14-4169-81bc-6b8e79a04ad1','gggg','54','32',3,'ffffff','4','null','null',NULL,NULL,NULL,NULL,NULL),('1b602bda-c046-4e5a-bd1b-51aa9ffb0330','','','',2,'','4',NULL,NULL,NULL,NULL,NULL,NULL,NULL),('5','meifa','180','90',3,'谔谔谔谔谔谔谔谔','4','D:\neverlifadianworkspaceslifadian4.metadata.pluginsorg.eclipse.wst.server.core	mp0wtpwebappscme/static/photo/201104201364.jpg','201104201364.jpg',NULL,NULL,NULL,NULL,NULL),('52073ec0-1f09-4897-8e8d-3d1279563f72','gn','gnhgm','ghn',1,'gn','4','D:\\meifadian\\apache-tomcat-7.0.42-windows-x64\\apache-tomcat-7.0.42\\webapps\\cme/static/photo/11.jpg','11.jpg',NULL,NULL,NULL,NULL,NULL),('7f193f3b-c604-4c8b-af5a-6d21ab0f10a1','gggg','445','233',1,'ddddddd','4','D:\neverlifadianworkspaceslifadian4.metadata.pluginsorg.eclipse.wst.server.core	mp0wtpwebappscme/static/photo/20110516043.jpg','20110516043.jpg',NULL,NULL,NULL,NULL,NULL),('8f659d5d-be66-4c9c-997d-b22f64b73283','qaz','fb','rthb',1,'thnb','4','D:\\meifadian\\apache-tomcat-7.0.42-windows-x64\\apache-tomcat-7.0.42\\webapps\\meilichannel/static/photo/banner8.png','banner8.png',NULL,NULL,NULL,NULL,NULL),('942293f4-8b0d-418b-8c4c-d0158729a004','平头','15','10',2,'平头剪发','4','D:\\meifadian\\apache-tomcat-7.0.42-windows-x64\\apache-tomcat-7.0.42\\webapps\\cme/static/photo/banner4.png','banner4.png',NULL,NULL,NULL,NULL,NULL),('a815c796-121d-415d-b773-d7568e13a702','平头','15','10',3,'平头剪发','4','D:\\meifadian\\apache-tomcat-7.0.42-windows-x64\\apache-tomcat-7.0.42\\webapps\\cme/static/photo/banner3.png','banner3.png',NULL,NULL,NULL,NULL,NULL),('e30dd763-eda9-428b-8d35-8787e2ae8187','rrr','67','45',2,'ggggg','4','D:\neverlifadianworkspaceslifadian4.metadata.pluginsorg.eclipse.wst.server.core	mp0wtpwebappscme/static/photo/20141214230.jpg','20141214230.jpg',NULL,NULL,NULL,NULL,NULL);
+insert  into `t_production`(`pro_id`,`pro_name`,`pro_price`,`dis_price`,`pro_type`,`introduction`,`shop_id`,`image_address`,`image_name`,`createKey`,`createDate`,`modifierKey`,`deleteFlag`,`modifyDate`) values ('0e73b848-4f14-4169-81bc-6b8e79a0','gggg',54,32,3,'ffffff','0b0dde6e-0b51-4ce2-8ffe-0c40919bf3ec','/meilichannel/static/images/blank.jpg ','null',NULL,NULL,NULL,0,NULL),('1b602bda-c046-4e5a-bd1b-51aa9ffb','',0,0,2,'','0b0dde6e-0b51-4ce2-8ffe-0c40919bf3ec','/meilichannel/static/images/blank.jpg ',NULL,NULL,NULL,NULL,0,NULL),('5','meifa',180,90,3,'谔谔谔谔谔谔谔谔','0b0dde6e-0b51-4ce2-8ffe-0c40919bf3ec','/meilichannel/static/images/blank.jpg ','201104201364.jpg',NULL,NULL,NULL,0,NULL),('52073ec0-1f09-4897-8e8d-3d127956','gn',0,0,1,'gn','4','/meilichannel/static/images/blank.jpg ','11.jpg',NULL,NULL,NULL,0,NULL),('7f193f3b-c604-4c8b-af5a-6d21ab0f','gggg',445,233,1,'ddddddd','4','/meilichannel/static/images/blank.jpg ','20110516043.jpg',NULL,NULL,NULL,0,NULL),('8f659d5d-be66-4c9c-997d-b22f64b7','qaz',0,0,1,'thnb','4','/meilichannel/static/images/blank.jpg ','banner8.png',NULL,NULL,NULL,0,NULL),('942293f4-8b0d-418b-8c4c-d0158729','平头',15,10,2,'平头剪发','0b0dde6e-0b51-4ce2-8ffe-0c40919bf3ec','/meilichannel/static/images/blank.jpg ','banner4.png',NULL,NULL,NULL,0,NULL),('a815c796-121d-415d-b773-d7568e13','平头',15,10,3,'平头剪发','0b0dde6e-0b51-4ce2-8ffe-0c40919bf3ec','/meilichannel/static/images/blank.jpg ','banner3.png',NULL,NULL,NULL,0,NULL),('e30dd763-eda9-428b-8d35-8787e2ae','rrr',67,45,2,'ggggg','4','D:\neverlifadianworkspaceslifadian4.metadata.pluginsorg.eclipse.wst.server.core	mp0wtpwebappscme/static/photo/20141214230.jpg','20141214230.jpg',NULL,NULL,NULL,0,NULL);
 
 /*Table structure for table `t_review` */
 
 DROP TABLE IF EXISTS `t_review`;
 
 CREATE TABLE `t_review` (
-  `order_id` varchar(32) NOT NULL COMMENT '订单编号',
-  `review_id` varchar(32) DEFAULT NULL COMMENT '评价状态',
-  `review1` varchar(30) DEFAULT NULL COMMENT '综合评价',
-  `review2` varchar(32) DEFAULT NULL COMMENT '服务品质',
-  `review3` varchar(32) DEFAULT NULL COMMENT '相等价位',
-  `review_mes` varchar(32) DEFAULT NULL COMMENT '评价留言',
+  `orderId` varchar(36) DEFAULT NULL COMMENT '订单编号',
+  `reviewId` varchar(36) NOT NULL COMMENT '主键',
+  `overallStatus` int(11) DEFAULT NULL COMMENT '综合评价，好评，中评，差评',
+  `serveAttitude` int(11) DEFAULT NULL COMMENT '服务态度，1-5星',
+  `accordLevel` int(11) DEFAULT NULL COMMENT '服务情况相符程度，1-5星',
+  `reviewMes` varchar(500) DEFAULT NULL COMMENT '评价留言',
   `createKey` varchar(36) DEFAULT NULL,
   `createDate` datetime DEFAULT NULL,
   `modifierKey` varchar(36) DEFAULT NULL,
   `modifyDate` datetime DEFAULT NULL,
-  `deleteFlag` varchar(11) DEFAULT NULL,
-  PRIMARY KEY (`order_id`)
+  `deleteFlag` int(11) DEFAULT '0' COMMENT '删除标识0：false，1：true',
+  PRIMARY KEY (`reviewId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='订单评价表';
 
 /*Data for the table `t_review` */
 
-insert  into `t_review`(`order_id`,`review_id`,`review1`,`review2`,`review3`,`review_mes`,`createKey`,`createDate`,`modifierKey`,`modifyDate`,`deleteFlag`) values ('1','23','2','1','3','大声道',NULL,NULL,NULL,NULL,NULL);
+insert  into `t_review`(`orderId`,`reviewId`,`overallStatus`,`serveAttitude`,`accordLevel`,`reviewMes`,`createKey`,`createDate`,`modifierKey`,`modifyDate`,`deleteFlag`) values ('1','23',2,1,3,'大声道',NULL,NULL,NULL,NULL,NULL);
 
 /*Table structure for table `t_shop` */
 
 DROP TABLE IF EXISTS `t_shop`;
 
 CREATE TABLE `t_shop` (
-  `shop_id` varchar(80) NOT NULL COMMENT '商店ID',
-  `shop_cord` varchar(30) DEFAULT NULL COMMENT '商店坐标',
-  `shop_add` varchar(30) DEFAULT NULL COMMENT '商店地址',
-  `shop_name` varchar(20) DEFAULT NULL COMMENT '商店名字',
+  `shop_id` char(36) NOT NULL COMMENT '商店ID',
+  `shop_cord` varchar(100) DEFAULT NULL COMMENT '商店坐标',
+  `shop_add` varchar(200) DEFAULT NULL COMMENT '商店地址',
+  `shop_name` char(50) DEFAULT NULL COMMENT '商店名字',
   `shop_type` int(4) DEFAULT NULL COMMENT '商店类型',
-  `introduction` varchar(50) DEFAULT NULL COMMENT '简介',
-  `image_address` varchar(200) DEFAULT NULL COMMENT '图片位置',
-  `image_name` varchar(50) DEFAULT NULL COMMENT '图片名称',
-  `shop_qq` varchar(20) DEFAULT NULL COMMENT '店铺QQ',
-  `merchont_id` varchar(32) DEFAULT NULL COMMENT '商家ID',
+  `introduction` varchar(1000) DEFAULT NULL COMMENT '简介',
+  `image_address` varchar(500) DEFAULT NULL COMMENT '图片位置',
+  `image_name` varchar(100) DEFAULT NULL COMMENT '图片名称',
+  `shop_qq` varchar(50) DEFAULT NULL COMMENT '店铺QQ',
+  `merchont_id` varchar(36) DEFAULT NULL COMMENT '商家ID',
   `createrKey` varchar(36) DEFAULT NULL,
   `createDate` datetime DEFAULT NULL,
   `modifierKey` varchar(36) DEFAULT NULL,
   `modifyDate` datetime DEFAULT NULL,
-  `deleteFlag` varchar(11) DEFAULT NULL,
+  `deleteFlag` int(11) DEFAULT '0',
   PRIMARY KEY (`shop_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='店铺表';
 
 /*Data for the table `t_shop` */
 
-insert  into `t_shop`(`shop_id`,`shop_cord`,`shop_add`,`shop_name`,`shop_type`,`introduction`,`image_address`,`image_name`,`shop_qq`,`merchont_id`,`createrKey`,`createDate`,`modifierKey`,`modifyDate`,`deleteFlag`) values ('0b0dde6e-0b51-4ce2-8ffe-0c40919bf3ec',NULL,NULL,'111美发店0000000',2,'123213213','D:\\variousworkspace\\Workspaces\\meifaProSvn\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\cme/static/photo/present.png','present.png',NULL,'2',NULL,NULL,NULL,NULL,'0'),('19fa0cd1-7fc9-4216-818a-58f35f123e14',NULL,NULL,'1234',3,'',NULL,NULL,NULL,'2',NULL,NULL,NULL,NULL,'0'),('2051ceb0-e96e-4cce-969f-d5171b850f20',NULL,NULL,'f4meirong',1,'mmmmmmmm','D:\\never\\lifadian\\workspaces\\lifadian4\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\cme/static/photo/20110522014.jpg','20110522014.jpg','1193306685','7',NULL,NULL,NULL,NULL,NULL),('684df78b-da1b-4978-af22-b59fb52c79bf',NULL,NULL,'阿斯顿',1,'是的撒饭','D:\\variousworkspace\\Workspaces\\meifaPro2\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\cme/static/photo/2015-05-14-0.bmp','2015-05-14-0.bmp',NULL,'3',NULL,NULL,NULL,NULL,'0'),('a9d1150c-3ef6-4e2d-bbe3-355cc7f3f0d0',NULL,NULL,'88888',2,'8888',NULL,NULL,NULL,'3',NULL,NULL,NULL,NULL,'0'),('ab77a21e-dafe-45b9-b74d-8b1204bb81f1',NULL,NULL,'f刚那句',1,'让她干活古','/cme/static/images/blank.jpg ','null','2222222223333规划','4',NULL,NULL,NULL,NULL,NULL),('c4eabc22-9cc4-4387-9d01-e01312fc83a9',NULL,NULL,'3333',3,'','D:\\variousworkspace\\Workspaces\\meifaProSvn\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\cme/static/photo/present.png','present.png',NULL,'3',NULL,NULL,NULL,NULL,'0'),('d107b340-92c0-4073-afe8-0425468f442a',NULL,NULL,'111美发店112233',NULL,'123213213',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'0'),('d3bb79fc-100d-4c46-a3e4-831778b3b314',NULL,NULL,'f1111',2,'mnbvcxz','D:\\never\\lifadian\\workspaces\\lifadian4\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\cme/static/photo/20101105438.jpg','20101105438.jpg','2222 ','5',NULL,NULL,NULL,NULL,NULL),('ee2a9ebc-fbb3-4bc8-a9f8-c71781eafd54',NULL,NULL,'f4meifa',2,'meifa','D:\neverlifadianworkspaceslifadian4.metadata.pluginsorg.eclipse.wst.server.core	mp0wtpwebappscme/static/photo/20141214218.jpg','20141214218.jpg','1193306685','7',NULL,NULL,NULL,NULL,NULL);
-
-/*Table structure for table `t_state` */
-
-DROP TABLE IF EXISTS `t_state`;
-
-CREATE TABLE `t_state` (
-  `state_id` varchar(32) NOT NULL COMMENT '状态编号',
-  `order_id` varchar(32) DEFAULT NULL,
-  `state_type` varchar(32) DEFAULT NULL COMMENT '状态类型',
-  `createKey` varchar(36) DEFAULT NULL,
-  `createDate` datetime DEFAULT NULL,
-  `modifierKey` varchar(36) DEFAULT NULL,
-  `modifyDate` datetime DEFAULT NULL,
-  `deleteFlag` varchar(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='订单状态表';
-
-/*Data for the table `t_state` */
-
-insert  into `t_state`(`state_id`,`order_id`,`state_type`,`createKey`,`createDate`,`modifierKey`,`modifyDate`,`deleteFlag`) values ('1','1','付款',NULL,NULL,NULL,NULL,NULL),('2','2','已付款',NULL,NULL,NULL,NULL,NULL),('3','3','交易成功',NULL,NULL,NULL,NULL,NULL),('4','4','交流失败，已取消订单',NULL,NULL,NULL,NULL,NULL);
+insert  into `t_shop`(`shop_id`,`shop_cord`,`shop_add`,`shop_name`,`shop_type`,`introduction`,`image_address`,`image_name`,`shop_qq`,`merchont_id`,`createrKey`,`createDate`,`modifierKey`,`modifyDate`,`deleteFlag`) values ('0b0dde6e-0b51-4ce2-8ffe-0c40919bf3ec','116.404, 39.915','北京阿福V型的v从v','111美发店0000000',2,'123213213','/meilichannel/static/images/blank.jpg ','present.png','111','2',NULL,NULL,NULL,NULL,0);
 
 /*Table structure for table `t_user` */
 
