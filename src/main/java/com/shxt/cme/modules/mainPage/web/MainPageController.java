@@ -52,6 +52,7 @@ public class MainPageController {
 		Shop shop=mainPageService.detail(shopId);
 		model.addAttribute("shop", shop);
 		
+		
 		return "/staticPage/shopDetail";
 	}
 	
@@ -68,6 +69,19 @@ public class MainPageController {
 			HttpServletResponse response){
 		//@RequestParam("shopId") String shopId
 		List<Product> products=mainPageService.getAllProduct( product.getShopId());
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		return products;
 	}
 	

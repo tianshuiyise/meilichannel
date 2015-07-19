@@ -1,7 +1,6 @@
 eclipse.preferences.version=1
 encoding//src/main/java=UTF-8
 encoding//src/main/resources=UTF-8
-encoding//src/main/webapp/NewFile.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/myCollection/myCollection.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/commonFile/head.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/register/registerByPhone.jsp=UTF-8
@@ -10,4 +9,3 @@ encoding//src/main/webapp/static/style/apply.css=UTF-8
 encoding//src/test/java=UTF-8
 encoding//src/test/resources=UTF-8
 encoding/<project>=UTF-8
-encoding/testtext.jsp=UTF-8

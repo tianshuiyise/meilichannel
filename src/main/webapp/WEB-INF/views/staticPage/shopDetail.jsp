@@ -133,6 +133,10 @@ DD_belatedPNG.fix('#logo,.navBar,#top1,#top2,#top3,#top4,.nav_icon1,.nav_icon2,.
 function getProduct(url,id){
 	$("#content2").empty();
 		var d={"shopId":id};
+		alert("d:"+d);
+		alert("d:"+JSON.stringify(d));
+		var a='{"shopId":id}';
+		alert(eval("("+a+")").shopId);
 		$.ajax({
 			url:url,
 			type:"post",
