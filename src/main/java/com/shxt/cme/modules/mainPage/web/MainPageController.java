@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.shxt.cme.domain.OrderBean;
 import com.shxt.cme.domain.Product;
+import com.shxt.cme.domain.ReviewBean;
 import com.shxt.cme.domain.Shop;
 import com.shxt.cme.modules.mainPage.service.MainPageService;
 
@@ -70,20 +72,28 @@ public class MainPageController {
 		//@RequestParam("shopId") String shopId
 		List<Product> products=mainPageService.getAllProduct( product.getShopId());
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		return products;
 	}
+	
+	
+	@RequestMapping(value = "/review")
+	public @ResponseBody List<ReviewBean> getAllReview(@RequestBody ReviewBean review){
+		//@RequestParam("shopId") String shopId
+		List<ReviewBean> reviews=mainPageService.getAllReview( review.getShopId());
+		
+		return reviews;
+	}
+	
+	
+	@RequestMapping(value = "/order")
+	public @ResponseBody List<OrderBean> getAllOrder(@RequestBody OrderBean orderBean){
+		//@RequestParam("shopId") String shopId
+		List<OrderBean> orders=mainPageService.getAllOrder( orderBean.getShopId());
+		
+		return orders;
+	}
+	
+	
 	
 	
 	@RequestMapping(value = "/productDetail/{proId}")

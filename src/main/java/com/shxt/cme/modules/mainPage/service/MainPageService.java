@@ -7,7 +7,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import com.shxt.cme.domain.OrderBean;
 import com.shxt.cme.domain.Product;
+import com.shxt.cme.domain.ReviewBean;
 import com.shxt.cme.domain.Shop;
 import com.shxt.cme.domain.User;
 import com.shxt.cme.modules.IService;
@@ -96,6 +98,26 @@ public class MainPageService implements IService<Shop>{
 	
 	public List<Product> getAllProduct(String shopId) {
 		return mainPageDao.getAllProduct(shopId);
+	}
+
+	/** @Description: TODO
+	 * @param shopId
+	 * @return  
+	 * @return: List<ReviewBean>
+	*/
+	
+	public List<ReviewBean> getAllReview(String shopId) {
+		return mainPageDao.getAllReview(shopId);
+	}
+
+	/** @Description: TODO
+	 * @param shopId
+	 * @return  
+	 * @return: List<OrderBean>
+	*/
+	
+	public List<OrderBean> getAllOrder(String shopId) {
+		return mainPageDao.getAllOrder(shopId);
 	}
 
 	

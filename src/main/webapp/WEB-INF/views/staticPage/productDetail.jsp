@@ -8,8 +8,8 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>美丽频道</title>
-<link href="style/myshop.css" rel="stylesheet" type="text/css" />
-<link href="style/nav.css" rel="stylesheet" type="text/css" />
+<link href="${ctx}/static/style/myshop.css" rel="stylesheet" type="text/css" />
+<link href="${ctx}/static/style/nav.css" rel="stylesheet" type="text/css" />
 <!--[if IE 6]>
 <script src="js/DD_belatedPNG_0.0.8a.js"></script>
 <script>
@@ -22,7 +22,7 @@ DD_belatedPNG.fix('#logo,.navBar,#top1,#top2,#top3,#top4,.nav_icon1,.nav_icon2,.
 <!--头部-->
 <div class="headerBar">
   <div class="header comWidth">
-    <div class="fl"><img src="images/header/logo.png" alt="logo" id="logo" /></div>
+    <div class="fl"><img src="${ctx}/static/images/header/logo.png" alt="logo" id="logo" /></div>
     <div class="rightArea fr">
       <div class="topBar">
         <ul>
@@ -53,7 +53,7 @@ DD_belatedPNG.fix('#logo,.navBar,#top1,#top2,#top3,#top4,.nav_icon1,.nav_icon2,.
 
 <!--主体-->
 <div id="container11">
-  <div id="picbox"><img id="mainpic" src="images/index/shop7.png" alt="店铺主图片" /></div>
+  <div id="picbox"><img id="mainpic" src="${ctx}/static/images/index/shop7.png" alt="店铺主图片" /></div>
   <div id="shopinfo">
     <ul>
       <li></li>

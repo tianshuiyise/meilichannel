@@ -1,6 +1,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page contentType="text/html;charset=UTF-8"%>
 <%@ taglib prefix="dict" uri="http://www.summer.org/tags/dict" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%-- <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> --%>
 <c:set var="ctx" value="${pageContext.request.contextPath}" />
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -37,9 +39,7 @@ DD_belatedPNG.fix('#logo,.navBar,#top1,#top2,#top3,#top4,.nav_icon1,.nav_icon2,.
 <input type="hidden" name="shopId" id="shopId" value="${shop.shopId }"/>
 <input type="hidden" name="shopCordX" id="shopCordX" value="${shop.shopCordX }"/>
 <input type="hidden" name="shopCordY" id="shopCordY" value="${shop.shopCordY }"/>
-
 <input type="hidden" name="shopAdd" id="shopAdd" value="${shop.shopAdd }"/>
-
 
 
 
@@ -57,7 +57,7 @@ DD_belatedPNG.fix('#logo,.navBar,#top1,#top2,#top3,#top4,.nav_icon1,.nav_icon2,.
       <li></li>
       <li>作品名称：&nbsp;
       	<c:forEach items="${shop.productions }" var="productions" varStatus="status">
-      		<a href="${ctx}/mainPage/shopDetail/${productions.proId }">${productions.proName }</a>&nbsp;
+      		<a href="${ctx}/mainPage/productDetail/${productions.proId }">${productions.proName }</a>&nbsp;
       	</c:forEach>
       </li>
       <li></li>
@@ -81,12 +81,12 @@ DD_belatedPNG.fix('#logo,.navBar,#top1,#top2,#top3,#top4,.nav_icon1,.nav_icon2,.
       </li>
       
       <li id="tag3">
-	      <a href="javascript:void(0);" onclick="switchTag('tag3','content3','${ctx}/mainPage/product','${shop.shopId }');this.blur();return false;">
+	      <a href="javascript:void(0);" onclick="switchTag('tag3','content3','${ctx}/mainPage/review','${shop.shopId }');this.blur();return false;">
 	      	<span>累计评价（7）</span>
 	      </a>
       </li>
       <li id="tag4">
-	      <a href="javascript:void(0);" onclick="switchTag('tag4','content4','${ctx}/mainPage/product','${shop.shopId }');this.blur();">
+	      <a href="javascript:void(0);" onclick="switchTag('tag4','content4','${ctx}/mainPage/order','${shop.shopId }');this.blur();">
 	      	<span>累计成交量（15）</span>
 	      </a>
       </li>
@@ -94,24 +94,9 @@ DD_belatedPNG.fix('#logo,.navBar,#top1,#top2,#top3,#top4,.nav_icon1,.nav_icon2,.
     </div>
     <div id="content" class="content1">
     	<div id="content1" >${shop.introduction }</div>
-    
-    	<div id="content2" class="hidecontent">
-      		
-    	</div>
-    	<div id="content3" class="hidecontent">
-     
-	      <table border=1>
-	        <tr><td class="name">用户名:张三</td><td class="numb">订单号：12345678</td><td></td><td class="comtime">评价时间</td></tr>
-	        <tr><td colspan=3 class="assess">评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价评价</td><td class="comtype">好评</td></tr>
-	      </table>
-     
-    	</div>
-	    <div id="content4" class="hidecontent">
-	      <table border=1>
-	        <tr><td class="uname">李四</td><td class="details">预约作品，人员等详细信息</td><td class="dealtime">2015-7-1 10:07</td></tr>
-	      </table>
-	      
-	    </div>
+    	<div id="content2" class="hidecontent"></div>
+    	<div id="content3" class="hidecontent"></div>
+	    <div id="content4" class="hidecontent"></div>
 	    
     </div>
   </div>
@@ -130,13 +115,12 @@ DD_belatedPNG.fix('#logo,.navBar,#top1,#top2,#top3,#top4,.nav_icon1,.nav_icon2,.
 
 
 
-function getProduct(url,id){
+function getProduct(url,id,content){
 	$("#content2").empty();
+	$("#content3").empty();
+	$("#content4").empty();
+	
 		var d={"shopId":id};
-		alert("d:"+d);
-		alert("d:"+JSON.stringify(d));
-		var a='{"shopId":id}';
-		alert(eval("("+a+")").shopId);
 		$.ajax({
 			url:url,
 			type:"post",
@@ -146,13 +130,57 @@ function getProduct(url,id){
 			data: JSON.stringify(d),
 			success:function(result){
 				$.each(result, function(i, item) {  
-		             var proName=item.proName;
-		             var proId=item.proId;
-		             var introduction=item.introduction;
-		             var imageAddress=item.imageAddress;
-		             $("#content2").append("<div id='workinfo"+i+"'  class='workinfo'><a href='#'><img src='"+imageAddress+"' alt='作品图片'/></a><a href='${ctx}/mainPage/shopDetail/"+proId+"'>"+proName+":</a><br/>"+introduction+"</div>");
-		            
-				
+		             if("content2"==content){
+		            	 var proName=item.proName;
+			             var proId=item.proId;
+			             var introduction=item.introduction;
+			             var imageAddress=item.imageAddress;
+		            	 $("#content2").append("<div id='workinfo"+i+"'  class='workinfo'><a href='#'><img src='"+imageAddress+"' alt='作品图片'/></a><a href='${ctx}/mainPage/shopDetail/"+proId+"'>"+proName+":</a><br/>"+introduction+"</div>"); 
+		             }
+		             
+		             
+		             if("content3"==content){
+		            	 var  orderId=item.orderId;
+		            	 var overallStatus=item.overallStatus;
+		            	 var reviewMes=item.reviewMes;
+		            	 var reviewDate=item.reviewDate;
+		            	 var userName=item.userName;
+		            	
+		     	        /*  */
+		     	     
+		            	 $("#content3").append("<table border=1>   </table>"); 
+			             
+		            	 $("#content3 table").append(" <tr><td class='name'>用户名: "+userName+"</td><td class='numb'>订单号："+orderId+"</td><td></td><td class='comtime'>评价时间:"+reviewDate+"</td></tr>"); 
+			             
+		            	 $("#content3 table").append(" <tr><td colspan=3 class='assess'>留言："+reviewMes+"</td><td class='comtype'>评价： "+overallStatus+"</td></tr> ");
+		            	 
+		            	 
+		             }
+		             
+		             if("content4"==content){
+		            	 var orderId=item.orderId;
+		            	 
+		            	 var proId=item.proId;
+		            	 var memberId=item.memberId;
+		            	 var userId=item.userId;
+		            	 
+		            	 var proName=item.proName;
+		            	 var memberName=item.memberName;
+		            	 var userName=item.userName;
+		            	 
+		            	 var appointTime=item.appointTime;
+		            	 
+		     	        
+		     	        
+		            	 $("#content4").append("<table border=1>   </table>"); 
+		            	 $("#content4").append(" <tr><td class='uname'>客户姓名："+userName+"</td><td class='details'>预约作品："+proName+"  ，    预约人员："+memberName+"</td><td class='dealtime'>下单时间："+appointTime+"</td></tr> ");
+		            	 
+		             }
+		             
+		             
+		             
+		             
+		             
 				}); 
 				 }
 		}); 
@@ -178,7 +206,7 @@ function switchTag(tag,content,url,shopid)
 			{
 				document.getElementById(content).className="";
 				
-				getProduct(url,shopid);
+				getProduct(url,shopid,content);
 				
 			}else{
 			document.getElementById("content"+i).className="hidecontent";
@@ -196,19 +224,12 @@ function switchTag(tag,content,url,shopid)
   var shopCordY=$("#shopCordY").val();
   var shopAdd=$("#shopAdd").val();
   
-    var map = new BMap.Map("caodan");          // 创建地图实例  
-    var point = new BMap.Point(shopCordX, shopCordY);  // 创建点坐标  
-    map.centerAndZoom(point, 13);                 // 初始化地图，设置中心点坐标和地图级别  
-    map.addControl(new BMap.OverviewMapControl());    //  缩略图控件
-    map.addControl(new BMap.MapTypeControl());       //   卫星控件
-    map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
-    map.addControl(new BMap.NavigationControl());   // 平移缩放控件
-    map.addControl(new BMap.ScaleControl());        //  比例尺控件
-   /*  map.addEventListener("click",function(e){
-    alert(e.point.lng + "," + e.point.lat);
-  }); */
-
+  var map = new BMap.Map("caodan");          // 创建地图实例  
+  var point = new BMap.Point(shopCordX, shopCordY);  // 创建点坐标  
+  map.centerAndZoom(point, 15);                 // 初始化地图，设置中心点坐标和地图级别  
     
+  
+ 	
  
   var opts = {
         width : 250,     // 信息窗口宽度
@@ -224,7 +245,7 @@ function switchTag(tag,content,url,shopid)
   
   function addClickHandler(content,marker){
     marker.addEventListener("click",function(e){
-      openInfo(content,e)}
+      openInfo(content,e);}
     );
   }
   function openInfo(content,e){
@@ -232,9 +253,25 @@ function switchTag(tag,content,url,shopid)
     var point = new BMap.Point(p.getPosition().lng, p.getPosition().lat);
     var infoWindow = new BMap.InfoWindow(content,opts);  // 创建信息窗口对象 
     map.openInfoWindow(infoWindow,point); //开启信息窗口
-  }
+  } 
     
-    
+  map.addControl(new BMap.OverviewMapControl());    //  缩略图控件
+  map.addControl(new BMap.MapTypeControl());       //   卫星控件
+  map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
+	// 右下角，添加比例尺
+	var top_left_control = new BMap.ScaleControl({anchor: BMAP_ANCHOR_BOTTOM_RIGHT});
+	//左上角，添加默认缩放平移控件
+	// 添加带有定位的导航控件
+	var navigationControl = new BMap.NavigationControl({
+		// 靠左上角位置
+		anchor: BMAP_ANCHOR_TOP_LEFT,
+		// LARGE类型
+		type: BMAP_NAVIGATION_CONTROL_LARGE,
+		// 启用显示定位
+		enableGeolocation: true
+	});
+	map.addControl(top_left_control);        
+	map.addControl(navigationControl);     
     
   </script>  
 </body>
