@@ -42,6 +42,8 @@
 	<mvc:view-controller path="/" view-name="/staticPage/shouye"/>
 	
 	
+	
+	<!-- 
     <mvc:view-controller path="/inc/main" view-name="/inc/main"/>
     <mvc:view-controller path="/inc/top" view-name="/inc/top"/>
     <mvc:view-controller path="/inc/foot" view-name="/inc/foot"/>
@@ -54,7 +56,7 @@
     <mvc:view-controller path="/approInc/apExpertsTop" view-name="/approInc/apExpertsTop"/>
     <mvc:view-controller path="/approInc/apJjwMain" view-name="/approInc/apJjwMain"/>
     <mvc:view-controller path="/approInc/apJjwTop" view-name="/approInc/apJjwTop"/>
-    
+     -->
     
     
 	<!-- 定义JSP文件的位置 -->

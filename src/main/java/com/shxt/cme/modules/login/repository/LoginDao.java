@@ -34,7 +34,7 @@ public class LoginDao extends BaseDao {
 	public List<Menu> findMenuLevel1ByRoleKey(int roleKey) {
 		String sql = " select * "
 				+ " from tb_menu "
-				+ " where menuLevel = '1' and deleteFlag = 0 and roleType = '+roleKey+' "
+				+ " where menuLevel = 1 and deleteFlag = 0  "
 				+ " order by groupSequence ";
 		return query(sql, new MenuNameRowMapper());
 	}
@@ -81,6 +81,7 @@ public class LoginDao extends BaseDao {
 			user.setUserId(rs.getString("user_id"));
 			user.setUserEmail(rs.getString("user_email"));
 			user.setMessage(rs.getString("message"));
+			user.setImageAddress(rs.getString("image_address"));
 			/*user.setUnitKey(rs.getString("unitKey"));
 			user.setUserType(rs.getInt("userType"));
 			user.setRoleType(rs.getString("roleType"));
@@ -135,11 +136,9 @@ public class LoginDao extends BaseDao {
 		return queryForObject(sql, null, new MenuNameRowMapper());
 	}
 	
-	public List<Menu> findMenuLevel2ByRoleKey(int roleKey,
-			int groupSequence) {
-		String sql = " select * "
-				+ " from tb_menu "
-				+ " where menuLevel = 2 and deleteFlag = 0 and roleType = "+roleKey+" and groupSequence = '"+groupSequence+"' "
+	public List<Menu> findMenuLevel2ByRoleKey(int roleKey) {
+		String sql = " SELECT menuKey,menuName,menuLevel,menuSequence,menuURL,roleType,parentMenuKey " +
+				" FROM tb_menu WHERE deleteFlag=0 AND menuLevel =2 and roleType = "+roleKey+" "
 				+ " order by menuSequence ";
 		return query(sql, new MenuNameRowMapper());
 	}
@@ -149,16 +148,36 @@ public class LoginDao extends BaseDao {
 		@Override
 		public Menu mapRow(ResultSet rs, int rowNum) throws SQLException {
 			Menu menu = new Menu();
-			menu.setDeleteFlag(rs.getString("deleteFlag"));
-			menu.setGroupSequence(rs.getString("groupSequence"));
-			menu.setMenuKey(rs.getString("menuKey"));
-			menu.setMenuLevel(rs.getString("menuLevel"));
+			String menuKey=rs.getString("menuKey");
+			String menuLevel=rs.getString("menuLevel");
+			menu.setMenuKey(menuKey);
+			menu.setMenuLevel(menuLevel);
 			menu.setMenuName(rs.getString("menuName"));
 			menu.setMenuSequence(rs.getString("menuSequence"));
 			menu.setMenuURL(rs.getString("menuURL"));
-			menu.setParentMenuKey(rs.getString("parentMenuKey"));
+			//menu.setParentMenuKey(parentMenuKey);
 			menu.setRoleType(rs.getInt("roleType"));
+			
+			if(menuKey!=null && !("").equals(menuKey) && menuLevel.equals("2")){
+				List<Menu> subMenuList=findSUbMenu(menuKey);
+				menu.setSubMenuList(subMenuList);
+			}
+			
 			return menu;
+		}
+
+		/** @Description: TODO
+		 * @param parentMenuKey
+		 * @return  
+		 * @return: List<Menu>
+		*/
+		
+		private List<Menu> findSUbMenu(String parentMenuKey) {
+			
+			String sql = " SELECT menuKey,menuName,menuLevel,menuSequence,menuURL,roleType,parentMenuKey " +
+					" FROM tb_menu WHERE deleteFlag=0 AND menuLevel =3 and parentMenuKey = '"+parentMenuKey+"' "
+					+ " order by menuSequence ";
+			return query(sql, new MenuNameRowMapper());
 		}
 	}
 	/**
@@ -202,4 +221,16 @@ public class LoginDao extends BaseDao {
 		}
 	}
 	*/
+	/** @Description: TODO
+	 * @return  
+	 * @return: List<Menu>
+	*/
+	
+	public List<Menu> findMenuLevel1() {
+		String sql = " select * "
+				+ " from tb_menu "
+				+ " where menuLevel = 1 and deleteFlag = 0  "
+				+ " order by groupSequence ";
+		return query(sql, new MenuNameRowMapper());
+	}
 }

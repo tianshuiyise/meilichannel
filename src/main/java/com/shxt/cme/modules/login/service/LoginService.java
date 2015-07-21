@@ -37,10 +37,11 @@ public class LoginService {
 	public List<Menu> findMenuLevel1ByRoleKey(int roleKey) {
 		return loginDao.findMenuLevel1ByRoleKey(roleKey);
 	}
-	public List<Menu> findMenuLevel2ByRoleKey(int roleType,
-			int groupSequence) {
-		return loginDao.findMenuLevel2ByRoleKey(roleType, groupSequence);
+	public List<Menu> findMenuLevel2ByRoleKey(int roleType,int i) {
+		return loginDao.findMenuLevel2ByRoleKey(roleType);
 	}
+	
+	
 	
 	/**
 	 * 获取用户信息
@@ -68,4 +69,12 @@ public class LoginService {
 		user.setPassword(DbUtils.NankaiEncrypt(user.getPassword()));
 		return loginDao.findExpertsInfo(user);
 	}*/
+	/** @Description: TODO
+	 * @return  
+	 * @return: List<Menu>
+	*/
+	
+	public List<Menu> findMenuLevel1() {
+		return loginDao.findMenuLevel1();
+	}
 }

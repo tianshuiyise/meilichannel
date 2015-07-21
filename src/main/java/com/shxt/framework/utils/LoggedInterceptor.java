@@ -3,14 +3,19 @@
  */
 package com.shxt.framework.utils;
 
-import java.io.PrintWriter;
+import java.util.List;
 import java.util.Properties;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
+
+import com.shxt.cme.domain.Menu;
+import com.shxt.cme.modules.login.repository.LoginDao;
+import com.shxt.cme.modules.login.service.LoginService;
 
 /** 
  * CopyRright (c)2012-2013:   大连四海兴唐科技有限公司
@@ -32,7 +37,8 @@ public class LoggedInterceptor extends HandlerInterceptorAdapter {
 	Properties p = new PropertiesLoader("classpath:/application.development.properties", "classpath:/application.properties")
 	.getProperties();
 	private String BASEPATH = "http://" + p.getProperty("system.ip") + ":" + p.getProperty("system.port") + "/meilichannel";
-	
+	@Autowired
+	private LoginService loginService;
 	/**
 	 * controller之前执行
 	 */
@@ -43,15 +49,17 @@ public class LoggedInterceptor extends HandlerInterceptorAdapter {
         response.setCharacterEncoding("UTF-8");  
         response.setContentType("text/html;charset=UTF-8");  
         
-        //后台session控制  
+        
+        
+        
+        
+        
+        /*//后台session控制  
         String[] noFilters = new String[] { "login", "static" };  
-        String uri = request.getRequestURI();
-      
+        String uri = request.getRequestURI();*/
         //初始登录url不拦截
-        
         //所有登录过的路径都包含一个 onLogin ，如 、/meilichannel/onLogin/XZXXXXX,如果有，则说明已经登陆啦
-        
-        if(uri.contains("/onLogin")) {
+        /*if(uri.contains("/onLogin")) {
         	boolean beFilter = true;  
             for (String s : noFilters) {  
                 if (uri.indexOf(s) != -1) {  
@@ -75,7 +83,7 @@ public class LoggedInterceptor extends HandlerInterceptorAdapter {
                     return false;  
                 } 
             }  
-        }
+        }*/
         
         /*if(!uri.equals("/meilichannel/") && !uri.equals("/")) {
         	boolean beFilter = true;  
@@ -113,6 +121,12 @@ public class LoggedInterceptor extends HandlerInterceptorAdapter {
 	public void postHandle(HttpServletRequest request,  
 	        HttpServletResponse response, Object handler,  
 	        ModelAndView modelAndView) throws Exception {  
+		Object obj = request.getSession().getAttribute("mainMenu"); 
+        if(obj==null){
+        	List<Menu> mainMenu=loginService.findMenuLevel1();
+        	request.getSession().setAttribute("mainMenu", mainMenu);
+        }
+		
 	}  
 	  
 	/**

@@ -62,7 +62,7 @@ public class MngBeautyShopController extends BaseController{
 		model.addAttribute("productList", productList);
 		model.addAttribute("shopType", shopType);
 		model.addAttribute("searchParams", Servlets.encodeParameterStringWithPrefix(searchParams, "search_"));
-		return "beautyShopMng/listBeautyShop";
+		return "beautyShopMng/listBeautyShop1";
 	}
 	
 	@RequestMapping("/{shopType}/preModify" )   

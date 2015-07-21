@@ -57,8 +57,23 @@ public class LoginController extends BaseController {
 	 * @return String
 	 */
 	@RequestMapping("loginCheck")
-	public String loginCheck(Model model, User user,String experts, HttpSession session) {
-		String str="redirect:/inc/main";
+	public String loginCheck(Model model, User user, HttpSession session) {
+		
+		String str="redirect:/mainPage/shouye";
+		User currentUser = loginService.findUserInfo(user);
+		//不存在该用户，返回登陆页面
+		if(currentUser == null) {
+			model.addAttribute("errorInfo", "用户名或密码错误");
+			return "login/login";
+		} else {
+			session.setAttribute("user", currentUser);
+			// 获取用户菜单		
+			List<Menu> menuList=loginService.findMenuLevel2ByRoleKey(
+									currentUser.getUserType(),1);
+						session.setAttribute("menuList", menuList);
+		}
+		
+		/*String str="redirect:/inc/main";
         //添加专家登录功能
 		if("experts".equals(experts)){
 	  			str="redirect:/approInc/apMain";
@@ -93,7 +108,7 @@ public class LoginController extends BaseController {
 			str="redirect:/inc/main";
 		}
 		
-		}
+		}*/
 			return str;
 		
 	}
@@ -106,7 +121,7 @@ public class LoginController extends BaseController {
 	@RequestMapping("logout")
 	public String logout(HttpSession session) {
 		session.invalidate();
-		return "redirect:/login/preLogin";
+		return "redirect:/";
 	}
 
 }

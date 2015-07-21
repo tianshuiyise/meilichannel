@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" %>
+  <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ include file="/WEB-INF/include/common.jsp" %>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
