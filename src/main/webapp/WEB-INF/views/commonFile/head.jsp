@@ -26,8 +26,15 @@
 										<a href="${ctx }/login/preLogin">我的频道</a>
 									</c:when>
 									<c:otherwise>
-									<!-- 待续。。。 -->
-										<a href="${ctx }/beautyShopMng/1">我的频道</a>
+										<a href="${ctx }/mainPage/intoMyChannel/${sessionScope.user.userType}">我的频道</a>
+										<%-- <!-- 用户 -->
+										<c:if test="${sessionScope.user.userType == '1'}">
+											<a href="${ctx }/beautyShopMng/1">我的频道</a>
+										</c:if>
+										<!-- 商家 -->
+										<c:if test="${sessionScope.user.userType eq '2'}">
+											<a href="${ctx }/beautyShopMng/1">我的频道</a>
+										</c:if> --%>
 									</c:otherwise>
 								</c:choose>
 							</li>
@@ -39,12 +46,12 @@
 									<c:otherwise>
 									<!-- 待续。。。 -->
 										<!-- 用户 -->
-										<c:if test="${sessionScope.user.userType eq '1'} ">
+										<c:if test="${sessionScope.user.userType eq '1'}">
 											<a href="${ctx}/applySellerIn/preApplySellerIn">申请商家入驻</a>
 										</c:if>
 										<!-- 商家 -->
 										<c:if test="${sessionScope.user.userType eq '2'}">
-											<a href="${ctx }/beautyShopMng/1">我的店铺</a>
+											<a href="${ctx }/mainPage/intoMyShop">我的店铺</a>
 										</c:if>
 										
 									</c:otherwise>
@@ -55,9 +62,9 @@
 					<div class="navBar">
 						<ul>
 							<c:forEach items="${sessionScope.mainMenu }" var="mainMenu" varStatus="status">
-								<li class='nav_icon"+${status.index +1 }+"'><a href="${ctx}/${mainMenu.menuURL}">${mainMenu.menuName}</a></li>
+								<li class='nav_icon"${status.index +1}"'><a href="${ctx}/${mainMenu.menuURL}">${mainMenu.menuName}</a></li>
 							</c:forEach>
-						
+							
 							<%-- <li class="nav_icon1"><a href="${ctx}/mainPage/shouye">首页</a></li>
 							<li class="nav_icon2"><a href="${ctx}/mainPage/meirong">美容</a></li>
 							<li class="nav_icon3"><a href="#">美发</a></li>

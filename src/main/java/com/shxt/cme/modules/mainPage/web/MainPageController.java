@@ -119,4 +119,20 @@ public class MainPageController {
 	}
 	
 	
+	@RequestMapping(value = "/intoMyChannel/{roleType}")
+	public String intoMyChannel(@PathVariable("roleType") String roleType){
+		/*String myChannel="redirect:/personalCenter/personalInfo";
+		
+		if(null!=roleType && ("2").equals(roleType)){
+			myChannel="redirect:/personalCenter/personalInfo";
+		}*/
+		return "/myChannelIndex";
+	}
+	
+	
+	
+	@RequestMapping(value = "/intoMyShop")
+	public String intoMyShop(){
+		return "/myShopIndex";
+	}
 }
