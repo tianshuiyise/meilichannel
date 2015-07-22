@@ -76,8 +76,6 @@ public class MemberController extends BaseController implements ServletContextAw
 		Map<String, Object> searchParams = Servlets.getParametersStartingWith(
 				request, "search_");
 		User user=getCurrentUser(session);
-		
-		
 		// 获取分页对象
 		Page<Member> memberList = memberService.findWithPage1(pageable,user);
 		System.out.println("memberList===="+memberList);
@@ -87,6 +85,7 @@ public class MemberController extends BaseController implements ServletContextAw
 
 		return "member/meirongMember";
 	}
+	
 	@RequestMapping("meifaMember")
 	public String listMeifa(Model model, Pageable pageable, ServletRequest request,
 			HttpSession session) {
@@ -106,11 +105,21 @@ public class MemberController extends BaseController implements ServletContextAw
 
 		return "member/meifaMember";
 	}
+	
+	/**
+	 * @Description: TODO
+	 * @param model
+	 * @param pageable
+	 * @param request
+	 * @param session
+	 * @return  
+	 * @return: String
+	 */
 	@RequestMapping("meijiaMember")
 	public String listMeijia(Model model, Pageable pageable, ServletRequest request,
 			HttpSession session) {
 		// 从请求中取得search_开头的参数及其值，并封装到map中，供后续查询使用
-		
+		//
 		Map<String, Object> searchParams = Servlets.getParametersStartingWith(
 				request, "search_");
 		User user=getCurrentUser(session);

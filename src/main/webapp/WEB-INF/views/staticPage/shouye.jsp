@@ -67,47 +67,16 @@ DD_belatedPNG.fix('#logo,.navBar,#top1,#top2,#top3,#top4,.nav_icon1,.nav_icon2,.
 				<div style="float: left">
 					<img src="${ctx}/static/images/shadow/boxsd_l.png" alt="阴影" />
 				</div>
-				<div class="shop shop1">
-					<a href="#" target="_blank">
-						<img src="${ctx}/static/images/index/shop1.png" alt="商店" />
-					</a>
+				
+				<c:forEach items="${meirongShops }" var="meirongShop" varStatus="status">
+					<div class="shop shop${status.index+1}">
+						<a href="#" target="_blank">
+							<img src="${meirongShop.imageAddress }" alt="商店" />
+						</a>
 					<img class="shade" src="${ctx}/static/images/index/shade.png" alt="遮罩" />
-				</div>
-				<div class="shop shop2">
-					<a href="#" target="_blank"><img
-						src="${ctx}/static/images/index/shop2.png" alt="商店" /></a><img
-						class="shade" src="${ctx}/static/images/index/shade.png" alt="遮罩" />
-				</div>
-				<div class="shop shop3">
-					<a href="#" target="_blank"><img
-						src="${ctx}/static/images/index/shop3.png" alt="商店" /></a><img
-						class="shade" src="${ctx}/static/images/index/shade.png" alt="遮罩" />
-				</div>
-				<div class="shop shop4">
-					<a href="#" target="_blank"><img
-						src="${ctx}/static/images/index/shop4.png" alt="商店" /></a><img
-						class="shade" src="${ctx}/static/images/index/shade.png" alt="遮罩" />
-				</div>
-				<div class="shop shop5">
-					<a href="#" target="_blank"><img
-						src="${ctx}/static/images/index/shop5.png" alt="商店" /></a><img
-						class="shade" src="${ctx}/static/images/index/shade.png" alt="遮罩" />
-				</div>
-				<div class="shop shop6">
-					<a href="#" target="_blank"><img
-						src="${ctx}/static/images/index/shop6.png" alt="商店" /></a><img
-						class="shade" src="${ctx}/static/images/index/shade.png" alt="遮罩" />
-				</div>
-				<div class="shop shop7">
-					<a href="#" target="_blank"><img
-						src="${ctx}/static/images/index/shop7.png" alt="商店" /></a><img
-						class="shade" src="${ctx}/static/images/index/shade.png" alt="遮罩" />
-				</div>
-				<div class="shop shop8">
-					<a href="#" target="_blank"><img
-						src="${ctx}/static/images/index/shop8.png" alt="商店" /></a><img
-						class="shade" src="${ctx}/static/images/index/shade.png" alt="遮罩" />
-				</div>
+					</div>
+				</c:forEach>
+				
 				<div style="float: right">
 					<img src="${ctx}/static/images/shadow/boxsd_r.png" alt="阴影" />
 				</div>
@@ -120,48 +89,18 @@ DD_belatedPNG.fix('#logo,.navBar,#top1,#top2,#top3,#top4,.nav_icon1,.nav_icon2,.
 				<div style="float: left">
 					<img src="${ctx}/static/images/shadow/boxsd_l.png" alt="阴影" />
 				</div>
-				<div class="shop shop1">
-					<a href="#" target="_blank"><img
-						src="${ctx}/static/images/index/shop1.png" alt="商店" /></a><img
-						class="shade" src="images/index/shade.png" alt="遮罩" />
-				</div>
-				<div class="shop shop2">
-					<a href="#" target="_blank"><img
-						src="${ctx}/static/images/index/shop2.png" alt="商店" /></a><img
-						class="shade" src="images/index/shade.png" alt="遮罩" />
-				</div>
-				<div class="shop shop3">
-					<a href="#" target="_blank"><img
-						src="${ctx}/static/images/index/shop3.png" alt="商店" /></a><img
-						class="shade" src="images/index/shade.png" alt="遮罩" />
-				</div>
-				<div class="shop shop4">
-					<a href="#" target="_blank"><img
-						src="${ctx}/static/images/index/shop4.png" alt="商店" /></a><img
-						class="shade" src="images/index/shade.png" alt="遮罩" />
-				</div>
-				<div class="shop shop5">
-					<a href="#" target="_blank"><img
-						src="${ctx}/static/images/index/shop5.png" alt="商店" /></a><img
-						class="shade" src="images/index/shade.png" alt="遮罩" />
-				</div>
-				<div class="shop shop6">
-					<a href="#" target="_blank"><img
-						src="${ctx}/static/images/index/shop6.png" alt="商店" /></a><img
-						class="shade" src="images/index/shade.png" alt="遮罩" />
-				</div>
-				<div class="shop shop7">
-					<a href="#" target="_blank"><img
-						src="${ctx}/static/images/index/shop7.png" alt="商店" /></a><img
-						class="shade" src="images/index/shade.png" alt="遮罩" />
-				</div>
-				<div class="shop shop8">
-					<a href="#" target="_blank"><img
-						src="${ctx}/static/images/index/shop8.png" alt="商店" /></a><img
-						class="shade" src="images/index/shade.png" alt="遮罩" />
-				</div>
+				
+				<c:forEach items="${meifaShops}" var="meifaShop" varStatus="status1">
+					<div class="shop shop${status1.index+1}">
+						<a href="#" target="_blank">
+							<img src="${meifaShop.imageAddress }" alt="商店" />
+						</a>
+					<img class="shade" src="${ctx}/static/images/index/shade.png" alt="遮罩" />
+					</div>
+				</c:forEach>
+				
 				<div style="float: right">
-					<img src="images/shadow/boxsd_r.png" alt="阴影" />
+					<img src="${ctx}/static/images/shadow/boxsd_r.png" alt="阴影" />
 				</div>
 			</div>
 			<img id="more2" src="${ctx}/static/images/more.png" alt="更多" />
@@ -172,46 +111,16 @@ DD_belatedPNG.fix('#logo,.navBar,#top1,#top2,#top3,#top4,.nav_icon1,.nav_icon2,.
 				<div style="float: left">
 					<img src="${ctx}/static/images/shadow/boxsd_l.png" alt="阴影" />
 				</div>
-				<div class="shop shop1">
-					<a href="#" target="_blank"><img
-						src="${ctx}/static/images/index/shop1.png" alt="商店" /></a><img
-						class="shade" src="images/index/shade.png" alt="遮罩" />
-				</div>
-				<div class="shop shop2">
-					<a href="#" target="_blank"><img
-						src="${ctx}/static/images/index/shop2.png" alt="商店" /></a><img
-						class="shade" src="images/index/shade.png" alt="遮罩" />
-				</div>
-				<div class="shop shop3">
-					<a href="#" target="_blank"><img
-						src="${ctx}/static/images/index/shop3.png" alt="商店" /></a><img
-						class="shade" src="images/index/shade.png" alt="遮罩" />
-				</div>
-				<div class="shop shop4">
-					<a href="#" target="_blank"><img
-						src="${ctx}/static/images/index/shop4.png" alt="商店" /></a><img
-						class="shade" src="images/index/shade.png" alt="遮罩" />
-				</div>
-				<div class="shop shop5">
-					<a href="#" target="_blank"><img
-						src="${ctx}/static/images/index/shop5.png" alt="商店" /></a><img
-						class="shade" src="images/index/shade.png" alt="遮罩" />
-				</div>
-				<div class="shop shop6">
-					<a href="#" target="_blank"><img
-						src="${ctx}/static/images/index/shop6.png" alt="商店" /></a><img
-						class="shade" src="images/index/shade.png" alt="遮罩" />
-				</div>
-				<div class="shop shop7">
-					<a href="#" target="_blank"><img
-						src="${ctx}/static/images/index/shop7.png" alt="商店" /></a><img
-						class="shade" src="images/index/shade.png" alt="遮罩" />
-				</div>
-				<div class="shop shop8">
-					<a href="#" target="_blank"><img
-						src="${ctx}/static/images/index/shop8.png" alt="商店" /></a><img
-						class="shade" src="images/index/shade.png" alt="遮罩" />
-				</div>
+				
+				<c:forEach items="${meijiaShops}" var="meijiaShop" varStatus="status2">
+					<div class="shop shop${status2.index+1}">
+						<a href="#" target="_blank">
+							<img src="${meijiaShop.imageAddress }" alt="商店" />
+						</a>
+					<img class="shade" src="${ctx}/static/images/index/shade.png" alt="遮罩" />
+					</div>
+				</c:forEach>
+				
 				<div style="float: right">
 					<img src="${ctx}/static/images/shadow/boxsd_r.png" alt="阴影" />
 				</div>
@@ -342,4 +251,3 @@ DD_belatedPNG.fix('#logo,.navBar,#top1,#top2,#top3,#top4,.nav_icon1,.nav_icon2,.
 	</script>
 </body>
 </html>
-

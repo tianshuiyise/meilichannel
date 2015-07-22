@@ -39,8 +39,8 @@
 	
 	<!-- 定义无Controller的path<->view直接映射 -->
 	<!-- 映射到首頁 -->
-	<mvc:view-controller path="/" view-name="/staticPage/shouye"/>
-	
+	<!-- <mvc:view-controller path="/" view-name="/staticPage/shouye"/>
+	 -->
 	
 	
 	<!-- 

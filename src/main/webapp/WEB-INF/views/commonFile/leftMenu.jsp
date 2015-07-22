@@ -7,15 +7,30 @@
    <div id="my_menu" class="sdmenu">
    	<c:if test="${!empty sessionScope.user }">
 	   	<c:forEach items="${sessionScope.menuList }" var="menus" varStatus="status">
-	   		<span class="smenu"><a href="#">${menus.menuName}</a></span>
-	   		<c:forEach items="${menus.subMenuList}" var="menu" varStatus="status">
-	   			<a href="${ctx }/${menu.menuURL}">${menu.menuName}</a>
-	   		</c:forEach>
+	   		<div>
+		   		<span class="smenu"><a href="#">${menus.menuName}</a></span>
+		   		<c:forEach items="${menus.subMenuList}" var="menu" varStatus="status">
+		   			<a href="${ctx }/${menu.menuURL}">${menu.menuName}</a>
+		   		</c:forEach>
+	   		</div>
 		 </c:forEach>
    	</c:if>
 	   
  </div>
 </div>
+
+  
+<script type="text/javascript" src="${ctx}/static/js/sdmenu.js"></script>
+<!--左导航-->
+<script type="text/javascript">
+var myMenu;
+window.onload = function() {
+	myMenu = new SDMenu("my_menu");
+	myMenu.init();
+};
+</script>
+<!--左导航end-->
+
 	  <!-- 	<div>
 	       <span class="smenu">上传店铺信息</span>
 	       <a href="#">美容店铺信息</a>

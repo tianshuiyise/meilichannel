@@ -120,5 +120,17 @@ public class MainPageService implements IService<Shop>{
 		return mainPageDao.getAllOrder(shopId);
 	}
 
+	/** @Description: TODO
+	 * @param i
+	 * @return  
+	 * @return: List<Shop>
+	*/
+	
+	public List<Shop> getShops(int shopType) {
+		
+		
+		return  mainPageDao.getShops(shopType);
+	}
+
 	
 }

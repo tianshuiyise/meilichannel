@@ -52,6 +52,8 @@ DD_belatedPNG.fix('#logo,.navBar,#top1,#top2,#top3,#top4,.nav_icon1,.nav_icon2,.
 	</div>
 	<!--底部foot-->
 	<c:import url="/WEB-INF/views/commonFile/foot.jsp"/>
+	
+
 </body>
 
 </html>

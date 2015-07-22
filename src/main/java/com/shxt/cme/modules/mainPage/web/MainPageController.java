@@ -28,40 +28,44 @@ import com.shxt.cme.modules.mainPage.service.MainPageService;
  * @version： 1.0 
  */
 @Controller
-@RequestMapping(value = "/mainPage")
+@RequestMapping(value = "")
 public class MainPageController {
-
 	
 	@Autowired
 	private MainPageService mainPageService;
 	
+	@RequestMapping(value = "")
+	public String mainPage0(Model model){
+		
+		List<Shop> meirongShops=mainPageService.getShops(1);
+		List<Shop> meifaShops=mainPageService.getShops(2);
+		List<Shop> meijiaShops=mainPageService.getShops(3);
+		
+		model.addAttribute("meirongShops", meirongShops);
+		model.addAttribute("meifaShops", meifaShops);
+		model.addAttribute("meijiaShops", meijiaShops);
+		
+		
+		
+		return "/staticPage/shouye";
+	}
 	/** @Description: TODO
 	 * @return  
 	 * @return: String
 	*/
-	@RequestMapping(value = "/shouye")
-	public String mainPage(){
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+	@RequestMapping(value = "/mainPage/shouye")
+	public String mainPage(Model model){
 		
 		return "redirect:/";
 	}
 	
-	@RequestMapping(value = "/meirong")
+	@RequestMapping(value = "/mainPage/meirong")
 	public String meirongShop(){
 		
 		return "/staticPage/meirong";
 	}
 	
-	@RequestMapping(value = "/shopDetail/{shopId}")
+	@RequestMapping(value = "/mainPage/shopDetail/{shopId}")
 	public String shopDetail(Model model,@PathVariable("shopId") String shopId){
 		
 		Shop shop=mainPageService.detail(shopId);
@@ -79,7 +83,7 @@ public class MainPageController {
 	 * @return: List<Product>
 	*/
 	@ResponseBody
-	@RequestMapping(value = "/product")
+	@RequestMapping(value = "/mainPage/product")
 	public List<Product> getAllProduct(HttpServletRequest request,@RequestBody Product product,
 			HttpServletResponse response){
 		//@RequestParam("shopId") String shopId
@@ -89,7 +93,7 @@ public class MainPageController {
 	}
 	
 	
-	@RequestMapping(value = "/review")
+	@RequestMapping(value = "/mainPage/review")
 	public @ResponseBody List<ReviewBean> getAllReview(@RequestBody ReviewBean review){
 		//@RequestParam("shopId") String shopId
 		List<ReviewBean> reviews=mainPageService.getAllReview( review.getShopId());
@@ -98,7 +102,7 @@ public class MainPageController {
 	}
 	
 	
-	@RequestMapping(value = "/order")
+	@RequestMapping(value = "/mainPage/order")
 	public @ResponseBody List<OrderBean> getAllOrder(@RequestBody OrderBean orderBean){
 		//@RequestParam("shopId") String shopId
 		List<OrderBean> orders=mainPageService.getAllOrder( orderBean.getShopId());
@@ -109,7 +113,7 @@ public class MainPageController {
 	
 	
 	
-	@RequestMapping(value = "/productDetail/{proId}")
+	@RequestMapping(value = "/mainPage/productDetail/{proId}")
 	public String productionDetail(Model model,@PathVariable("proId") String proId){
 		
 		//Product production=mainPageService.detail(proId);
@@ -119,7 +123,7 @@ public class MainPageController {
 	}
 	
 	
-	@RequestMapping(value = "/intoMyChannel/{roleType}")
+	@RequestMapping(value = "/mainPage/intoMyChannel/{roleType}")
 	public String intoMyChannel(@PathVariable("roleType") String roleType){
 		/*String myChannel="redirect:/personalCenter/personalInfo";
 		
@@ -131,7 +135,7 @@ public class MainPageController {
 	
 	
 	
-	@RequestMapping(value = "/intoMyShop")
+	@RequestMapping(value = "/mainPage/intoMyShop")
 	public String intoMyShop(){
 		return "/myShopIndex";
 	}

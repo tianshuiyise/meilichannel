@@ -62,7 +62,7 @@
 					<div class="navBar">
 						<ul>
 							<c:forEach items="${sessionScope.mainMenu }" var="mainMenu" varStatus="status">
-								<li class='nav_icon"${status.index +1}"'><a href="${ctx}/${mainMenu.menuURL}">${mainMenu.menuName}</a></li>
+								<li class='nav_icon${status.index +1}'><a href="${ctx}/${mainMenu.menuURL}">${mainMenu.menuName}</a></li>
 							</c:forEach>
 							
 							<%-- <li class="nav_icon1"><a href="${ctx}/mainPage/shouye">首页</a></li>

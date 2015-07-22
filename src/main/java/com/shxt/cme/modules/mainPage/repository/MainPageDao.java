@@ -329,8 +329,35 @@ public class MainPageDao extends BaseDao implements IDao<Shop>{
 		
 	
 	}
+
+
+	/** @Description: TODO
+	 * @param shopType
+	 * @return  
+	 * @return: List<Shop>
+	*/
 	
+	public List<Shop> getShops(int shopType) {
+		
+		String sql="SELECT shop_id, shop_name,shop_type,introduction,image_address,image_name FROM t_shop WHERE  deleteFlag=0 AND shop_type=?  LIMIT 0,7";
+		Object[] args=new Object[]{shopType};
+		return jdbcTemplate.query(sql, args, new ShopsRowMapper());
+	}
 	
+	private class ShopsRowMapper implements ParameterizedRowMapper<Shop> {
+		@Override
+		public Shop mapRow(ResultSet rs, int rowNum)throws SQLException {
+			Shop shop =new Shop();
+			String shopId=rs.getString("shop_id");
+			shop.setShopId(shopId);
+			shop.setShopName(rs.getString("shop_name"));
+			shop.setIntroduction(rs.getString("introduction"));
+			shop.setImageAddress(rs.getString("image_address"));
+			shop.setImageName(rs.getString("image_name"));
+			shop.setShopType(rs.getInt("shop_type"));
+			return shop;
+		}
+	}
 	
 	
 }
