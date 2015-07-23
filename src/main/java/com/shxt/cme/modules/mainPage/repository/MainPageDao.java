@@ -30,13 +30,7 @@ import com.shxt.framework.persistence.jdbc.support.BaseDao;
 @Repository
 public class MainPageDao extends BaseDao implements IDao<Shop>{
 
-	/* (non-Javadoc)
-	 * @see com.shxt.cme.modules.IDao#findWithPage(org.springframework.data.domain.Pageable, java.lang.Object, com.shxt.cme.domain.User)
-	 */
-	@Override
-	public Page<Shop> findWithPage(Pageable pageable, Shop t, User user) {
-		return null;
-	}
+	
 
 	/* (non-Javadoc)
 	 * @see com.shxt.cme.modules.IDao#getById(java.lang.String)
@@ -343,7 +337,16 @@ public class MainPageDao extends BaseDao implements IDao<Shop>{
 		Object[] args=new Object[]{shopType};
 		return jdbcTemplate.query(sql, args, new ShopsRowMapper());
 	}
+	/** @Description: TODO
+	 * @return  
+	 * @return: List<Shop>
+	*/
 	
+	public List<Shop> getShops() {
+		String sql="SELECT shop_id, shop_name,shop_type,introduction,image_address,image_name FROM t_shop WHERE  deleteFlag=0 ";
+		
+		return jdbcTemplate.query(sql,  new ShopsRowMapper());
+	}
 	private class ShopsRowMapper implements ParameterizedRowMapper<Shop> {
 		@Override
 		public Shop mapRow(ResultSet rs, int rowNum)throws SQLException {
@@ -358,6 +361,33 @@ public class MainPageDao extends BaseDao implements IDao<Shop>{
 			return shop;
 		}
 	}
+
+
+	/* (non-Javadoc)
+	 * @see com.shxt.cme.modules.IDao#findWithPage(org.springframework.data.domain.Pageable, java.lang.Object, com.shxt.cme.domain.User, java.lang.String[])
+	 */
+	@Override
+	public Page<Shop> findWithPage(Pageable pageable, Shop t, User user,
+			String... str) {
+		String shopType=str[0];
+		String sql="SELECT shop_id, shop_name,shop_type,introduction,image_address,image_name FROM t_shop WHERE  deleteFlag=0 AND shop_type="+shopType;
+		Object[] args=new Object[]{shopType};
+		return queryForPage(sql.toString(), pageable,new ShopsRowMapper(), null);
+	}
+
+	/** @Description: TODO
+	 * @param proId
+	 * @return  
+	 * @return: Product
+	*/
+	
+	public Product getProductiondetail(String proId) {
+		String sql="";
+		return null;
+	}
+
+
+	
 	
 	
 }

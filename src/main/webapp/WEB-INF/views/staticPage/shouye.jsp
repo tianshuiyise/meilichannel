@@ -40,11 +40,11 @@ DD_belatedPNG.fix('#logo,.navBar,#top1,#top2,#top3,#top4,.nav_icon1,.nav_icon2,.
 				<div id="focus">
 					<ul>
 						<li id="bnr1">
-							<a href="${ctx}/mainPage/shopDetail/0b0dde6e-0b51-4ce2-8ffe-0c40919bf3ec" target="_blank"> 
+							<a href="javascript:void(0);" target="_blank" onclick="shopDetail('${ctx}/mainPage/shopDetail','0b0dde6e-0b51-4ce2-8ffe-0c40919bf3ec')"> 
 								<img src="${ctx}/static/images/banner/banner1.png" alt="" />
 							</a>
 						</li>
-						<li id="bnr2"><a href="${ctx}/mainPage/shopDetail/0b0dde6e-0b51-4ce2-8ffe-0c40919bf3ec" target="_blank"> <img
+						<li id="bnr2"><a href="javascript:void(0);" target="_blank" onclick="shopDetail('${ctx}/mainPage/shopDetail','0b0dde6e-0b51-4ce2-8ffe-0c40919bf3ec')"> <img
 								src="${ctx}/static/images/banner/banner2.png" alt="" /></a></li>
 						<li id="bnr3"><a href="${ctx}/mainPage/shopDetail" target="_blank"> <img
 								src="${ctx}/static/images/banner/banner3.png" alt="" /></a></li>
@@ -70,7 +70,7 @@ DD_belatedPNG.fix('#logo,.navBar,#top1,#top2,#top3,#top4,.nav_icon1,.nav_icon2,.
 				
 				<c:forEach items="${meirongShops }" var="meirongShop" varStatus="status">
 					<div class="shop shop${status.index+1}">
-						<a href="#" target="_blank">
+						<a href="javascript:void(0);" target="_blank" onclick="shopDetail('${ctx}/mainPage/shopDetail','${meirongShop.shopId }')">
 							<img src="${meirongShop.imageAddress }" alt="商店" />
 						</a>
 					<img class="shade" src="${ctx}/static/images/index/shade.png" alt="遮罩" />
@@ -81,7 +81,8 @@ DD_belatedPNG.fix('#logo,.navBar,#top1,#top2,#top3,#top4,.nav_icon1,.nav_icon2,.
 					<img src="${ctx}/static/images/shadow/boxsd_r.png" alt="阴影" />
 				</div>
 			</div>
-			<img id="more1" src="${ctx}/static/images/more.png" alt="更多" />
+			<a href="${ctx}/mainPage/1" target="_blank" ><img id="more1" src="${ctx}/static/images/more.png" alt="更多" /></a>
+			
 
 			<!--美发-->
 			<img id="fa_t" src="${ctx}/static/images/index/fa_t.png" alt="美发顶部" />
@@ -92,7 +93,7 @@ DD_belatedPNG.fix('#logo,.navBar,#top1,#top2,#top3,#top4,.nav_icon1,.nav_icon2,.
 				
 				<c:forEach items="${meifaShops}" var="meifaShop" varStatus="status1">
 					<div class="shop shop${status1.index+1}">
-						<a href="#" target="_blank">
+						<a href="javascript:void(0);" target="_blank" onclick="shopDetail('${ctx}/mainPage/shopDetail','${meifaShop.shopId }')">
 							<img src="${meifaShop.imageAddress }" alt="商店" />
 						</a>
 					<img class="shade" src="${ctx}/static/images/index/shade.png" alt="遮罩" />
@@ -103,7 +104,7 @@ DD_belatedPNG.fix('#logo,.navBar,#top1,#top2,#top3,#top4,.nav_icon1,.nav_icon2,.
 					<img src="${ctx}/static/images/shadow/boxsd_r.png" alt="阴影" />
 				</div>
 			</div>
-			<img id="more2" src="${ctx}/static/images/more.png" alt="更多" />
+			<a href="${ctx}/mainPage/2" target="_blank" ><img id="more2" src="${ctx}/static/images/more.png" alt="更多" /></a>
 
 			<!--美甲-->
 			<img id="jia_t" src="${ctx}/static/images/index/jia_t.png" alt="美甲顶部" />
@@ -114,7 +115,7 @@ DD_belatedPNG.fix('#logo,.navBar,#top1,#top2,#top3,#top4,.nav_icon1,.nav_icon2,.
 				
 				<c:forEach items="${meijiaShops}" var="meijiaShop" varStatus="status2">
 					<div class="shop shop${status2.index+1}">
-						<a href="#" target="_blank">
+						<a href="javascript:void(0);" target="_blank" onclick="shopDetail('${ctx}/mainPage/shopDetail','${meijiaShop.shopId }')">
 							<img src="${meijiaShop.imageAddress }" alt="商店" />
 						</a>
 					<img class="shade" src="${ctx}/static/images/index/shade.png" alt="遮罩" />
@@ -125,16 +126,14 @@ DD_belatedPNG.fix('#logo,.navBar,#top1,#top2,#top3,#top4,.nav_icon1,.nav_icon2,.
 					<img src="${ctx}/static/images/shadow/boxsd_r.png" alt="阴影" />
 				</div>
 			</div>
-			<img id="more3" src="${ctx}/static/images/morelast.png" alt="更多" />
+			<a  href="${ctx}/mainPage/2" target="_blank"><img id="more3" src="${ctx}/static/images/morelast.png" alt="更多" /></a>
 		</div>
 	</div>
-
 	<!--主体end-->
 
 <!--底部foot-->
 <c:import url="/WEB-INF/views/commonFile/foot.jsp"/>
 <!--返回end-->
-
 
 	<script type="text/javascript" src="${ctx}/static/js/script.js"></script>
 	<script src="${ctx}/static/js/jquery-1.9.1.min.js"
@@ -249,5 +248,12 @@ DD_belatedPNG.fix('#logo,.navBar,#top1,#top2,#top3,#top4,.nav_icon1,.nav_icon2,.
 					});
 		});
 	</script>
+	
+<script type="text/javascript">
+    function shopDetail(url,param){
+    	window.location.href=url+"?shopId="+param;
+    }
+</script>
+  
 </body>
 </html>

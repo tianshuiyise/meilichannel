@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page contentType="text/html;charset=UTF-8"%>
+<%@ taglib prefix="tags" tagdir="/WEB-INF/tags" %>
 <c:set var="ctx" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -25,49 +26,48 @@ DD_belatedPNG.fix('#logo,.navBar,#top1,#top2,#top3,#top4,.nav_icon1,.nav_icon2,.
  <div id="main">
     <div style="float:left"><img src="${ctx}/static/images/shadow/shadow1.jpg" alt="阴影" /></div>
     <div style="float:right"><img src="${ctx}/static/images/shadow/shadow2.jpg" alt="阴影" /></div>
-    
     <div id="container" >
       <div class="bannerbox">
-      <div id="focus">
-        <ul>
-          <li id="bnr1"><a href="#" target="_blank">
-              <img src="${ctx}/static/images/banner/banner1.png" alt="" /></a></li>
-          <li id="bnr2"><a href="#" target="_blank">
-              <img src="${ctx}/static/images/banner/banner2.png" alt="" /></a></li>
-          <li id="bnr3"><a href="#" target="_blank">
-              <img src="${ctx}/static/images/banner/banner3.png" alt="" /></a></li>
-          <li id="bnr4"><a href="#" target="_blank">
-              <img src="${ctx}/static/images/banner/banner4.png" alt="" /></a></li>
-        </ul>
-        <input id="btn_rong" type="button" alt="美容" />
-        <input id="btn_fa" type="button" alt="美发" />
-        <input id="btn_jia" type="button" alt="美甲" />
-      </div>
+      	<div id="focus">
+			<ul>
+				<li id="bnr1">
+					<a href="javascript:void(0);" target="_blank" onclick="shopDetail('${ctx}/mainPage/shopDetail','0b0dde6e-0b51-4ce2-8ffe-0c40919bf3ec')"> 
+						<img src="${ctx}/static/images/banner/banner1.png" alt="" />
+					</a>
+				</li>
+				<li id="bnr2"><a href="javascript:void(0);" target="_blank" onclick="shopDetail('${ctx}/mainPage/shopDetail','0b0dde6e-0b51-4ce2-8ffe-0c40919bf3ec')"> <img
+						src="${ctx}/static/images/banner/banner2.png" alt="" /></a></li>
+				<li id="bnr3"><a href="${ctx}/mainPage/shopDetail" target="_blank"> <img
+						src="${ctx}/static/images/banner/banner3.png" alt="" /></a></li>
+				<li id="bnr4"><a href="${ctx}/mainPage/shopDetail" target="_blank"> <img
+						src="${ctx}/static/images/banner/banner4.png" alt="" /></a></li>
+			</ul>
+			<input id="btn_rong" type="button" alt="美容" /> <input id="btn_fa"
+				type="button" alt="美发" /> <input id="btn_jia" type="button"
+				alt="美甲" />
+		</div>
      </div>
      <img id="sidebar" src="${ctx}/static/images/index/sidebar.png" alt="公告" />
+     
      <div id="ranking">
        <div id="ranktext">
          <span>排序：<a href="###">销售量</a><a href="###">评价</a><a href="###">综合排序</a><a href="###">就近搜索</a></span>
        </div>
-       <div class="rank-shop">
-         <a href="#"><img src="${ctx}/static/images/index/shop1.png" alt="店铺" /></a><span><a href="#">***的店铺</a></span>
-         <div class="delete"><input type="button" value="修改"/>/<input type="button" value="删除"/></div>
-         <p>淘宝网是亚太地区较大的网络零售商圈，由阿里巴巴集团在2003年5月10日投资创立。淘宝网现在业务跨越C2C（个人对个人）、B2C（商家对个人）两大部分。截止2014年，淘宝网注册会员超5亿人每天有超过1.2亿的活跃用户，在线商品数达到10亿件，... </p>
-       </div>
-       <div class="rank-shop">
-         <a href="#"><img src="${ctx}/static/images/index/shop1.png" alt="店铺" /></a><span><a href="#">***的店铺</a></span><p>淘宝网是亚太地区较大的网络零售商圈，由阿里巴巴集团在2003年5月10日投资创立。淘宝网现在业务跨越C2C（个人对个人）、B2C（商家对个人）两大部分。截止2014年，淘宝网注册会员超5亿人每天有超过1.2亿的活跃用户，在线商品数达到10亿件，... </p>
-       </div>
-       <div class="rank-shop">
-         <a href="#"><img src="${ctx}/static/images/index/shop1.png" alt="店铺" /></a><span><a href="#">***的店铺</a></span><p>淘宝网是亚太地区较大的网络零售商圈，由阿里巴巴集团在2003年5月10日投资创立。淘宝网现在业务跨越C2C（个人对个人）、B2C（商家对个人）两大部分。截止2014年，淘宝网注册会员超5亿人每天有超过1.2亿的活跃用户，在线商品数达到10亿件，... </p>
-       </div>
-       <div class="rank-shop">
-         <a href="#"><img src="${ctx}/static/images/index/shop1.png" alt="店铺" /></a><span><a href="#">***的店铺</a></span><p>淘宝网是亚太地区较大的网络零售商圈，由阿里巴巴集团在2003年5月10日投资创立。淘宝网现在业务跨越C2C（个人对个人）、B2C（商家对个人）两大部分。截止2014年，淘宝网注册会员超5亿人每天有超过1.2亿的活跃用户，在线商品数达到10亿件，... </p>
-       </div>
-       <div class="rank-shop">
-         <a href="#"><img src="${ctx}/static/images/index/shop1.png" alt="店铺" /></a><span><a href="#">***的店铺</a></span><p>淘宝网是亚太地区较大的网络零售商圈，由阿里巴巴集团在2003年5月10日投资创立。淘宝网现在业务跨越C2C（个人对个人）、B2C（商家对个人）两大部分。截止2014年，淘宝网注册会员超5亿人每天有超过1.2亿的活跃用户，在线商品数达到10亿件，... </p>
-       </div>
+       <c:forEach items="${shops.content}" var="shop" varStatus="status">
+       		<div class="rank-shop">
+	         	<a href="javascript:void(0);" target="_blank" onclick="shopDetail('${ctx}/mainPage/shopDetail','${shop.shopId}')">
+	         		<img src="${shop.imageAddress }" alt="店铺" />
+	         	</a>
+	         	<span>
+	         		<a href="javascript:void(0);" target="_blank" onclick="shopDetail('${ctx}/mainPage/shopDetail','${shop.shopId}')">${shop.shopName }的店铺</a>
+	         	</span>
+	         	<p>${shop.introduction }</p>
+	       </div>
+       </c:forEach>
      </div>
-     <img id="pages" src="${ctx}/static/images/channel/pages.png" alt="页码" />
+     <!-- 分页组件区 -->
+	 <tags:pagination page="${shops}"/>
+    <%--  <img id="pages" src="${ctx}/static/images/channel/pages.png" alt="页码" /> --%>
     </div>
 </div>
 
@@ -76,7 +76,6 @@ DD_belatedPNG.fix('#logo,.navBar,#top1,#top2,#top3,#top4,.nav_icon1,.nav_icon2,.
 <!--底部foot-->
 <c:import url="/WEB-INF/views/commonFile/foot.jsp"/>
 <!--返回end-->
-
 
 <script type="text/javascript" src="${ctx}/static/js/script.js"></script>
 <script src="${ctx}/static/js/jquery-1.9.1.min.js" type="text/javascript"></script>
@@ -123,5 +122,13 @@ DD_belatedPNG.fix('#logo,.navBar,#top1,#top2,#top3,#top4,.nav_icon1,.nav_icon2,.
 	})
   })
   </script>
+  
+<script type="text/javascript">
+    function shopDetail(url,param){
+    	window.location.href=url+"?shopId="+param;
+    }
+</script>
+  
+  
 </body>
 </html>

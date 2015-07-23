@@ -23,7 +23,7 @@ public interface IDao<T> {
 	 * @return  
 	 * @return Page<T>
 	 */
-public Page<T> findWithPage(Pageable pageable, T t, User user);
+public Page<T> findWithPage(Pageable pageable, T t, User user,String... str);
 	
 
 	/**

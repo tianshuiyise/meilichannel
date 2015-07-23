@@ -1,8 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page contentType="text/html;charset=UTF-8"%>
-<%@ taglib prefix="dict" uri="http://www.summer.org/tags/dict" %>
+<%@ taglib prefix="tags" tagdir="/WEB-INF/tags" %>
 <c:set var="ctx" value="${pageContext.request.contextPath}" />
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -20,35 +19,7 @@ DD_belatedPNG.fix('#logo,.navBar,#top1,#top2,#top3,#top4,.nav_icon1,.nav_icon2,.
 
 <body>
 <!--头部-->
-<div class="headerBar">
-  <div class="header comWidth">
-    <div class="fl"><img src="${ctx}/static/images/header/logo.png" alt="logo" id="logo" /></div>
-    <div class="rightArea fr">
-      <div class="topBar">
-        <ul>
-          <li id="top1"><a href="#">注册</a></li>
-          <li id="top2"><a href="#">登录</a></li>
-          <li id="top3"><a href="#">我的频道</a></li>
-          <li id="top4"><a href="#">申请商家入驻</a></li>
-        </ul>
-      </div>
-      <div class="navBar">
-        <ul>
-          <li class="nav_icon1"><a href="#">首页</a></li>
-          <li class="nav_icon2"><a href="#">美容</a></li>
-          <li class="nav_icon3"><a href="#">美发</a></li>
-          <li class="nav_icon4"><a href="#">美甲</a></li>
-        </ul>
-      </div>
-        <div id="search">
-          <input type="text" id="search_ipt" />
-          <input type="button" id="search_btn" />
-        </div>
-       
-    </div>
-  </div>
-</div>
-<div id="headersd"></div>
+	<c:import url="/WEB-INF/views/commonFile/head.jsp"/>
 <!--头部end-->
 
 <!--主体-->
@@ -84,17 +55,17 @@ DD_belatedPNG.fix('#logo,.navBar,#top1,#top2,#top3,#top4,.nav_icon1,.nav_icon2,.
     </div>
     <div id="content" class="content1">
     <div id="content1">
-      <div class="workinfo"><img src="images/channel/portrait.png" alt="作品图片"/>作品1：<br/>新华网北京6月27日电 中共中央政治局6月26日下午就加强反腐倡廉法规制度建设进行第二十四次集体学习。中共中央总书记习近平在主持学习时强调，我们党长期执政，既具有巨大政治优势，也面临严峻挑战，必须依靠党的各级组织和人民的力量，不断加强和改进党的建设、管理、监督。铲除不良作风和腐败现象滋生蔓延的土壤，根本上要靠法规制度。要加强反腐倡廉法规制度建设，把法规制度建设贯穿到反腐倡廉各个领域、落实到制约和监督权力各个方面，发挥法规制度的激励约束作用，推动形成不敢腐不能腐不想腐的有效机制。
+      <div class="workinfo"><img src="${ctx}/static/images/channel/portrait.png" alt="作品图片"/>作品1：<br/>新华网北京6月27日电 中共中央政治局6月26日下午就加强反腐倡廉法规制度建设进行第二十四次集体学习。中共中央总书记习近平在主持学习时强调，我们党长期执政，既具有巨大政治优势，也面临严峻挑战，必须依靠党的各级组织和人民的力量，不断加强和改进党的建设、管理、监督。铲除不良作风和腐败现象滋生蔓延的土壤，根本上要靠法规制度。要加强反腐倡廉法规制度建设，把法规制度建设贯穿到反腐倡廉各个领域、落实到制约和监督权力各个方面，发挥法规制度的激励约束作用，推动形成不敢腐不能腐不想腐的有效机制。
 　　中央纪委宣传部部长肖培就这个问题进行讲解，并谈了意见和建议。
 　　中共中央政治局各位同志认真听取了他的讲解，并就有关问题进行了讨论。
 　　习近平在主持学习时发表了讲话。他指出，再过几天，我们将迎来中国共产党成立94周年。今天，中央政治局集体学习安排党建方面的内容，题目是加强反腐倡廉法规制度建设，以此来纪念党的94岁生日。</div>
       
     </div>
     <div id="content2" class="hidecontent">
-      <div class="personinfo"><img src='images/channel/present.png' alt="服务人员照片">姓名：(づ￣3￣)づ╭❤～就好<br/>也面临严峻挑战，必须依靠党的各级组织和人民的力量，不断加强和改进党的建设、管理、监督。铲除不良作风和腐败现象滋生蔓延的土壤，根本上要靠法规制度。要加强反腐倡廉法规制度建设，把法规制度建设贯穿到反腐倡廉各个领域、落实到制约和监督权力各个方面，发挥法规制度的激励约束作用，推动形成不敢腐不能腐不想腐的有效机制。</div>
-     <div class="personinfo"><img src='images/channel/present.png' alt="服务人员照片">姓名：(づ￣3￣)づ╭❤～就好<br/>也面临严峻挑战，必须依靠党的各级组织和人民的力量，不断加强和改进党的建设、管理、监督。铲除不良作风和腐败现象滋生蔓延的土壤，根本上要靠法规制度。要加强反腐倡廉法规制度建设，把法规制度建设贯穿到反腐倡廉各个领域、落实到制约和监督权力各个方面，发挥法规制度的激励约束作用，推动形成不敢腐不能腐不想腐的有效机制。</div>
-     <div class="personinfo"><img src='images/channel/present.png' alt="服务人员照片">姓名：(づ￣3￣)づ╭❤～就好<br/>也面临严峻挑战，必须依靠党的各级组织和人民的力量，不断加强和改进党的建设、管理、监督。铲除不良作风和腐败现象滋生蔓延的土壤，根本上要靠法规制度。要加强反腐倡廉法规制度建设，把法规制度建设贯穿到反腐倡廉各个领域、落实到制约和监督权力各个方面，发挥法规制度的激励约束作用，推动形成不敢腐不能腐不想腐的有效机制。</div>
-     <div class="personinfo"><img src='images/channel/present.png' alt="服务人员照片">姓名：(づ￣3￣)づ╭❤～就好<br/>也面临严峻挑战，必须依靠党的各级组织和人民的力量，不断加强和改进党的建设、管理、监督。铲除不良作风和腐败现象滋生蔓延的土壤，根本上要靠法规制度。要加强反腐倡廉法规制度建设，把法规制度建设贯穿到反腐倡廉各个领域、落实到制约和监督权力各个方面，发挥法规制度的激励约束作用，推动形成不敢腐不能腐不想腐的有效机制。</div>
+      <div class="personinfo"><img src='${ctx}/static/images/channel/present.png' alt="服务人员照片">姓名：(づ￣3￣)づ╭❤～就好<br/>也面临严峻挑战，必须依靠党的各级组织和人民的力量，不断加强和改进党的建设、管理、监督。铲除不良作风和腐败现象滋生蔓延的土壤，根本上要靠法规制度。要加强反腐倡廉法规制度建设，把法规制度建设贯穿到反腐倡廉各个领域、落实到制约和监督权力各个方面，发挥法规制度的激励约束作用，推动形成不敢腐不能腐不想腐的有效机制。</div>
+     <div class="personinfo"><img src='${ctx}/static/images/channel/present.png' alt="服务人员照片">姓名：(づ￣3￣)づ╭❤～就好<br/>也面临严峻挑战，必须依靠党的各级组织和人民的力量，不断加强和改进党的建设、管理、监督。铲除不良作风和腐败现象滋生蔓延的土壤，根本上要靠法规制度。要加强反腐倡廉法规制度建设，把法规制度建设贯穿到反腐倡廉各个领域、落实到制约和监督权力各个方面，发挥法规制度的激励约束作用，推动形成不敢腐不能腐不想腐的有效机制。</div>
+     <div class="personinfo"><img src='${ctx}/static/images/channel/present.png' alt="服务人员照片">姓名：(づ￣3￣)づ╭❤～就好<br/>也面临严峻挑战，必须依靠党的各级组织和人民的力量，不断加强和改进党的建设、管理、监督。铲除不良作风和腐败现象滋生蔓延的土壤，根本上要靠法规制度。要加强反腐倡廉法规制度建设，把法规制度建设贯穿到反腐倡廉各个领域、落实到制约和监督权力各个方面，发挥法规制度的激励约束作用，推动形成不敢腐不能腐不想腐的有效机制。</div>
+     <div class="personinfo"><img src='${ctx}/static/images/channel/present.png' alt="服务人员照片">姓名：(づ￣3￣)づ╭❤～就好<br/>也面临严峻挑战，必须依靠党的各级组织和人民的力量，不断加强和改进党的建设、管理、监督。铲除不良作风和腐败现象滋生蔓延的土壤，根本上要靠法规制度。要加强反腐倡廉法规制度建设，把法规制度建设贯穿到反腐倡廉各个领域、落实到制约和监督权力各个方面，发挥法规制度的激励约束作用，推动形成不敢腐不能腐不想腐的有效机制。</div>
     </div>
     <div id="content3" class="hidecontent">
      
@@ -149,7 +120,11 @@ DD_belatedPNG.fix('#logo,.navBar,#top1,#top2,#top3,#top4,.nav_icon1,.nav_icon2,.
 </div>
 
 <!--主体end-->
-
+<!--底部foot-->
+<c:import url="/WEB-INF/views/commonFile/foot.jsp"/>
+<script src="${ctx}/static/js/jquery-1.9.1.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="${ctx}/static/js/script.js"></script>
+	
 <script language="javascript">
 function switchTag(tag,content)
 {

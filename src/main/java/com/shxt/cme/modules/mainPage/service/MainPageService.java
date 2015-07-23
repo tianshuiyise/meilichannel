@@ -30,12 +30,14 @@ public class MainPageService implements IService<Shop>{
 	@Autowired
 	private MainPageDao mainPageDao;
 
+
 	/* (non-Javadoc)
-	 * @see com.shxt.cme.modules.IService#findWithPage(org.springframework.data.domain.Pageable, java.lang.Object, com.shxt.cme.domain.User)
+	 * @see com.shxt.cme.modules.IService#findWithPage(org.springframework.data.domain.Pageable, java.lang.Object, com.shxt.cme.domain.User, java.lang.String[])
 	 */
 	@Override
-	public Page<Shop> findWithPage(Pageable pageable, Shop t, User user) {
-		return null;
+	public Page<Shop> findWithPage(Pageable pageable, Shop t, User user,
+			String... str) {
+		return mainPageDao.findWithPage(pageable, t, user, str);
 	}
 
 	/* (non-Javadoc)
@@ -132,5 +134,25 @@ public class MainPageService implements IService<Shop>{
 		return  mainPageDao.getShops(shopType);
 	}
 
+	/** @Description: TODO
+	 * @return  
+	 * @return: List<Shop>
+	*/
 	
+	public List<Shop> getShops() {
+		
+		return mainPageDao.getShops();
+	}
+
+	/** @Description: TODO
+	 * @param proId
+	 * @return  
+	 * @return: Product
+	*/
+	
+	public Product getProductiondetail(String proId) {
+		return  mainPageDao.getProductiondetail(proId);
+	}
+
+
 }
