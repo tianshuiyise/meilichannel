@@ -18,17 +18,23 @@ public class ReviewBean {
 	private String accordLevel;
 	private String reviewMes;
 	private String reviewDate;
-	
 	private String shopId;
-	
-	
 	private String userId;
-	
 	private String userName;
+	private String proId;
 	
-	
-	
-	
+	/**
+	 * @return the proId
+	 */
+	public String getProId() {
+		return proId;
+	}
+	/**
+	 * @param proId the proId to set
+	 */
+	public void setProId(String proId) {
+		this.proId = proId;
+	}
 	/**
 	 * @return the userId
 	 */

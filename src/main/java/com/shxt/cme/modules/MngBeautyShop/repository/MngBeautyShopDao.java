@@ -18,7 +18,7 @@ import com.shxt.framework.utils.DbUtils;
 @Repository
 public class MngBeautyShopDao  extends BaseDao implements IDao<Shop> {
 	@Override
-	public Page<Shop> findWithPage(Pageable pageable, Shop shop, User user) {
+	public Page<Shop> findWithPage(Pageable pageable, Shop shop, User user,String... str) {
 		StringBuffer sql = new StringBuffer();
 		sql.append(" SELECT * ");
 		sql.append(" FROM t_shop ");

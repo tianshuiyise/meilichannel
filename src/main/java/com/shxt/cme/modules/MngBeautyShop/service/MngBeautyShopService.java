@@ -17,7 +17,7 @@ public class MngBeautyShopService implements IService<Shop>{
 	private MngBeautyShopDao mngBeautyShopDao;
 	
 	@Override
-	public Page<Shop> findWithPage(Pageable pageable, Shop shop, User user) {
+	public Page<Shop> findWithPage(Pageable pageable, Shop shop, User user,String... str) {
 		
 		return mngBeautyShopDao.findWithPage( pageable,  shop,  user) ;
 	}

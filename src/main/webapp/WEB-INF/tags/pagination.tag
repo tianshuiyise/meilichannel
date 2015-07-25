@@ -7,9 +7,20 @@ int total = page.getTotalPages();
 request.setAttribute("current", current);
 request.setAttribute("total", total);
 %>
+<style>
+#table2{
+  position: fixed;
+  bottom: 30px;
+  width:50%;
+  margin: auto;
+}
+
+</style>
+
+
 <table id="table2">
   	<tr>
-		<td width="350" valign="center" height="28" style="text-align:left;">
+		<td  valign="center" height="28" style="text-align:center;">
 			<div>【第<span>${current+1}</span>页 / 共<span>${total}</span>页】  【本页<span>${page.numberOfElements}</span>条 / 共<span>${page.totalElements}</span>条】</div>
 		</td>
 		

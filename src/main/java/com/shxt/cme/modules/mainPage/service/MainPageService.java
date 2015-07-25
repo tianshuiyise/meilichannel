@@ -7,6 +7,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import com.shxt.cme.domain.Member;
 import com.shxt.cme.domain.OrderBean;
 import com.shxt.cme.domain.Product;
 import com.shxt.cme.domain.ReviewBean;
@@ -30,12 +31,14 @@ public class MainPageService implements IService<Shop>{
 	@Autowired
 	private MainPageDao mainPageDao;
 
+
 	/* (non-Javadoc)
-	 * @see com.shxt.cme.modules.IService#findWithPage(org.springframework.data.domain.Pageable, java.lang.Object, com.shxt.cme.domain.User)
+	 * @see com.shxt.cme.modules.IService#findWithPage(org.springframework.data.domain.Pageable, java.lang.Object, com.shxt.cme.domain.User, java.lang.String[])
 	 */
 	@Override
-	public Page<Shop> findWithPage(Pageable pageable, Shop t, User user) {
-		return null;
+	public Page<Shop> findWithPage(Pageable pageable, Shop t, User user,
+			String... str) {
+		return mainPageDao.findWithPage(pageable, t, user, str);
 	}
 
 	/* (non-Javadoc)
@@ -101,13 +104,13 @@ public class MainPageService implements IService<Shop>{
 	}
 
 	/** @Description: TODO
-	 * @param shopId
+	 * @param review
 	 * @return  
 	 * @return: List<ReviewBean>
 	*/
 	
-	public List<ReviewBean> getAllReview(String shopId) {
-		return mainPageDao.getAllReview(shopId);
+	public List<ReviewBean> getAllReview(ReviewBean review) {
+		return mainPageDao.getAllReview(review);
 	}
 
 	/** @Description: TODO
@@ -116,8 +119,8 @@ public class MainPageService implements IService<Shop>{
 	 * @return: List<OrderBean>
 	*/
 	
-	public List<OrderBean> getAllOrder(String shopId) {
-		return mainPageDao.getAllOrder(shopId);
+	public List<OrderBean> getAllOrder(OrderBean orderBean) {
+		return mainPageDao.getAllOrder(orderBean);
 	}
 
 	/** @Description: TODO
@@ -132,5 +135,46 @@ public class MainPageService implements IService<Shop>{
 		return  mainPageDao.getShops(shopType);
 	}
 
+	/** @Description: TODO
+	 * @return  
+	 * @return: List<Shop>
+	*/
 	
+	public List<Shop> getShops() {
+		
+		return mainPageDao.getShops();
+	}
+
+	/** @Description: TODO
+	 * @param proId
+	 * @return  
+	 * @return: Product
+	*/
+	
+	public Product getProductiondetail(String proId) {
+		return  mainPageDao.getProductiondetail(proId);
+	}
+
+	/** @Description: TODO
+	 * @param proId
+	 * @return  
+	 * @return: List<Member>
+	*/
+	
+	public List<Member> getMemberByProduct(String proId) {
+		return mainPageDao.getMemberByProduct(proId);
+	}
+
+	/** @Description: TODO
+	 * @param pageable
+	 * @param object
+	 * @return  
+	 * @return: Page<Shop>
+	*/
+	
+	public Page<Shop> findWithPageByName(Pageable pageable, Object object) {
+		return mainPageDao.findWithPageByName(pageable, object);
+	}
+
+
 }

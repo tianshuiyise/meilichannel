@@ -57,7 +57,9 @@ DD_belatedPNG.fix('#logo,.navBar,#top1,#top2,#top3,#top4,.nav_icon1,.nav_icon2,.
       <li></li>
       <li>作品名称：&nbsp;
       	<c:forEach items="${shop.productions }" var="productions" varStatus="status">
-      		<a href="${ctx}/mainPage/productDetail/${productions.proId }">${productions.proName }</a>&nbsp;
+      		<a href="javascript:void(0);" target="_blank"  onclick="productDetail('${ctx}/mainPage/productDetail','${productions.proId }')">
+      			${productions.proName }
+      		</a>&nbsp;
       	</c:forEach>
       </li>
       <li></li>
@@ -131,11 +133,13 @@ function getProduct(url,id,content){
 			success:function(result){
 				$.each(result, function(i, item) {  
 		             if("content2"==content){
+		            	 // onclick="productDetail('${ctx}/mainPage/productDetail','${productions.proId }')"     onclick='productDetail(${ctx}/mainPage/productDetail,"+proId+")'
 		            	 var proName=item.proName;
 			             var proId=item.proId;
 			             var introduction=item.introduction;
 			             var imageAddress=item.imageAddress;
-		            	 $("#content2").append("<div id='workinfo"+i+"'  class='workinfo'><a href='#'><img src='"+imageAddress+"' alt='作品图片'/></a><a href='${ctx}/mainPage/shopDetail/"+proId+"'>"+proName+":</a><br/>"+introduction+"</div>"); 
+			             var str="<div id='workinfo"+i+"'  class='workinfo'><a href='javascript:void(0);' onclick=\"productDetail('${ctx}/mainPage/productDetail','"+proId+"')\"><img src='"+imageAddress+"' alt='作品图片'/></a><a href='javascript:void(0);' onclick=\"productDetail('${ctx}/mainPage/productDetail','"+proId+"')\" >"+proName+":</a><br/>"+introduction+"</div>";
+		            	 $("#content2").append(str); 
 		             }
 		             
 		             
@@ -159,7 +163,6 @@ function getProduct(url,id,content){
 		             
 		             if("content4"==content){
 		            	 var orderId=item.orderId;
-		            	 
 		            	 var proId=item.proId;
 		            	 var memberId=item.memberId;
 		            	 var userId=item.userId;
@@ -173,7 +176,7 @@ function getProduct(url,id,content){
 		     	        
 		     	        
 		            	 $("#content4").append("<table border=1>   </table>"); 
-		            	 $("#content4").append(" <tr><td class='uname'>客户姓名："+userName+"</td><td class='details'>预约作品："+proName+"  ，    预约人员："+memberName+"</td><td class='dealtime'>下单时间："+appointTime+"</td></tr> ");
+		            	 $("#content4 table").append(" <tr><td class='uname'>客户姓名："+userName+"</td><td class='details'>预约作品："+proName+"  ，    预约人员："+memberName+"</td><td class='dealtime'>下单时间："+appointTime+"</td></tr> ");
 		            	 
 		             }
 		             
@@ -274,5 +277,14 @@ function switchTag(tag,content,url,shopid)
 	map.addControl(navigationControl);     
     
   </script>  
+  
+  <script type="text/javascript">
+    function productDetail(url,param){
+    	window.location.href=url+"?proId="+param;
+    }
+</script>
+  
+  
+  
 </body>
 </html>
