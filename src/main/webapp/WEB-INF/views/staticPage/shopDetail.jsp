@@ -176,7 +176,7 @@ function getProduct(url,id,content){
 		     	        
 		     	        
 		            	 $("#content4").append("<table border=1>   </table>"); 
-		            	 $("#content4").append(" <tr><td class='uname'>客户姓名："+userName+"</td><td class='details'>预约作品："+proName+"  ，    预约人员："+memberName+"</td><td class='dealtime'>下单时间："+appointTime+"</td></tr> ");
+		            	 $("#content4 table").append(" <tr><td class='uname'>客户姓名："+userName+"</td><td class='details'>预约作品："+proName+"  ，    预约人员："+memberName+"</td><td class='dealtime'>下单时间："+appointTime+"</td></tr> ");
 		            	 
 		             }
 		             

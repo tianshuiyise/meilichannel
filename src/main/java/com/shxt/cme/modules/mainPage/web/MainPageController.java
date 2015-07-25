@@ -1,12 +1,9 @@
 package com.shxt.cme.modules.mainPage.web;
 
 import java.util.List;
-import java.util.Map;
 
-import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -19,14 +16,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.shxt.cme.domain.Member;
 import com.shxt.cme.domain.OrderBean;
 import com.shxt.cme.domain.Product;
 import com.shxt.cme.domain.ReviewBean;
 import com.shxt.cme.domain.Shop;
-import com.shxt.cme.domain.User;
 import com.shxt.cme.modules.mainPage.service.MainPageService;
-import com.shxt.framework.utils.mapper.BeanMapper;
-import com.shxt.framework.web.Servlets;
 import com.shxt.framework.web.base.BaseController;
 
 /** 
@@ -68,6 +63,17 @@ public class MainPageController  extends BaseController{
 		//跳回首页
 		return "redirect:/";
 	}
+	
+	@RequestMapping(value = "/mainPage/search")
+	public String mainPageSearch(Model model,Pageable pageable,@RequestParam("shopName") String shopName){
+		String jspLocation="/staticPage/meirong";
+		// 获取分页对象、得到所有的店铺
+		Page<Shop> shops = mainPageService.findWithPageByName(pageable, shopName);
+		model.addAttribute("shops", shops);
+		return jspLocation;
+	}
+	
+	
 	
 	/**
 	 * @Description: 美容、美发、美夹
@@ -120,7 +126,7 @@ public class MainPageController  extends BaseController{
 	 */
 	@RequestMapping(value = "/mainPage/review")
 	public @ResponseBody List<ReviewBean> getAllReview(@RequestBody ReviewBean review){
-		List<ReviewBean> reviews=mainPageService.getAllReview( review.getShopId());
+		List<ReviewBean> reviews=mainPageService.getAllReview(review);
 		return reviews;
 	}
 	
@@ -132,16 +138,27 @@ public class MainPageController  extends BaseController{
 	 */
 	@RequestMapping(value = "/mainPage/order")
 	public @ResponseBody List<OrderBean> getAllOrder(@RequestBody OrderBean orderBean){
-		List<OrderBean> orders=mainPageService.getAllOrder( orderBean.getShopId());
+		List<OrderBean> orders=mainPageService.getAllOrder( orderBean);
 		return orders;
+	}
+	
+	
+	/**
+	 * @Description: 通过ajax得到所有member
+	 * @param review
+	 * @return  
+	 * @return: List<ReviewBean>
+	 */
+	@RequestMapping(value = "/mainPage/member")
+	public @ResponseBody List<Member> getAllMember(@RequestBody Product product){
+		List<Member> members=mainPageService.getMemberByProduct(product.getProId() );
+		return members;
 	}
 	
 	@RequestMapping(value = "/mainPage/productDetail")
 	public String productionDetail(Model model,@RequestParam("proId") String proId){
 		Product production=mainPageService.getProductiondetail(proId);
-		model.addAttribute("Product", production);
-		
-		
+		model.addAttribute("production", production);
 		return "/staticPage/productDetail";
 	}
 	

@@ -58,8 +58,8 @@
 						</ul>
 					</div>
 					<div id="search">
-						<input type="text" id="search_ipt" /> <input type="button"
-							id="search_btn" />
+						<input type="text" id="search_ipt" name="shopName" placeholder="请输入店铺名" />
+						<input type="button" id="search_btn" onClick="searchShop('${ctx}/mainPage/search');"/>
 					</div>
 
 				</div>
@@ -70,3 +70,12 @@
 		</div>
 		<!--头部end-->
 	</div>
+	
+<script type="text/javascript">
+    function searchShop(url){
+    	var shopName=$("#search_ipt").val();
+    	window.location.href=url+"?shopName="+shopName;
+    }
+</script>
+  
+	

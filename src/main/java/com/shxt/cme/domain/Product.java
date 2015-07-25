@@ -1,5 +1,7 @@
 package com.shxt.cme.domain;
 
+import java.util.List;
+
 public class Product {
 	private String proId;
 	private String proName;
@@ -10,6 +12,34 @@ public class Product {
 	private String shopId;
 	private String imageAddress;
 	private String imageName;
+	private List<Member> memberName;
+	private String shopQQ;
+	
+
+	/**
+	 * @return the shopQQ
+	 */
+	public String getShopQQ() {
+		return shopQQ;
+	}
+	/**
+	 * @param shopQQ the shopQQ to set
+	 */
+	public void setShopQQ(String shopQQ) {
+		this.shopQQ = shopQQ;
+	}
+	/**
+	 * @return the memberName
+	 */
+	public List<Member> getMemberName() {
+		return memberName;
+	}
+	/**
+	 * @param memberName the memberName to set
+	 */
+	public void setMemberName(List<Member> memberName) {
+		this.memberName = memberName;
+	}
 	public String getProId() {
 		return proId;
 	}

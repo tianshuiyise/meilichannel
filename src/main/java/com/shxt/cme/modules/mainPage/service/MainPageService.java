@@ -7,6 +7,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import com.shxt.cme.domain.Member;
 import com.shxt.cme.domain.OrderBean;
 import com.shxt.cme.domain.Product;
 import com.shxt.cme.domain.ReviewBean;
@@ -103,13 +104,13 @@ public class MainPageService implements IService<Shop>{
 	}
 
 	/** @Description: TODO
-	 * @param shopId
+	 * @param review
 	 * @return  
 	 * @return: List<ReviewBean>
 	*/
 	
-	public List<ReviewBean> getAllReview(String shopId) {
-		return mainPageDao.getAllReview(shopId);
+	public List<ReviewBean> getAllReview(ReviewBean review) {
+		return mainPageDao.getAllReview(review);
 	}
 
 	/** @Description: TODO
@@ -118,8 +119,8 @@ public class MainPageService implements IService<Shop>{
 	 * @return: List<OrderBean>
 	*/
 	
-	public List<OrderBean> getAllOrder(String shopId) {
-		return mainPageDao.getAllOrder(shopId);
+	public List<OrderBean> getAllOrder(OrderBean orderBean) {
+		return mainPageDao.getAllOrder(orderBean);
 	}
 
 	/** @Description: TODO
@@ -152,6 +153,27 @@ public class MainPageService implements IService<Shop>{
 	
 	public Product getProductiondetail(String proId) {
 		return  mainPageDao.getProductiondetail(proId);
+	}
+
+	/** @Description: TODO
+	 * @param proId
+	 * @return  
+	 * @return: List<Member>
+	*/
+	
+	public List<Member> getMemberByProduct(String proId) {
+		return mainPageDao.getMemberByProduct(proId);
+	}
+
+	/** @Description: TODO
+	 * @param pageable
+	 * @param object
+	 * @return  
+	 * @return: Page<Shop>
+	*/
+	
+	public Page<Shop> findWithPageByName(Pageable pageable, Object object) {
+		return mainPageDao.findWithPageByName(pageable, object);
 	}
 
 

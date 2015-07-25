@@ -22,35 +22,8 @@ DD_belatedPNG.fix('#logo,.navBar,#top1,#top2,#top3,#top4,.nav_icon1,.nav_icon2,.
 </head>
 
 <body>
-  <!--头部-->
-<div class="headerBar">
-  <div class="header comWidth">
-    <div class="fl"><img src="images/header/logo.png" alt="logo" id="logo" /></div>
-    <div class="rightArea fr">
-      <div class="topBar">
-        <ul>
-          <li id="top1"><a href="#">注册</a></li>
-          <li id="top2"><a href="#">登录</a></li>
-          <li id="top3"><a href="#">我的频道</a></li>
-          <li id="top4"><a href="#">申请商家入驻</a></li>
-        </ul>
-      </div>
-      <div class="navBar">
-        <ul>
-          <li class="nav_icon1"><a href="#">首页</a></li>
-          <li class="nav_icon2"><a href="#">美容</a></li>
-          <li class="nav_icon3"><a href="#">美发</a></li>
-          <li class="nav_icon4"><a href="#">美甲</a></li>
-        </ul>
-      </div>
-      <div id="search">
-        <input type="text" id="search_ipt" />
-        <input type="button" id="search_btn" />
-      </div>
-    </div>
-  </div>
-</div>
-<div id="headersd"></div>
+<!--头部-->
+<c:import url="/WEB-INF/views/commonFile/head.jsp"/>
 <!--头部end-->
 
   
