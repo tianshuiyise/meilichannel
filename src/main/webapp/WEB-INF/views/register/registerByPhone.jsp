@@ -51,10 +51,7 @@ function checkNumf(){
 </head>
 
 <body>
-<<<<<<< HEAD
-  <!--头部-->
-<c:import url="/WEB-INF/views/commonFile/head.jsp"></c:import>
-=======
+
 <!--头部-->
 <c:import url="/WEB-INF/views/commonFile/head.jsp"/>
 <!--头部end-->
