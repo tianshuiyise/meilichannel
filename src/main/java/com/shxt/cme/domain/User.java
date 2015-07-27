@@ -28,6 +28,28 @@ public class User {
     private String message;
     private String imageName;
     private String imageAddress;
+    private String deleteFlag;
+    private String createKey;
+    private String createDate;
+    
+	public String getCreateKey() {
+		return createKey;
+	}
+	public void setCreateKey(String createKey) {
+		this.createKey = createKey;
+	}
+	public String getCreateDate() {
+		return createDate;
+	}
+	public void setCreateDate(String createDate) {
+		this.createDate = createDate;
+	}
+	public String getDeleteFlag() {
+		return deleteFlag;
+	}
+	public void setDeleteFlag(String deleteFlag) {
+		this.deleteFlag = deleteFlag;
+	}
 	public String getUserId() {
 		return userId;
 	}

@@ -4,7 +4,7 @@
 	height:479px;
 	margin:24px auto 0;
 	position:relative;
-	background:url(../images/login_bg.png);
+	background:url(../images/login_bg.png) no-repeat;
 	}
 /*登录等界面背景end*/
 
@@ -54,9 +54,13 @@
 	top:173px;
 	width:80px;
 	height:18px;
-	border-radius:5px;
-	border:0px;
-	background:url(../images/get_code.png);
+	}
+#get_code2{
+	position:absolute;
+	left:814px;
+	top:173px;
+	width:80px;
+	height:18px;
 	}
 /*必填内容remark*/
 #remark{
@@ -104,7 +108,6 @@
 
 
 /*手机注册*/
-/*您的邮箱email*/
 #mobile{
 	position: absolute;
 	left: 483px;
@@ -125,3 +128,43 @@
 	outline:medium;
 	}
 /*手机注册end*/
+
+
+/*手机注册step2*/
+#regStep2{padding-top:140px;}
+#regStep2 p{
+	width:500px;
+	height:30px;
+	}
+#regStep2 .regText2{
+	color:#6e7070;
+	font-family:"微软雅黑";
+	font-size:12px;
+	display:block;
+	width:100px;
+	text-align:right;
+	float:left;
+	margin-right:20px;
+	}
+#regStep2 input{
+	background:#f2f4f4;
+	width:195px;
+	height:18px;
+	border-radius:5px;
+	}
+#regStep2 #submit{
+	color:#fff;
+	background:#69cff6;
+	}
+#regStep2 span{
+	margin-left:20px;
+	background:#f2f4f4;
+	color:#ff526a;
+	border:1px solid #e0e2e3;
+	border-radius:5px;
+	padding:3px;
+	display: none;
+	}
+
+
+/*手机注册step2 end*/
