@@ -15,56 +15,62 @@ import org.springframework.stereotype.Repository;
 import com.google.common.collect.Maps;
 import com.shxt.cme.domain.Member;
 import com.shxt.cme.domain.Product;
+import com.shxt.cme.domain.Merchont;
 import com.shxt.cme.domain.User;
 import com.shxt.framework.persistence.jdbc.support.BaseDao;
 import com.shxt.framework.utils.DbUtils;
 
 @Repository
 public class MemberDao extends BaseDao {
-	public Page<Member> findWithPage(Pageable pageable,User user) {
+	public Page<Member> findWithPage(Pageable pageable, User user) {
 		StringBuffer sql = new StringBuffer();
 		sql.append(" SELECT * ");
 		sql.append(" FROM t_member ");
-		Object[] args=new Object[]{};
-		return queryForPage(sql.toString(), pageable,
-				new MemberRowMapper(), args);
+		Object[] args = new Object[] {};
+		return queryForPage(sql.toString(), pageable, new MemberRowMapper(),
+				args);
 
 	}
-	public Page<Member> findWithPage1(Pageable pageable,User user) {
+
+	public Page<Member> findWithPage1(Pageable pageable, User user) {
 		StringBuffer sql = new StringBuffer();
 		sql.append(" SELECT * ");
 		sql.append(" FROM t_member ");
-		sql.append(" WHERE member_type=1 and merchont_id='"+user.getUserId()+"' ");
-		Object[] args=new Object[]{};
-		return queryForPage(sql.toString(), pageable,
-				new MemberRowMapper(), args);
+		sql.append(" WHERE member_type=1 and merchont_id='" + user.getUserId()
+				+ "' ");
+		Object[] args = new Object[] {};
+		return queryForPage(sql.toString(), pageable, new MemberRowMapper(),
+				args);
 
 	}
-	public Page<Member> findWithPage2(Pageable pageable,User user) {
+
+	public Page<Member> findWithPage2(Pageable pageable, User user) {
 		StringBuffer sql = new StringBuffer();
 		sql.append(" SELECT * ");
 		sql.append(" FROM t_member ");
-		sql.append(" WHERE member_type=2 and merchont_id='"+user.getUserId()+"' ");
-		Object[] args=new Object[]{};
-		return queryForPage(sql.toString(), pageable,
-				new MemberRowMapper(), args);
+		sql.append(" WHERE member_type=2 and merchont_id='" + user.getUserId()
+				+ "' ");
+		Object[] args = new Object[] {};
+		return queryForPage(sql.toString(), pageable, new MemberRowMapper(),
+				args);
 
 	}
-	public Page<Member> findWithPage3(Pageable pageable,User user) {
+
+	public Page<Member> findWithPage3(Pageable pageable, User user) {
 		StringBuffer sql = new StringBuffer();
 		sql.append(" SELECT * ");
 		sql.append(" FROM t_member ");
-		sql.append(" WHERE member_type=3 and merchont_id='"+user.getUserId()+"' ");
-		Object[] args=new Object[]{};
-		return queryForPage(sql.toString(), pageable,
-				new MemberRowMapper(), args);
+		sql.append(" WHERE member_type=3 and merchont_id='" + user.getUserId()
+				+ "' ");
+		Object[] args = new Object[] {};
+		return queryForPage(sql.toString(), pageable, new MemberRowMapper(),
+				args);
 
 	}
-	private class MemberRowMapper implements
-			ParameterizedRowMapper<Member> {
+
+	private class MemberRowMapper implements ParameterizedRowMapper<Member> {
 		@Override
-		public Member mapRow(ResultSet rs, int rowNum)
-				throws SQLException {
+		public Member mapRow(ResultSet rs, int rowNum) throws SQLException {
 			Member member = new Member();
 			member.setMemberId(rs.getString("member_id"));
 			member.setMemberName(rs.getString("member_name"));
@@ -72,55 +78,88 @@ public class MemberDao extends BaseDao {
 			member.setMemberType(rs.getInt("member_type"));
 			member.setMerchontId(rs.getString("merchont_id"));
 			member.setImageAddress(rs.getString("image_address"));
-			member.setImageName(rs.getString("image_name"));
 			return member;
 		}
 	}
-	public void insertSelective1(Member member,User user){
+	public Merchont findMerchontType(User user) {
 		StringBuffer sql = new StringBuffer();
-		sql.append(" insert into  t_member(member_id,member_name,member_type,image_address,image_name,introduction,merchont_id) ");
-		sql.append(" values(?,?,?,?,?,?,?) ");
-		Object[] args=new Object[]{DbUtils.getKey(),member.getMemberName(),1,member.getImageAddress(),member.getImageName(),member.getIntroduction(),
-				user.getUserId()};
+		sql.append("SELECT * ");
+		sql.append(" FROM t_merchont ");
+		sql.append(" WHERE merchont_id='" + user.getUserId() + "' ");
+		Object[] args = new Object[] {};
+		return queryForObject(sql.toString(), args, new MerchontRowMapper());
+	}
+	
+	private class MerchontRowMapper implements ParameterizedRowMapper<Merchont> {
+		@Override
+		public Merchont mapRow(ResultSet rs, int rowNum) throws SQLException {
+			Merchont merchont = new Merchont();
+			merchont.setMerchontId(rs.getString("merchont_Id"));
+			merchont.setAccoutNum(rs.getString("accout_Num"));
+			merchont.setRealName(rs.getString("real_Name"));
+			merchont.setMerchontType(rs.getInt("merchont_Type"));
+			merchont.setId(rs.getString("id"));
+			merchont.setUserId(rs.getString("user_id"));
+			merchont.setPhone(rs.getString("phone"));
+			return merchont;
+		}
+	}
+	public void insertSelective1(Member member, User user) {
+		StringBuffer sql = new StringBuffer();
+		sql.append(" insert into  t_member(member_id,member_name,member_type,image_address,introduction,merchont_id) ");
+		sql.append(" values(?,?,?,?,?,?) ");
+		Object[] args = new Object[] { DbUtils.getKey(),
+				member.getMemberName(), 1, member.getImageAddress(),
+			        member.getIntroduction(),
+				user.getUserId() };
 		update(sql.toString(), args);
 	}
-	public void insertSelective2(Member member,User user){
+
+	public void insertSelective2(Member member, User user) {
 		StringBuffer sql = new StringBuffer();
-		sql.append(" insert into  t_member(member_id,member_name,member_type,image_address,image_name,introduction,merchont_id) ");
-		sql.append(" values(?,?,?,?,?,?,?) ");
-		Object[] args=new Object[]{DbUtils.getKey(),member.getMemberName(),2,member.getImageAddress(),member.getImageName(),member.getIntroduction(),
-				user.getUserId()};
+		sql.append(" insert into  t_member(member_id,member_name,member_type,image_address,introduction,merchont_id) ");
+		sql.append(" values(?,?,?,?,?,?) ");
+		Object[] args = new Object[] { DbUtils.getKey(),
+				member.getMemberName(), 2, member.getImageAddress(),
+				member.getIntroduction(),
+				user.getUserId() };
 		update(sql.toString(), args);
 	}
-	public void insertSelective3(Member member,User user){
+
+	public void insertSelective3(Member member, User user) {
 		StringBuffer sql = new StringBuffer();
-		sql.append(" insert into  t_member(member_id,member_name,member_type,image_address,image_name,introduction,merchont_id) ");
-		sql.append(" values(?,?,?,?,?,?,?) ");
-		Object[] args=new Object[]{DbUtils.getKey(),member.getMemberName(),3,member.getImageAddress(),member.getImageName(),member.getIntroduction(),
-				user.getUserId()};
+		sql.append(" insert into  t_member(member_id,member_name,member_type,image_address,introduction,merchont_id) ");
+		sql.append(" values(?,?,?,?,?,?) ");
+		Object[] args = new Object[] { DbUtils.getKey(),
+				member.getMemberName(), 3, member.getImageAddress(),
+				member.getIntroduction(),
+				user.getUserId() };
 		update(sql.toString(), args);
 	}
-	public Member findInfoMem(Member member){
+
+	public Member findInfoMem(Member member) {
 		StringBuffer sql = new StringBuffer();
 		sql.append("SELECT * ");
 		sql.append(" FROM t_member ");
-		sql.append(" WHERE member_id='"+member.getMemberId()+"' ");
-		Object[] args=new Object[]{};
+		sql.append(" WHERE member_id='" + member.getMemberId() + "' ");
+		Object[] args = new Object[] {};
 		return queryForObject(sql.toString(), args, new MemberRowMapper());
 	}
-	public int updateByPrimaryKeySelective(Member member){
-		String sql= "UPDATE  t_member " + "SET "+ "member_name='"+member.getMemberName()+"'"
-				+ ",image_address='"+member.getImageAddress()+"'" 
-				+ ",image_name='"+member.getImageName()+"'" 
-				+ ",introduction='"+member.getIntroduction()+"'" 
-				+ "WHERE member_id='"+member.getMemberId()+"'";
-    	int ss=update(sql, null);
-    	return ss;
+
+	public int updateByPrimaryKeySelective(Member member) {
+		String sql = "UPDATE  t_member " + "SET " + "member_name='"
+				+ member.getMemberName() + "'" + ",image_address='"
+				+ member.getImageAddress() + "'" + ",introduction='"
+				+ member.getIntroduction() + "'" + "WHERE member_id='"
+				+ member.getMemberId() + "'";
+		int ss = update(sql, null);
+		return ss;
 	}
-	public int deleteByPrimaryKeySelective(Member member){
-		String sql= "DELETE FROM t_member " 
-				+ "WHERE member_id='"+member.getMemberId()+"'";
-    	int ss=update(sql, null);
-    	return ss;
+
+	public int deleteByPrimaryKeySelective(Member member) {
+		String sql = "DELETE FROM t_member " + "WHERE member_id='"
+				+ member.getMemberId() + "'";
+		int ss = update(sql, null);
+		return ss;
 	}
 }

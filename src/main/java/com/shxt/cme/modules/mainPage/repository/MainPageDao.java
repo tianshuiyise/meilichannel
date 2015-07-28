@@ -19,6 +19,7 @@ import com.shxt.cme.domain.User;
 import com.shxt.cme.domain.UserBean;
 import com.shxt.cme.modules.IDao;
 import com.shxt.framework.persistence.jdbc.support.BaseDao;
+import com.shxt.framework.utils.DbUtils;
 
 /** 
  * @Project:  美丽频道    
@@ -163,7 +164,10 @@ public class MainPageDao extends BaseDao implements IDao<Shop>{
 				"WHERE  p.deleteFlag=0 and r.deleteFlag=0 and o.deleteFlag=0  AND shop_id='"+review+"'";
 		*/
 		StringBuilder build=new StringBuilder();
-		build.append("SELECT DISTINCT overallStatus,o.order_id,r.reviewDate,r.reviewMes,p.shop_id,o.user_id FROM t_review r LEFT JOIN t_order o ON r.orderId=o.order_id LEFT JOIN  t_production p ON p.pro_id=o.pro_id " +
+		build.append("SELECT DISTINCT overallStatus,o.order_id,r.reviewDate,r.reviewMes,p.shop_id,o.user_id FROM " +
+				"t_review r LEFT JOIN " +
+				"t_order o ON r.orderId=o.order_id LEFT JOIN  " +
+				"t_production p ON p.pro_id=o.pro_id " +
 				"WHERE  p.deleteFlag=0 and r.deleteFlag=0 and o.deleteFlag=0  ");
 		if(null!=review.getShopId() && !("").equals(review.getShopId())){
 			build.append(" AND p.shop_id= '"+review.getShopId()+"'   ");
@@ -228,10 +232,10 @@ public class MainPageDao extends BaseDao implements IDao<Shop>{
 	 * @return  
 	 * @return: List<OrderBean>
 	*/
-	
 	public List<OrderBean> getAllOrder(OrderBean orderBean) {
 		StringBuilder build=new StringBuilder();
-		build.append("SELECT DISTINCT od.order_id ,od.pro_id,od.member_id,od.user_id,od.appoint_time FROM t_order AS od LEFT JOIN  t_production p ON od.pro_id=p.pro_id " +
+		build.append("SELECT DISTINCT od.order_id ,od.pro_id,od.member_id,od.user_id,od.appoint_time FROM t_order AS od LEFT JOIN  " +
+				"t_production p ON od.pro_id=p.pro_id " +
 				"WHERE od.deleteFlag=0 AND p.deleteFlag=0 ");
 		if(null!=orderBean.getShopId() && !("").equals(orderBean.getShopId())){
 			build.append(" AND p.shop_id= '"+orderBean.getShopId()+"'   ");
@@ -343,7 +347,7 @@ public class MainPageDao extends BaseDao implements IDao<Shop>{
 	*/
 	
 	public Product getProductiondetail(String proId) {
-		String sql="SELECT pro_id,pro_name,pro_price,dis_price,pro_type,introduction,shop_id,image_address,image_name "
+		String sql="SELECT pro_id,pro_name,pro_price,dis_price,introduction,shop_id,image_address,image_name "
 				+ "FROM t_production WHERE deleteFlag=0 and pro_id='"+proId+"'";
 		return queryForObject(sql, null, new ProductdetailRowMapper());
 	}
@@ -365,7 +369,7 @@ public class MainPageDao extends BaseDao implements IDao<Shop>{
 			product.setProPrice(rs.getString("pro_price"));
 			product.setProName(rs.getString("pro_name"));
 			product.setDisPrice(rs.getString("dis_price"));
-			product.setProType(rs.getInt("pro_type"));
+			//product.setProType(rs.getInt("pro_type"));
 			product.setIntroduction(rs.getString("introduction"));
 			product.setShopId(rs.getString("shop_id"));
 			product.setImageAddress(rs.getString("image_address"));
@@ -390,26 +394,44 @@ public class MainPageDao extends BaseDao implements IDao<Shop>{
 		 * @return: List<Member>
 		*/
 		
-		private List<Member> getMemberNameByProId(String proId) {
-			String sql="SELECT DISTINCT m.member_id,m.member_name " +
+		private List<Member> getMemberNameByProId(String productId) {
+			/*String sql="SELECT DISTINCT m.member_id,m.member_name " +
 					"FROM t_member m LEFT JOIN " +
 					"t_shop s ON m.merchont_id=s.merchont_id LEFT JOIN " +
 					"t_production p ON p.shop_id=s.shop_id " +
 					"WHERE m.deleteFlag=0 AND s.deleteFlag=0 AND p.deleteFlag=0 and '"+proId+"'";
+			*/
+			String sql="SELECT DISTINCT m.member_id,member_name FROM t_member m LEFT JOIN t_pmrelation p ON p.member_id=m.member_id WHERE p.deleteFlag=0 AND m.deleteFlag=0 AND   p.pro_id='"+productId+"'";
 			return jdbcTemplate.query(sql, new MemberNameRowMapper());
 		}
 	}
 
-
+	/**
+	 * @Description: TODO
+	 * @param productId
+	 * @return  
+	 * @return: List<Member>
+	 */
 	public List<Member> getMemberByProduct(String productId){
-		String sql="SELECT DISTINCT m.member_id,m.member_name,m.introduction,m.image_address,m.image_name,m.member_type " +
+		/*String sql="SELECT DISTINCT m.member_id,m.member_name,m.introduction,m.image_address,m.image_name,m.member_type " +
 				"FROM t_member m LEFT JOIN " +
 				"t_shop s ON m.merchont_id=s.merchont_id LEFT JOIN " +
 				"t_production p ON p.shop_id=s.shop_id " +
 				"WHERE m.deleteFlag=0 AND s.deleteFlag=0 AND p.deleteFlag=0 and '"+productId+"'";
+		*/
+		String sql="SELECT DISTINCT m.member_id,member_name,introduction ,image_address,image_name FROM t_member m LEFT JOIN t_pmrelation p ON p.member_id=m.member_id WHERE p.deleteFlag=0 AND m.deleteFlag=0 AND   p.pro_id='"+productId+"'";
 		return jdbcTemplate.query(sql, new MemberRowMapper());
 	}
 	
+	/**
+	 * 
+		* @Project:  美丽频道    
+		* @author：   ASus
+		* @class： MemberRowMapper   
+		* @Description:   类描述  TODO
+		* @date： 2015-7-27 下午1:08:30 
+		* @version： 1.0
+	 */
 	private class MemberRowMapper implements ParameterizedRowMapper<Member> {
 		@Override
 		public Member mapRow(ResultSet rs, int rowNum)throws SQLException {
@@ -419,11 +441,20 @@ public class MainPageDao extends BaseDao implements IDao<Shop>{
 			member.setIntroduction(rs.getString("introduction"));
 			member.setImageAddress(rs.getString("image_address"));
 			member.setImageName(rs.getString("image_name"));
-			member.setMemberType(rs.getInt("member_type"));
+			//member.setMemberType(rs.getInt("member_type"));
 			return member;
 		}
 	}
 	
+	/**
+	 * 
+		* @Project:  美丽频道    
+		* @author：   ASus
+		* @class： MemberNameRowMapper   
+		* @Description:   类描述  TODO
+		* @date： 2015-7-27 下午1:08:42 
+		* @version： 1.0
+	 */
 	private class MemberNameRowMapper implements ParameterizedRowMapper<Member> {
 		@Override
 		public Member mapRow(ResultSet rs, int rowNum)throws SQLException {
@@ -434,7 +465,15 @@ public class MainPageDao extends BaseDao implements IDao<Shop>{
 		}
 	}
 	
-	
+	/**
+	 * 
+		* @Project:  美丽频道    
+		* @author：   ASus
+		* @class： ShopQQRowMapper   
+		* @Description:   类描述  TODO
+		* @date： 2015-7-27 下午1:08:47 
+		* @version： 1.0
+	 */
 	private class ShopQQRowMapper implements ParameterizedRowMapper<Shop> {
 		@Override
 		public Shop mapRow(ResultSet rs, int rowNum)throws SQLException {
@@ -444,14 +483,12 @@ public class MainPageDao extends BaseDao implements IDao<Shop>{
 		}
 	}
 
-
 	/** @Description: TODO
 	 * @param pageable
 	 * @param object
 	 * @return  
 	 * @return: Page<Shop>
 	*/
-	
 	public Page<Shop> findWithPageByName(Pageable pageable, Object object) {
 		String shopName=(String)object;
 		StringBuffer sql=new StringBuffer();
@@ -460,6 +497,59 @@ public class MainPageDao extends BaseDao implements IDao<Shop>{
 			sql.append(" AND shop_name like '%"+shopName+"%' ");
 		}
 		return queryForPage(sql.toString(), pageable,new ShopsRowMapper(), null);
+	}
+
+	/** @Description: 预订 产品
+	 * @param order
+	 * @param user 
+	 * @return  
+	 * @return: int
+	*/
+	
+	public int reserveProduct(OrderBean order, User user) {
+		String orderId=DbUtils.getKey();
+		String appointTime=order.getAppointTime();
+		String orderPrice=order.getOrderPrice();
+		String proId=order.getProId();
+		String memberId=order.getMemberId();
+		String userId=user.getUserId();
+		String createrKey=user.getUserId();
+		String createDate=DbUtils.getTime();
+		
+		String sql="insert into t_order(order_id,appoint_time,order_price,pro_id,member_id,user_id,createrKey,createDate,deleteFlag) " +
+				" values (?,?,?,?,?,?,?,?,?)  ";
+		
+		Object[] args=new Object[]{orderId,appointTime,orderPrice,proId,memberId,userId,createrKey,createDate,0};
+		
+		int i=this.update(sql, args);
+		
+		return i;
+	}
+
+	/** @Description: TODO
+	 * @param proId
+	 * @param user
+	 * @return  
+	 * @return: int
+	*/
+	
+	public int collectionProduction(String proId, User user) {
+		
+		String collectionId=DbUtils.getKey();
+		String userId=user.getUserId();
+		String createrKey=user.getUserId();
+		String createDate=DbUtils.getTime();
+		
+		String sql="insert into t_collection(collection_id,user_id,pro_id,createKey,createDate,deleteFlag) " +
+				" values (?,?,?,?,?,?)  ";
+		
+		Object[] args=new Object[]{collectionId,userId,proId,createrKey,createDate,0};
+		
+		int i=this.update(sql, args);
+		
+		
+		
+		return 0;
 	}
 	
 }

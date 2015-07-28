@@ -1,5 +1,6 @@
 package com.shxt.framework.utils;
 
+import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.security.SecureRandom;
 import java.security.spec.KeySpec;
@@ -376,5 +377,20 @@ public class DbUtils {
 		
 		return projectCode;
 	}
+	
+	/*
+	spring mvc 中利用 @RequestParam来解析url中的参数，但默认情况下spring mvc的编码方式为 "ISO-8859-1"，
+	因此如果参数的中文会出现乱码的情况，只要将参数转换为"utf-8"格式即可。
+	*/
+	public static String encodeStr(String str) {
+		try {
+			return new String(str.getBytes("ISO-8859-1"), "UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+
 	
 }

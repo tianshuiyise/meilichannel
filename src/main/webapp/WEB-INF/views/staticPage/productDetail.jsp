@@ -24,25 +24,48 @@ DD_belatedPNG.fix('#logo,.navBar,#top1,#top2,#top3,#top4,.nav_icon1,.nav_icon2,.
 		<div id="picbox">
 			<img id="mainpic" src="${production.imageAddress }" alt="店铺主图片" />
 		</div>
-		<div id="shopinfo">
-			<ul>
-				<li></li>
-				<li>作品名称：&nbsp;${production.proName }</li>
-				<li></li>
-				<li>作品价格：&nbsp;￥${production.proPrice }</li>
-				<li></li>
-				<li>服务人员：&nbsp;<c:forEach items="${production.memberName }"  var="member" varStatus="status">${member.memberName }&nbsp;</c:forEach>     </li>
-				<li></li>
-				<li>预约时间：&nbsp;<input type="text" /></li>
-				<li></li>
-				<li>联系商家：&nbsp;<a href="#">${production.shopQQ }</a></li>
-				<li></li>
-				<li><input type="submit" value="提交订单" /><input type="button"
-					value="收藏" /></li>
-				<li></li>
-			</ul>
-		</div>
-
+		<form action="${ctx}/mainPage/reserveProduct">
+			<div id="shopinfo">
+				<ul>
+					<li></li>
+					<li>作品名称：&nbsp;<input value="${production.proId }" name="proId" type="hidden"/>${production.proName }</li>
+					<li></li>
+					<li>作品价格：&nbsp;<input value="${production.proPrice }" name="orderPrice" type="hidden"/>￥${production.proPrice }</li>
+					<li></li>
+					<li>服务人员：&nbsp;
+						<select name="memberId">
+							<option value="0 ">请选择</option>
+							<c:forEach items="${production.memberName }"  var="member" varStatus="status">
+								<option value="${member.memberId} ">${member.memberName }</option>
+							</c:forEach>     
+						</select>
+					</li>
+					<li></li>
+					<li>预约时间：&nbsp;<input type="text" name="appointTime"/></li>
+					<li></li>
+					<li>联系商家：&nbsp;
+						<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=${production.shopQQ}&site=qq&menu=yes">
+							<img border="0" src="http://wpa.qq.com/pa?p=2:3113126536:51" alt="点击这里给我发消息" title="点击这里给我发消息"/>
+						</a>
+					</li>
+					<li></li>
+					<li>
+					
+						<c:choose>
+							<c:when test="${empty sessionScope.user}">
+								<input type="submit" value="预订" disabled="disabled"/>
+								<input type="button" value="收藏" disabled="disabled"/>
+							</c:when>
+							<c:otherwise>
+								<input type="submit" value="预订" />
+								<input type="button" value="收藏" onclick="collection('${ctx}/mainPage/collectionProduction','${production.proId }')"/>
+							</c:otherwise>
+						</c:choose>
+					</li>
+					<li></li>
+				</ul>
+			</div>
+		</form>
 		<div id="contain1">
 			<div id="title">
 				<ul>
@@ -71,7 +94,7 @@ DD_belatedPNG.fix('#logo,.navBar,#top1,#top2,#top3,#top4,.nav_icon1,.nav_icon2,.
 			<div id="content" class="content1">
 				<div id="content1">
 					<div class="workinfo">
-						<img src="${production.imageAddress }" alt="作品图片" />${production.proName}：<br /> 
+						<%-- <img src="${production.imageAddress }" alt="作品图片" /> --%>${production.proName}：<br /> 
 						${production.introduction }
 					</div>
 				</div>
@@ -90,6 +113,12 @@ DD_belatedPNG.fix('#logo,.navBar,#top1,#top2,#top3,#top4,.nav_icon1,.nav_icon2,.
 <script type="text/javascript" src="${ctx}/static/js/script.js"></script>
 <script src="${ctx}/static/js/simplefoucs.js" type="text/javascript"></script>
 <script language="javascript">
+
+function collection(path,proId){
+	window.location.href=path+"?proId="+proId;
+}
+
+
 	function getProduct(url,id,content){
 		$("#content2").empty();
 		$("#content3").empty();

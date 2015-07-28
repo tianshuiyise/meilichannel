@@ -17,12 +17,12 @@
 
 <!--这里是操作完成的消息提示区  -->
 <c:import url="/WEB-INF/include/message.jsp"></c:import>
-<form id="searchForm"  action="${ctx}/product/meifaInfoUpload?userId=${user.userId}" method="POST" enctype="multipart/form-data">
+<form id="searchForm"  action="${ctx}/uploadProductInfo/meifaInfoUpload?userId=${user.userId}" method="POST" enctype="multipart/form-data">
     <div id="workinfor">
       <div class="workin"><span><i>*</i>作品名称：</span><input type="text" name="proName"/></div>
       <div class="workin"><span><i>*</i>作品价格：</span><input type="text" name="proPrice" /></div>
       <div class="workin"><span><i>*</i>作品优惠价格：</span><input type="text" name="disPrice" /></div>
-      <div class="workin"><span><i>*</i>作品简介：<br/><h4>(500字以内)</h4></span><textarea  name="introduction"></textarea></div>
+      <div class="workin"><span><i>*</i>作品简介：<br/><h4>(500字以内)</h4></span><input type="text"  name="introduction" /></div>
       <div class="workin"><span><i>*</i>作品图片：</span><div class="box">
 							<div id="info_pic">
 								<img src='${ctx}/static/images/blank.jpg '
@@ -45,36 +45,6 @@
 <script src="${ctx}/static/js/Area.js" type="text/javascript"></script>
 <script src="${ctx}/static/js/AreaData_min.js" type="text/javascript"></script>
 <script src="${ctx}/static/layer/layer.js" type="text/javascript"></script>
-<script type="text/javascript">  
-function setImagePreview() {          
-    var docObj=document.getElementById("doc");           
-    var imgObjPreview=document.getElementById("preview");  
-    if(docObj.files && docObj.files[0]){                          
-      
-        imgObjPreview.src = window.URL.createObjectURL(docObj.files[0]);  
-     }else{                          
-                          
-         docObj.select();                          
-         var imgSrc = document.selection.createRange().text;                          
-         var localImagId = document.getElementById("localImag");  
-         
-        try{                                  
-            localImagId.style.filter="progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)";            
-
-                      
-            localImagId.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = imgSrc;                         
-
- 
-        }catch(e){                                  
-            alert("您上传的图片格式不正确，请重新选择!");                                  
-            return false;                          
-        }  
-            imgObjPreview.style.display = 'none';                          
-            document.selection.empty();                  
-        }                  
-            return true;          
-        }  
-</script> 
 <script type="text/javascript">
 	function add_meiliChannel(controllerUrl) {
 		window.location.href = controllerUrl;

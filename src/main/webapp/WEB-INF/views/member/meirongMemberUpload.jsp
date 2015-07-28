@@ -16,10 +16,10 @@
 
 <!--这里是操作完成的消息提示区  -->
 <c:import url="/WEB-INF/include/message.jsp"></c:import>
-<form id="searchForm"  action="${ctx}/member/meirongInfoUpload?userId=${user.userId}" method="POST" enctype="multipart/form-data">
+<form id="searchForm"  action="${ctx}/serviceInfo/meirongInfoUpload?userId=${user.userId}" method="POST" enctype="multipart/form-data">
    <div id="personinfor">
       <div class="personin"><span><i>*</i>服务人员姓名：</span><input type="text" name="memberName"/></div>
-      <div class="personin"><span><i>*</i>人员简介：<br/><h4>(500字以内)</h4></span><textarea  name="introduction"></textarea></div>
+      <div class="personin"><span><i>*</i>人员简介：<br/><h4>(500字以内)</h4></span><input type="text"  name="introduction" /></div>
       <div class="personin"><span><i>*</i>人员头像：</span><div class="box">
 							<div id="info_pic">
 								<img src='${ctx}/static/images/blank.jpg '
@@ -41,36 +41,6 @@
 <script src="${ctx}/static/js/Area.js" type="text/javascript"></script>
 <script src="${ctx}/static/js/AreaData_min.js" type="text/javascript"></script>
 <script src="${ctx}/static/layer/layer.js" type="text/javascript"></script>
-<script type="text/javascript">  
-function setImagePreview() {          
-    var docObj=document.getElementById("doc");           
-    var imgObjPreview=document.getElementById("preview");  
-    if(docObj.files && docObj.files[0]){                          
-      
-        imgObjPreview.src = window.URL.createObjectURL(docObj.files[0]);  
-     }else{                          
-                          
-         docObj.select();                          
-         var imgSrc = document.selection.createRange().text;                          
-         var localImagId = document.getElementById("localImag");  
-         
-        try{                                  
-            localImagId.style.filter="progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)";            
-
-                      
-            localImagId.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = imgSrc;                         
-
- 
-        }catch(e){                                  
-            alert("您上传的图片格式不正确，请重新选择!");                                  
-            return false;                          
-        }  
-            imgObjPreview.style.display = 'none';                          
-            document.selection.empty();                  
-        }                  
-            return true;          
-        }  
-</script> 
 <script type="text/javascript">
 	function add_meiliChannel(controllerUrl) {
 		window.location.href = controllerUrl;

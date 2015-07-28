@@ -1,6 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8"%>
 <%@ include file="/WEB-INF/include/common.jsp"%>
-
 <tags:wjs items="checkbox.js"></tags:wjs>
 <tags:wcss items="message.css"></tags:wcss>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -37,15 +36,15 @@
 					<td class="title4" id="title" style="width: 90px;">${memberList.memberName}</td>
 					<td class="title3" id="title" style="width: 170px;">${memberList.introduction}</td>
 					<td class="title4" id="title" style="width: 170px;"><input class="change" type="button" value="修改"
-						onclick="dispatchTrainingCourse('${ctx}/member/modifyMemb','${memberList.memberId}')" />
-						<input class="del" type="button"  value="删除" onclick="dispatchTrainingCourse('${ctx}/member/deleteMemb','${memberList.memberId}')"/>
+						onclick="dispatchTrainingCourse('${ctx}/serviceInfo/modifyMemb','${memberList.memberId}')" />
+						<input class="del" type="button"  value="删除" onclick="dispatchTrainingCourse('${ctx}/serviceInfo/deleteMemb','${memberList.memberId}')"/>
 
 					</td>
 				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
-	<div id="add"><p><a href="${ctx }/member/inselectMeijiaMemb" >添加</a></p></div>
+	<div id="add"><p><a href="${ctx }/serviceInfo/inselectMeijiaMemb" >添加</a></p></div>
 
 	<!-- 分页组件区 -->
 	<!-- TODO：后期这里可能会持续改进 -->

@@ -63,7 +63,11 @@ DD_belatedPNG.fix('#logo,.navBar,#top1,#top2,#top3,#top4,.nav_icon1,.nav_icon2,.
       	</c:forEach>
       </li>
       <li></li>
-      <li>联系商家：&nbsp;<a href="#">${shop.shopQq }</a></li>
+      <li>联系商家：&nbsp;
+      		<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=${shop.shopQq}&site=qq&menu=yes">
+				<img border="0" src="http://wpa.qq.com/pa?p=2:3113126536:51" alt="点击这里给我发消息" title="点击这里给我发消息"/>
+			</a>
+      </li>
       <li></li>
     </ul>
   </div>

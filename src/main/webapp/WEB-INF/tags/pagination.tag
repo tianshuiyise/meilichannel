@@ -8,19 +8,24 @@ request.setAttribute("current", current);
 request.setAttribute("total", total);
 %>
 <style>
-#table2{
-  position: fixed;
-  bottom: 30px;
-  width:50%;
-  margin: auto;
+#table2 {
+	bottom: 30px;
+  	width:50%;
+	position: fixed;
+	border-collapse: collapse;
+	border-spacing: 0;
+	margin-left: 23px;
+	border-top: 1px solid #858587;
+	border-bottom: 1px solid #858587;
 }
-
+.right {
+	width: 100px;
+	float: right;
+}
 </style>
-
-
 <table id="table2">
   	<tr>
-		<td  valign="center" height="28" style="text-align:center;">
+		<td  valign="middle" height="28" style="text-align:center;">
 			<div>【第<span>${current+1}</span>页 / 共<span>${total}</span>页】  【本页<span>${page.numberOfElements}</span>条 / 共<span>${page.totalElements}</span>条】</div>
 		</td>
 		
@@ -33,14 +38,13 @@ request.setAttribute("total", total);
 				【<% if (page.hasNextPage()){%><a  href="#" onclick="pageSummbit(${page.totalPages});" >末页</a><%}else{%>末页<%} %>】
 			</div>
 		</td>
-		<td width="100" valign="center" style="padding-bottom:1px;">
+		<td width="100" valign="middle" style="padding-bottom:1px;">
 			<div  class="right" >
 				<input class="inputBlue" id="goToPageNumber" name="goToPageNumber" type="text"/>
 				<input class="btn2"  name="button" type="button" onclick="goToPageSummbit()" value="GO"/>
 			</div>
 		</td>
 	  </tr>
-	 
   </table>
 <script type="text/javascript">
 <!--

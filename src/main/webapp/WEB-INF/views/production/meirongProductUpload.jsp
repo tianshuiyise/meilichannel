@@ -17,12 +17,12 @@
 
 <!--这里是操作完成的消息提示区  -->
 <c:import url="/WEB-INF/include/message.jsp"></c:import>
-<form id="searchForm"  action="${ctx}/product/meirongInfoUpload?userId=${user.userId}" method="POST" enctype="multipart/form-data">
+<form id="searchForm"  action="${ctx}/uploadProductInfo/meirongInfoUpload?userId=${user.userId}" method="POST" enctype="multipart/form-data">
 <div id="workinfor">
       <div class="workin"><span><i>*</i>作品名称：</span><input type="text" name="proName"/></div>
       <div class="workin"><span><i>*</i>作品价格：</span><input type="text" name="proPrice" /></div>
       <div class="workin"><span><i>*</i>作品优惠价格：</span><input type="text" name="disPrice" /></div>
-      <div class="workin"><span><i>*</i>作品简介：<br/><h4>(500字以内)</h4></span><textarea  name="introduction"></textarea></div>
+      <div class="workin"><span><i>*</i>作品简介：<br/><h4>(500字以内)</h4></span><input type="text"  name="introduction"></div>
       <div class="workin"><span><i>*</i>作品图片：</span><div class="box">
 							<div id="info_pic">
 								<img src='${ctx}/static/images/blank.jpg '

@@ -44,15 +44,15 @@
 						</td>
 					<td class="title3" id="title" style="width: 170px;">${productList.introduction}</td>
 					<td class="title4" id="title" style="width: 170px;"><input class="change" type="button" value="修改"
-						onclick="dispatchTrainingCourse('${ctx}/product/modifyPro','${productList.proId}')" />
-						<input class="del" type="button"  value="删除" onclick="dispatchTrainingCourse('${ctx}/product/deletePro','${productList.proId}')"/>
+						onclick="dispatchTrainingCourse('${ctx}/uploadProductInfo/modifyPro','${productList.proId}')" />
+						<input class="del" type="button"  value="删除" onclick="dispatchTrainingCourse('${ctx}/uploadProductInfo/deletePro','${productList.proId}')"/>
 
 					</td>
 				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
-	<div id="add"><p><a href="${ctx }/product/inselectMeirongPro">添加</a></p></div>
+	<div id="add"><p><a href="${ctx }/uploadProductInfo/inselectMeirongPro">添加</a></p></div>
 
 	<!-- 分页组件区 -->
 	<!-- TODO：后期这里可能会持续改进 -->

@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -17,11 +18,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.shxt.cme.domain.Member;
+import com.shxt.cme.domain.Order;
 import com.shxt.cme.domain.OrderBean;
 import com.shxt.cme.domain.Product;
 import com.shxt.cme.domain.ReviewBean;
 import com.shxt.cme.domain.Shop;
+import com.shxt.cme.domain.User;
 import com.shxt.cme.modules.mainPage.service.MainPageService;
+import com.shxt.framework.utils.DbUtils;
 import com.shxt.framework.web.base.BaseController;
 
 /** 
@@ -64,8 +68,19 @@ public class MainPageController  extends BaseController{
 		return "redirect:/";
 	}
 	
+	/**
+	 * @Description: 查询
+	 * @param model
+	 * @param pageable
+	 * @param shopName
+	 * @return  
+	 * @return: String
+	 */
 	@RequestMapping(value = "/mainPage/search")
-	public String mainPageSearch(Model model,Pageable pageable,@RequestParam("shopName") String shopName){
+	public String mainPageSearch(Model model,Pageable pageable,@RequestParam("shopName") String shopName,HttpServletRequest request){
+		
+		//String en=request.getCharacterEncoding();
+		shopName=DbUtils.encodeStr(shopName);
 		String jspLocation="/staticPage/meirong";
 		// 获取分页对象、得到所有的店铺
 		Page<Shop> shops = mainPageService.findWithPageByName(pageable, shopName);
@@ -142,7 +157,6 @@ public class MainPageController  extends BaseController{
 		return orders;
 	}
 	
-	
 	/**
 	 * @Description: 通过ajax得到所有member
 	 * @param review
@@ -154,13 +168,48 @@ public class MainPageController  extends BaseController{
 		List<Member> members=mainPageService.getMemberByProduct(product.getProId() );
 		return members;
 	}
-	
+	/**
+	 * @Description: 得到产品详情
+	 * @param model
+	 * @param proId
+	 * @return  
+	 * @return: String
+	 */
 	@RequestMapping(value = "/mainPage/productDetail")
 	public String productionDetail(Model model,@RequestParam("proId") String proId){
 		Product production=mainPageService.getProductiondetail(proId);
 		model.addAttribute("production", production);
 		return "/staticPage/productDetail";
 	}
+	
+	/**
+	 * @Description: 预订产品
+	 * @return  
+	 * @return: String
+	 */
+	@RequestMapping(value = "/mainPage/reserveProduct")
+	public String reserveProduct(Model model,HttpSession session,OrderBean order){
+		User user=getCurrentUser(session);
+		int i=mainPageService.reserveProduct(order,user);
+		String proid=order.getProId();
+		return "redirect:/mainPage/productDetail?proId="+proid;
+	}
+	/**
+	 * @Description: 收藏
+	 * @param model
+	 * @param session
+	 * @param order
+	 * @return  
+	 * @return: String
+	 */
+	@RequestMapping(value = "/mainPage/collectionProduction")
+	public String collectionProduction(Model model,HttpSession session,@RequestParam("proId") String proId){
+		User user=getCurrentUser(session);
+		int i=mainPageService.collectionProduction(proId,user);
+		
+		return "redirect:/mainPage/productDetail?proId="+proId;
+	}
+	
 	
 	/***
 	 * @Description: 进入我的频道

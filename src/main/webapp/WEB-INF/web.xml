@@ -9,6 +9,7 @@
     <param-name>spring.profiles.default</param-name>
     <param-value>development</param-value>
   </context-param>
+  <!-- 只针对post，get方式下面de spring编码过滤器不起效果 -->
   <filter>
     <filter-name>encodingFilter</filter-name>
     <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>

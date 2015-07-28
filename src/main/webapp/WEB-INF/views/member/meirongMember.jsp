@@ -37,15 +37,15 @@
 					<td class="title4" id="title" style="width: 90px;">${memberList.memberName}</td>
 					<td class="title3" id="title" style="width: 170px;">${memberList.introduction}</td>
 					<td class="title4" id="title" style="width: 170px;"><input class="change" type="button" value="修改"
-						onclick="dispatchTrainingCourse('${ctx}/member/modifyMemb','${memberList.memberId}')" />
-						<input class="del" type="button"  value="删除" onclick="dispatchTrainingCourse('${ctx}/member/deleteMemb','${memberList.memberId}')"/>
+						onclick="dispatchTrainingCourse('${ctx}/serviceInfo/modifyMemb','${memberList.memberId}')" />
+						<input class="del" type="button"  value="删除" onclick="dispatchTrainingCourse('${ctx}/serviceInfo/deleteMemb','${memberList.memberId}')"/>
 
 					</td>
 				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
-	<div id="add"><p><a href="${ctx }/member/inselectMeirongMemb" >添加</a></p></div>
+	<div id="add"><p><a href="${ctx }/serviceInfo/inselectMeirongMemb" >添加</a></p></div>
 
 	<!-- 分页组件区 -->
 	<!-- TODO：后期这里可能会持续改进 -->

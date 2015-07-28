@@ -13,21 +13,21 @@
         <div id="my_menu" class="sdmenu">
 	      <div>
             <span class="smenu">上传店铺信息</span>
-            <a href="${ctx}/shop/meirongShopUpload?userId=${user.userId}">美容店铺信息</a>
-            <a href="${ctx}/shop/meifaShopUpload?userId=${user.userId}">美发店铺信息</a>
-            <a href="${ctx}/shop/meijiaShopUpload?userId=${user.userId}">美甲店铺信息</a>
+            <a href="${ctx}/uploadShopInfo/beautyShopInfo">美容店铺信息</a>
+            <a href="${ctx}/uploadShopInfo/hairdressShopInfo">美发店铺信息</a>
+            <a href="${ctx}/uploadShopInfo/manicureShopInfo">美甲店铺信息</a>
           </div>
         <div>
             <span class="smenu">上传作品信息</span>
-            <a href="${ctx }/product/meirongProduct">美容作品信息</a>
-            <a href="${ctx }/product/meifaProduct">美发作品信息</a>
-            <a href="${ctx }/product/meijiaProduct">美甲作品信息</a>
+            <a href="${ctx }/uploadProductInfo/beautyProductInfo">美容作品信息</a>
+            <a href="${ctx }/uploadProductInfo/hairdressProductInfo">美发作品信息</a>
+            <a href="${ctx }/uploadProductInfo/manicureProductInfo">美甲作品信息</a>
         </div>
         <div>
             <span class="smenu">服务人员信息</span>
-            <a href="${ctx }/member/meirongMember">美容服务人员信息</a>
-            <a href="${ctx }/member/meifaMember">美发服务人员信息</a>
-            <a href="${ctx }/member/meijiaMember">美甲服务人员信息</a>
+            <a href="${ctx }/serviceInfo/beautyServiceInfo">美容服务人员信息</a>
+            <a href="${ctx }/serviceInfo/hairdressServiceInfo">美发服务人员信息</a>
+            <a href="${ctx }/serviceInfo/manicureServiceInfo">美甲服务人员信息</a>
         </div>
         <div>
             <span><a href="${ctx}/beautyShopMng/1">处理订单</a></span>	

@@ -1,4 +1,4 @@
-package com.shxt.cme.modules.shop.repository;
+﻿package com.shxt.cme.modules.shop.repository;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -25,30 +25,30 @@ public class ShopDao extends BaseDao{
 	public void insertShop1(Shop shop,User user) {
 		// TODO Auto-generated method stub
 		StringBuffer sql = new StringBuffer();
-		sql.append(" insert into  t_shop(shop_id,shop_name,shop_qq,introduction,image_address,image_name,shop_type,merchont_id) ");
-		sql.append(" values(?,?,?,?,?,?,?,?) ");
+		sql.append(" insert into  t_shop(shop_id,shop_name,shop_qq,introduction,image_address,shop_type,merchont_id) ");
+		sql.append(" values(?,?,?,?,?,?,?) ");
 		Object[] args=new Object[]{DbUtils.getKey(),shop.getShopName(),shop.getShopQq(),shop.getIntroduction(),
-									shop.getImageAddress(),shop.getImageName(),1,user.getUserId()};
+									shop.getImageAddress(),1,user.getUserId()};
 		
 		update(sql.toString(), args);
 	}
 	public void insertShop2(Shop shop,User user) {
 		// TODO Auto-generated method stub
 		StringBuffer sql = new StringBuffer();
-		sql.append(" insert into  t_shop(shop_id,shop_name,shop_qq,introduction,image_address,image_name,shop_type,merchont_id) ");
-		sql.append(" values(?,?,?,?,?,?,?,?) ");
+		sql.append(" insert into  t_shop(shop_id,shop_name,shop_qq,introduction,image_address,shop_type,merchont_id) ");
+		sql.append(" values(?,?,?,?,?,?,?) ");
 		Object[] args=new Object[]{DbUtils.getKey(),shop.getShopName(),shop.getShopQq(),shop.getIntroduction(),
-									shop.getImageAddress(),shop.getImageName(),2,user.getUserId()};
+									shop.getImageName(),2,user.getUserId()};
 		
 		update(sql.toString(), args);
 	}
 	public void insertShop3(Shop shop,User user) {
 		// TODO Auto-generated method stub
 		StringBuffer sql = new StringBuffer();
-		sql.append(" insert into  t_shop(shop_id,shop_name,shop_qq,introduction,image_address,image_name,shop_type,merchont_id) ");
-		sql.append(" values(?,?,?,?,?,?,?,?)  ");
+		sql.append(" insert into  t_shop(shop_id,shop_name,shop_qq,introduction,image_address,shop_type,merchont_id) ");
+		sql.append(" values(?,?,?,?,?,?,?)  ");
 		Object[] args=new Object[]{DbUtils.getKey(),shop.getShopName(),shop.getShopQq(),shop.getIntroduction(),
-									shop.getImageAddress(),shop.getImageName(),3,user.getUserId()};
+									shop.getImageAddress(),3,user.getUserId()};
 		
 		update(sql.toString(), args);
 	}
@@ -61,10 +61,8 @@ public class ShopDao extends BaseDao{
 				throws SQLException {
 			Shop shop =new Shop();
 			shop.setImageAddress(rs.getString("image_address"));
-			shop.setImageName(rs.getString("image_name"));
 			shop.setIntroduction(rs.getString("introduction"));
 			shop.setShopId(rs.getString("shop_id"));
-			shop.setShopName(rs.getString("shop_name"));
 			shop.setShopType(rs.getInt("shop_type"));
 			shop.setShopQq(rs.getString("shop_qq"));
 			shop.setMerchontId(rs.getString("merchont_id"));
@@ -75,7 +73,7 @@ public class ShopDao extends BaseDao{
 		StringBuffer sql = new StringBuffer();
 		sql.append("SELECT * ");
 		sql.append(" FROM t_merchont ");
-		sql.append(" WHERE merchont_id='"+user.getUserId()+"' ");
+		sql.append(" WHERE user_id='"+user.getUserId()+"' ");
 		Object[] args=new Object[]{};
 		return queryForObject(sql.toString(), args, new MerchontRowMapper());
 	}
@@ -90,6 +88,8 @@ public class ShopDao extends BaseDao{
 	merchont.setRealName(rs.getString("real_Name"));
 	merchont.setMerchontType(rs.getInt("merchont_Type"));
 	merchont.setId(rs.getString("id"));
+	merchont.setUserId(rs.getString("user_id"));
+	merchont.setPhone(rs.getString("telephone"));
 	return merchont;
 	}
 	}
@@ -130,11 +130,8 @@ public class ShopDao extends BaseDao{
 				+ ",shop_qq='"+shop.getShopQq()+"'" 
 				+ ",introduction='"+shop.getIntroduction()+"'" 
 				+ ",image_address='"+shop.getImageAddress()+"'" 
-				+ ",image_name='"+shop.getImageName()+"'" 
 				+ "WHERE shop_id='"+shop.getShopId()+"'";
-    	System.out.println("sql==="+sql);
     	int ss=update(sql, null);
-    	System.out.println("结果ss=="+ss);
     	return ss;
 	}
 }

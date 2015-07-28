@@ -176,5 +176,27 @@ public class MainPageService implements IService<Shop>{
 		return mainPageDao.findWithPageByName(pageable, object);
 	}
 
+	/** @Description: TODO预订 产品
+	 * @param order
+	 * @param user 
+	 * @return  
+	 * @return: int
+	*/
+	
+	public int reserveProduct(OrderBean order, User user) {
+		return mainPageDao.reserveProduct(order,user);
+	}
+
+	/** @Description: TODO
+	 * @param proId
+	 * @param user
+	 * @return  
+	 * @return: int
+	*/
+	
+	public int collectionProduction(String proId, User user) {
+		return mainPageDao.collectionProduction(proId,user);
+	}
+
 
 }
