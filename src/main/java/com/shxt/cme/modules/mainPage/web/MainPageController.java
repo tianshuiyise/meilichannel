@@ -1,5 +1,6 @@
 package com.shxt.cme.modules.mainPage.web;
 
+import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.shxt.cme.domain.Member;
 import com.shxt.cme.domain.Order;
@@ -26,6 +28,7 @@ import com.shxt.cme.domain.Shop;
 import com.shxt.cme.domain.User;
 import com.shxt.cme.modules.mainPage.service.MainPageService;
 import com.shxt.framework.utils.DbUtils;
+import com.shxt.framework.utils.UploadPhotoTest;
 import com.shxt.framework.web.base.BaseController;
 
 /** 
@@ -78,7 +81,6 @@ public class MainPageController  extends BaseController{
 	 */
 	@RequestMapping(value = "/mainPage/search")
 	public String mainPageSearch(Model model,Pageable pageable,@RequestParam("shopName") String shopName,HttpServletRequest request){
-		
 		//String en=request.getCharacterEncoding();
 		shopName=DbUtils.encodeStr(shopName);
 		String jspLocation="/staticPage/meirong";
@@ -206,10 +208,60 @@ public class MainPageController  extends BaseController{
 	public String collectionProduction(Model model,HttpSession session,@RequestParam("proId") String proId){
 		User user=getCurrentUser(session);
 		int i=mainPageService.collectionProduction(proId,user);
-		
 		return "redirect:/mainPage/productDetail?proId="+proId;
 	}
 	
+	/**
+	 * @Description: 图片上传
+	 * @param model
+	 * @param shop
+	 * @param session
+	 * @param request
+	 * @param response
+	 * @param file
+	 * @throws IllegalStateException
+	 * @throws IOException  
+	 * @return: void
+	 */
+	@RequestMapping("/upload")
+	public void upload(Model model, Shop shop, HttpSession session,
+			HttpServletRequest request, HttpServletResponse response,
+			@RequestParam(value = "file") MultipartFile file)
+			throws IllegalStateException, IOException {
+		/*
+		 * contextPath =”/项目名称”; //获取的是项目的相对路径
+		 * realPath = F:\tomcat_home\webapps\项目名称\ //获取的是项目的绝对路径
+		 */
+		String realPath = request.getSession().getServletContext().getRealPath("/"); 
+		String contextPath= request.getContextPath();
+		response.getWriter().write(UploadPhotoTest.uploadPhoto( file, realPath, contextPath ));
+		
+	}
+	/**
+	 * @Description: TODO图片上传,保存
+	 * @param request
+	 * @param data
+	 * @param response  
+	 * @return: void
+	 */
+	@RequestMapping("/photoSave")
+	public void photoSave(HttpServletRequest request,
+			String data,
+			HttpServletResponse response){
+		String realPath = request.getSession().getServletContext()
+				.getRealPath("/");
+		String contextPath = request.getContextPath();
+		String basePath = request.getScheme() + "://" + request.getServerName()
+				+ ":" + request.getServerPort() + contextPath + "/";
+		String src = UploadPhotoTest.cutPhoto(realPath, data);
+		try {
+			response.getWriter().write(src);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
 	
 	/***
 	 * @Description: 进入我的频道

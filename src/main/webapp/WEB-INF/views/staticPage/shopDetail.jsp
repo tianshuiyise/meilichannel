@@ -2,6 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8"%>
 <%@ taglib prefix="dict" uri="http://www.summer.org/tags/dict" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="tags" tagdir="/WEB-INF/tags" %>
 <%-- <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> --%>
 <c:set var="ctx" value="${pageContext.request.contextPath}" />
 
@@ -13,14 +14,10 @@
 <link href="${ctx}/static/style/index.css" rel="stylesheet" type="text/css" />
 <link href="${ctx}/static/style/myshop.css" rel="stylesheet" type="text/css" />
 <link href="${ctx}/static/style/nav.css" rel="stylesheet" type="text/css" />
-
-
 <script type="text/javascript" src="http://api.map.baidu.com/api?v=1.5&ak=ozR6nWdba9u5o94KFy8S2LEk">
     //v1.5版本的引用方式：src="http://api.map.baidu.com/api?v=1.5&ak=ozR6nWdba9u5o94KFy8S2LEk"
     //v1.4版本及以前版本的引用方式：src="http://api.map.baidu.com/api?v=1.4&key=ozR6nWdba9u5o94KFy8S2LEk&callback=initialize"
-
 </script>
-
 
 <!--[if IE 6]>
 <script src="js/DD_belatedPNG_0.0.8a.js"></script>
@@ -34,15 +31,11 @@ DD_belatedPNG.fix('#logo,.navBar,#top1,#top2,#top3,#top4,.nav_icon1,.nav_icon2,.
 <!--头部-->
 	<c:import url="/WEB-INF/views/commonFile/head.jsp"/>
 <!--头部end-->
-     
 <!--主体-->
 <input type="hidden" name="shopId" id="shopId" value="${shop.shopId }"/>
 <input type="hidden" name="shopCordX" id="shopCordX" value="${shop.shopCordX }"/>
 <input type="hidden" name="shopCordY" id="shopCordY" value="${shop.shopCordY }"/>
 <input type="hidden" name="shopAdd" id="shopAdd" value="${shop.shopAdd }"/>
-
-
-
 <div id="container11">
   <div id="picbox">
   	<img id="mainpic" src="${shop.imageAddress }" alt="店铺主图片" />
@@ -64,9 +57,7 @@ DD_belatedPNG.fix('#logo,.navBar,#top1,#top2,#top3,#top4,.nav_icon1,.nav_icon2,.
       </li>
       <li></li>
       <li>联系商家：&nbsp;
-      		<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=${shop.shopQq}&site=qq&menu=yes">
-				<img border="0" src="http://wpa.qq.com/pa?p=2:3113126536:51" alt="点击这里给我发消息" title="点击这里给我发消息"/>
-			</a>
+      	<tags:merchontQQ shopQq="${shop.shopQq}"/>
       </li>
       <li></li>
     </ul>

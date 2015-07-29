@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page contentType="text/html;charset=UTF-8"%>
+<%@ taglib prefix="tags" tagdir="/WEB-INF/tags" %>
 <c:set var="ctx" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -44,9 +45,7 @@ DD_belatedPNG.fix('#logo,.navBar,#top1,#top2,#top3,#top4,.nav_icon1,.nav_icon2,.
 					<li>预约时间：&nbsp;<input type="text" name="appointTime"/></li>
 					<li></li>
 					<li>联系商家：&nbsp;
-						<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=${production.shopQQ}&site=qq&menu=yes">
-							<img border="0" src="http://wpa.qq.com/pa?p=2:3113126536:51" alt="点击这里给我发消息" title="点击这里给我发消息"/>
-						</a>
+						<tags:merchontQQ shopQq="${production.shopQQ}"/>
 					</li>
 					<li></li>
 					<li>

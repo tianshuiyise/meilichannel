@@ -127,6 +127,18 @@ public class MngBeautyShopController extends BaseController{
 		 * contextPath =”/项目名称”; //获取的是项目的相对路径
 		 * realPath = F:\tomcat_home\webapps\项目名称\ //获取的是项目的绝对路径
 		 */
+		
+		/*String realPath = request.getSession().getServletContext()
+				.getRealPath("/");
+		String contextPath = request.getContextPath();
+		String basePath = request.getScheme() + "://" + request.getServerName()
+				+ ":" + request.getServerPort() + contextPath + "/";
+		response.getWriter().write(
+				UploadPhotoTest.uploadPhoto(file, realPath, contextPath));
+
+		
+		
+		*/
 		String realPath = request.getSession().getServletContext().getRealPath("/"); 
 		String contextPath= request.getContextPath();
 		response.getWriter().write(UploadPhotoTest.uploadPhoto( file, realPath, contextPath ));
@@ -138,21 +150,17 @@ public class MngBeautyShopController extends BaseController{
 			String data,
 			HttpServletResponse response){
 		
-		String x1="";
-		String y1="";
-		String x2="";
-		String y2="";
-		String src="";
+		/*String realPath = request.getSession().getServletContext().getRealPath("/"); 
+		*/
 		
-		String[] str=data.split(",");
+		String realPath = request.getSession().getServletContext()
+				.getRealPath("/");
+		String contextPath = request.getContextPath();
+		String basePath = request.getScheme() + "://" + request.getServerName()
+				+ ":" + request.getServerPort() + contextPath + "/";
+		String src = UploadPhotoTest.cutPhoto(realPath, data);
+
 		
-		if(str!=null){
-			x1=str[0];
-			y1=str[1];
-			x2=str[2];
-			y2=str[3];
-			src=str[4];
-		}
 		
 		try {
 			response.getWriter().write(src);
