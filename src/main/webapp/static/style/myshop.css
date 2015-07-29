@@ -389,7 +389,7 @@ background-color: #F7FAE2;
 .workinfo{font-family:"微软雅黑";font-size:14px;margin:30px 0px;}
 .workinfo img{float:left;margin-right:20px;}
 .map{position:absolute;top:380px;right:50px;}
-#caodan{
+#myMap{
     height: 500px;
     width:300px;
     
