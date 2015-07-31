@@ -1,4 +1,4 @@
-package com.shxt.cme.modules.product.service;
+﻿package com.shxt.cme.modules.product.service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,41 +27,33 @@ public class ProductService {
 	public Merchont findMerchontType(User user) {
 		return productDao.findMerchontType(user);
 	}
-	public Page<Product> findWithPage1(Pageable pageable, User user) {
+	public Page<Product> findWithPage(Pageable pageable, Shop shop) {
 
-		return productDao.findWithPage1(pageable, user);
+		return productDao.findWithPage(pageable, shop);
 	}
 
-	public Page<Product> findWithPage2(Pageable pageable, User user) {
+	public Shop findShopInfo1(Merchont merchont) {
 
-		return productDao.findWithPage2(pageable, user);
+		return productDao.findShopInfo1(merchont);
 	}
+	public Shop findShopInfo2(Merchont merchont) {
 
-	public Page<Product> findWithPage3(Pageable pageable, User user) {
-
-		return productDao.findWithPage3(pageable, user);
+		return productDao.findShopInfo2(merchont);
 	}
+	public Shop findShopInfo3(Merchont merchont) {
 
+		return productDao.findShopInfo3(merchont);
+	}
 	public Product findInfoPro(Product product) {
 
 		return productDao.findInfoPro(product);
 	}
 
-	public boolean addInfo1(Product product, User user) {
-		productDao.insertSelective1(product, user);
+	public boolean addInfo(Product product, Shop shop) {
+		productDao.insertSelective(product, shop);
 		return true;
 	}
-
-	public boolean addInfo2(Product product, User user) {
-		productDao.insertSelective2(product, user);
-		return true;
-	}
-
-	public boolean addInfo3(Product product, User user) {
-		productDao.insertSelective3(product, user);
-		return true;
-	}
-
+	
 	public String update(Product product) {
 		if (productDao.updateByPrimaryKeySelective(product) == 1) {
 			return "更新成功";

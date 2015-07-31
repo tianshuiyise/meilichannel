@@ -7,7 +7,6 @@ public class Product {
 	private String proName;
 	private String proPrice;
 	private String disPrice;
-	private int proType;
 	private String introduction;
 	private String shopId;
 	private String imageAddress;
@@ -63,12 +62,6 @@ public class Product {
 	}
 	public void setDisPrice(String disPrice) {
 		this.disPrice = disPrice;
-	}
-	public int getProType() {
-		return proType;
-	}
-	public void setProType(int proType) {
-		this.proType = proType;
 	}
 	public String getIntroduction() {
 		return introduction;

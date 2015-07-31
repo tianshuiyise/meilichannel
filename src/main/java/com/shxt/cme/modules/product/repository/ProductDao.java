@@ -23,42 +23,18 @@ import com.shxt.framework.utils.DbUtils;
 
 @Repository
 public class ProductDao extends BaseDao {
-	public Page<Product> findWithPage1(Pageable pageable, User user) {
+	public Page<Product> findWithPage(Pageable pageable, Shop shop) {
 
 		StringBuffer sql = new StringBuffer();
 		sql.append("SELECT * ");
 		sql.append(" FROM t_production ");
-		sql.append(" WHERE pro_type=1 and shop_id='" + user.getUserId() + "' ");
+		sql.append(" WHERE shop_id='" + shop.getShopId() + "' ");
 		Object[] args = new Object[] {};
 		return queryForPage(sql.toString(), pageable, new ProductRowMapper(),
 				args);
 
 	}
-
-	public Page<Product> findWithPage2(Pageable pageable, User user) {
-
-		StringBuffer sql = new StringBuffer();
-		sql.append("SELECT * ");
-		sql.append(" FROM t_production ");
-		sql.append(" WHERE pro_type=2 and shop_id='" + user.getUserId() + "' ");
-		Object[] args = new Object[] {};
-		return queryForPage(sql.toString(), pageable, new ProductRowMapper(),
-				args);
-
-	}
-
-	public Page<Product> findWithPage3(Pageable pageable, User user) {
-
-		StringBuffer sql = new StringBuffer();
-		sql.append("SELECT * ");
-		sql.append(" FROM t_production ");
-		sql.append(" WHERE pro_type=3 and shop_id='" + user.getUserId() + "' ");
-		Object[] args = new Object[] {};
-		return queryForPage(sql.toString(), pageable, new ProductRowMapper(),
-				args);
-
-	}
-
+	
 	private class ProductRowMapper implements ParameterizedRowMapper<Product> {
 		@Override
 		public Product mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -68,7 +44,6 @@ public class ProductDao extends BaseDao {
 			product.setProName(rs.getString("pro_name"));
 			product.setProPrice(rs.getString("pro_price"));
 			product.setDisPrice(rs.getString("dis_price"));
-			product.setProType(rs.getInt("pro_type"));
 			product.setIntroduction(rs.getString("introduction"));
 			product.setImageAddress(rs.getString("image_address"));
 			product.setShopId(rs.getString("shop_id"));
@@ -80,7 +55,7 @@ public class ProductDao extends BaseDao {
 		StringBuffer sql = new StringBuffer();
 		sql.append("SELECT * ");
 		sql.append(" FROM t_merchont ");
-		sql.append(" WHERE merchont_id='" + user.getUserId() + "' ");
+		sql.append(" WHERE user_id='" + user.getUserId() + "' ");
 		Object[] args = new Object[] {};
 		return queryForObject(sql.toString(), args, new MerchontRowMapper());
 	}
@@ -94,42 +69,60 @@ public class ProductDao extends BaseDao {
 			merchont.setRealName(rs.getString("real_Name"));
 			merchont.setMerchontType(rs.getInt("merchont_Type"));
 			merchont.setId(rs.getString("id"));
-			merchont.setUserId(rs.getString("user_id"));
-			merchont.setPhone(rs.getString("phone"));
+			merchont.setPhone(rs.getString("telephone"));
 			return merchont;
 		}
 	}
 	
-	public void insertSelective1(Product product, User user) {
+	public Shop findShopInfo1(Merchont merchont) {
 		StringBuffer sql = new StringBuffer();
-		sql.append(" insert into  t_production(pro_id,pro_name,pro_price,dis_price,pro_type,image_address,introduction,shop_id) ");
-		sql.append(" values(?,?,?,?,?,?,?,?) ");
-		Object[] args = new Object[] { DbUtils.getKey(),
-				product.getProPrice(), product.getDisPrice(), 1,
-				product.getImageAddress(),
-				product.getIntroduction(), user.getUserId() };
-		update(sql.toString(), args);
+		sql.append("SELECT * ");
+		sql.append(" FROM t_shop ");
+		sql.append(" WHERE shop_type=1 and merchont_id='" + merchont.getMerchontId() + "' ");
+		Object[] args = new Object[] {};
+		return queryForObject(sql.toString(), args, new ShopRowMapper());
 	}
-
-	public void insertSelective2(Product product, User user) {
+	
+	public Shop findShopInfo2(Merchont merchont) {
 		StringBuffer sql = new StringBuffer();
-		sql.append(" insert into  t_production(pro_id,pro_name,pro_price,dis_price,pro_type,image_address,introduction,shop_id) ");
-		sql.append(" values(?,?,?,?,?,?,?,?) ");
-		Object[] args = new Object[] { DbUtils.getKey(),
-				product.getProPrice(), product.getDisPrice(), 2,
-				product.getImageAddress(), 
-				product.getIntroduction(), user.getUserId() };
-		update(sql.toString(), args);
+		sql.append("SELECT * ");
+		sql.append(" FROM t_shop ");
+		sql.append(" WHERE shop_type=2 and merchont_id='" + merchont.getMerchontId() + "' ");
+		Object[] args = new Object[] {};
+		return queryForObject(sql.toString(), args, new ShopRowMapper());
 	}
-
-	public void insertSelective3(Product product, User user) {
+	public Shop findShopInfo3(Merchont merchont) {
 		StringBuffer sql = new StringBuffer();
-		sql.append(" insert into  t_production(pro_id,pro_name,pro_price,dis_price,pro_type,image_address,introduction,shop_id) ");
-		sql.append(" values(?,?,?,?,?,?,?,?) ");
-		Object[] args = new Object[] { DbUtils.getKey(),
-				product.getProPrice(), product.getDisPrice(), 3,
+		sql.append("SELECT * ");
+		sql.append(" FROM t_shop ");
+		sql.append(" WHERE shop_type=3 and merchont_id='" + merchont.getMerchontId() + "' ");
+		Object[] args = new Object[] {};
+		return queryForObject(sql.toString(), args, new ShopRowMapper());
+	}
+	private class ShopRowMapper implements
+			ParameterizedRowMapper<Shop> {
+		@Override
+		public Shop mapRow(ResultSet rs, int rowNum)
+				throws SQLException {
+			Shop shop =new Shop();
+			shop.setImageAddress(rs.getString("image_address"));
+			shop.setIntroduction(rs.getString("introduction"));
+			shop.setShopId(rs.getString("shop_id"));
+			shop.setShopType(rs.getInt("shop_type"));
+			shop.setShopName(rs.getString("shop_name"));
+			shop.setShopQq(rs.getString("shop_qq"));
+			shop.setMerchontId(rs.getString("merchont_id"));
+			return shop;
+		}
+	}
+	public void insertSelective(Product product, Shop shop) {
+		StringBuffer sql = new StringBuffer();
+		sql.append(" insert into  t_production(pro_id,pro_name,pro_price,dis_price,image_address,introduction,shop_id) ");
+		sql.append(" values(?,?,?,?,?,?,?) ");
+		Object[] args = new Object[] { DbUtils.getKey(),product.getProName(),
+				product.getProPrice(), product.getDisPrice(),
 				product.getImageAddress(),
-				product.getIntroduction(), user.getUserId() };
+				product.getIntroduction(), shop.getShopId() };
 		update(sql.toString(), args);
 	}
 

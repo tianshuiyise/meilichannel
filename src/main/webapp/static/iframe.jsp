@@ -34,7 +34,6 @@ $(function() {
 				if(!result){
 					alert("图片裁剪出错，请重新裁剪");
 				}else{
-					alert("src:"+result);
 					$("#info_pic img",window.parent.document).attr('src',result);
 					$("#info_pic input",window.parent.document).attr('value',result);
 					var i = parent.layer.getFrameIndex();

@@ -58,7 +58,7 @@ DD_belatedPNG.fix('#logo,.navBar,#top1,#top2,#top3,#top4,.nav_icon1,.nav_icon2,.
     	<div id="container">
     		<!--这里是操作完成的消息提示区  -->
 			<c:import url="/WEB-INF/include/message.jsp"></c:import>
-				sorry
+			sorry
     	</div>
 		
 	</div>

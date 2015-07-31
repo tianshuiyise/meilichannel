@@ -66,14 +66,9 @@ DD_belatedPNG.fix('#logo,.navBar,#top1,#top2,#top3,#top4,.nav_icon1,.nav_icon2,.
 					<li></li>
 					<li><input type="text" name="introduction" />(500字以内)</li>
 					<li></li>
-       			    <li>
-						<div class="box">
-				        	<div id="info_pic">
-				        		<img src='${ctx}/static/images/meilichannel_null.jpg ' />
-				        		<input type="text" name="imageAddress" value="${ctx}/static/images/meilichannel_null.jpg " />
-				        	</div>
-	        			</div> 
-    					<input id="changeAvatar" type="button" value="上传" /> 
+        			<li>
+						<!-- 上传图片 input的名字是key= imageAddress-->
+						<tags:uploadPhoto key="imageAddress"/>
 					</li>
 				</ul>
 				<input id="saveinfo" type="submit" value="保存信息" />
@@ -94,21 +89,5 @@ DD_belatedPNG.fix('#logo,.navBar,#top1,#top2,#top3,#top4,.nav_icon1,.nav_icon2,.
 <script src="${ctx}/static/layer/layer.js" type="text/javascript"></script>
 <script src="${ctx}/static/js/calendar/calendar.js" type="text/javascript"></script>
 <script src="${ctx}/static/js/calendar/WdatePicker.js" type="text/javascript"></script>
-<script type="text/javascript">
-	function add_meiliChannel(controllerUrl) {
-		window.location.href = controllerUrl;
-	}
-
-	$('#changeAvatar').on('click', function() {
-		layer.open({
-			type : 2,
-			title : '上传图片',
-			maxmin : true,
-			shadeClose : true, //点击遮罩关闭层
-			area : [ '420px', '520px' ],
-			content : '${ctx}/static/iframe.jsp'
-		});
-	});
-</script>
 </body>
 </html>

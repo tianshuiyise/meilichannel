@@ -11,15 +11,6 @@
 	href="${ctx}/static/style/channel.css" />
 <link rel="stylesheet" type="text/css"
 	href="${ctx}/static/style/nav.css" />
-<script src="${ctx}/static/js/jquery-1.7.min.js" type="text/javascript"></script>
-<script src="${ctx}/static/js/calendar/calendar.js"
-	type="text/javascript"></script>
-<script src="${ctx}/static/js/calendar/WdatePicker.js"
-	type="text/javascript"></script>
-<script src="${ctx}/static/js/Area.js" type="text/javascript"></script>
-<script src="${ctx}/static/js/AreaData_min.js" type="text/javascript"></script>
-
-<script src="${ctx}/static/layer/layer.js" type="text/javascript"></script>
 
 </head>
 <!--[if IE 6]>
@@ -66,6 +57,11 @@ DD_belatedPNG.fix('#logo,.navBar,#top1,#top2,#top3,#top4,.nav_icon1,.nav_icon2,.
 	</div>
 </body>
 <!--主体end-->
+<script src="${ctx}/static/js/jquery-1.7.min.js" type="text/javascript"></script>
+<script src="${ctx}/static/js/calendar/calendar.js"
+	type="text/javascript"></script>
+<script src="${ctx}/static/js/calendar/WdatePicker.js"
+	type="text/javascript"></script>
 
 <script type="text/javascript">
 function add_meiliChannel(controllerUrl) {

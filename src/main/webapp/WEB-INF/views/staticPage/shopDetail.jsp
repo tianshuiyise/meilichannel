@@ -91,10 +91,13 @@ DD_belatedPNG.fix('#logo,.navBar,#top1,#top2,#top3,#top4,.nav_icon1,.nav_icon2,.
     </div>
   </div>
 
-<input type="hidden" name="shopCordX" id="shopCordX" value="${shop.shopCordX }"/>
-<input type="hidden" name="shopCordY" id="shopCordY" value="${shop.shopCordY }"/>
-<input type="hidden" name="shopAdd" id="shopAdd" value="${shop.shopAdd }"/>
-<div class="map"><div id="myMap"></div></div> 
+<div class="map" >
+	<input type="hidden" name="shopCordX" id="shopCordX" value="${shop.shopCordX }"/>
+	<input type="hidden" name="shopCordY" id="shopCordY" value="${shop.shopCordY }"/>
+	<input type="hidden" name="shopAdd" id="shopAdd" value="${shop.shopAdd }"/>
+	<input type="hidden" name="shopCord" id="shopCord" value="${shop.shopCord }"/>
+	<div id="myMap"></div>
+</div> 
 
 <%-- <c:import url="/WEB-INF/views/commonFile/myMap.jsp">
 	<c:param name="shopCordX" value="${shop.shopCordX }"></c:param>
@@ -117,6 +120,18 @@ DD_belatedPNG.fix('#logo,.navBar,#top1,#top2,#top3,#top4,.nav_icon1,.nav_icon2,.
 
 
 <script   type="text/javascript">
+
+
+$(function(){
+	  var myMap=new MyMap("shopCordX","shopCordY","shopAdd","shopCord",false,false);
+	  myMap.init();
+});
+
+function productDetail(url,param){
+	window.location.href=url+"?proId="+param;
+}
+
+
 function getProduct(url,id,content){
 	$("#content2").empty();
 	$("#content3").empty();
@@ -185,19 +200,5 @@ function switchTag(tag,content,url,shopid)
 		}
 	}
 </script>  
-<script type="text/javascript"> 
-  
-  $(function(){
-	  var shopCordX=$("#shopCordX").val();
-	  var shopCordY=$("#shopCordY").val();
-	  var shopAdd=$("#shopAdd").val();
-	  initMap(shopCordX,shopCordY,shopAdd);
-  });
-  
-  function productDetail(url,param){
-  	window.location.href=url+"?proId="+param;
-  }
-  </script>  
-
 </body>
 </html>

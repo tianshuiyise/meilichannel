@@ -45,31 +45,46 @@ DD_belatedPNG.fix('#logo,.navBar,#top1,#top2,#top3,#top4,.nav_icon1,.nav_icon2,.
     	<div id="container">
     		<!--这里是操作完成的消息提示区  -->
 			<c:import url="/WEB-INF/include/message.jsp"></c:import>
-<form id="searchForm"  action="${ctx}/serviceInfo/meirongInfoUpload?userId=${user.userId}" enctype="multipart/form-data" method="post">
-			<div id="container">
-				<ul class="text">
-					<li>*服务人员姓名：</li>
-					<li></li>
-					<li>*人员简介：</li>
-					<li></li>
-					<li>*人员头像：</li>
-					<li></li>
+<form id="searchForm" action="" method="post">
+	<div class="gly-top">
+	</div>
 
-				</ul>
-				<ul class="input">
-					<li><input type="text" name="memberName" /></li>
-					<li></li>
-					<li><input type="text" name="introduction" />(500字以内)</li>
-					<li></li>
-        			<li>
-						<!-- 上传图片 input的名字是key= imageAddress-->
-						<tags:uploadPhoto key="imageAddress"/>
-					</li>
-				</ul>
-				<input id="saveinfo" type="submit" value="保存信息" />
-			</div>
 
-		</form>
+	<!-- 列表区 -->
+	<table id="table1">
+		<thead>
+			<tr id="tr1">
+				<td class="title1" id="title" style="width: 50px;">序号</td>
+				<td class="title2" id="title">服务人员姓名</td>
+				<td class="title1" id="title">人员简介</td>
+				<td class="title2" id="title">操作</td>
+			</tr>
+		</thead>
+		<tbody>
+			<c:forEach items="${memberList.content}" var="memberList"
+				varStatus="status">
+				<tr>
+					<td class="title3" id="title" style="width: 50px;">${status.count}</td>
+					<td class="title4" id="title" style="width: 90px;">${memberList.memberName}</td>
+					<td class="title3" id="title" style="width: 170px;">${memberList.introduction}</td>
+					<td class="title4" id="title" style="width: 170px;"><input class="change" type="button" value="修改"
+						onclick="dispatchTrainingCourse('${ctx}/serviceInfo/modifyMemb','${memberList.memberId}')" />
+						<input class="del" type="button"  value="删除" onclick="dispatchTrainingCourse('${ctx}/serviceInfo/deleteMemb','${memberList.memberId}')"/>
+
+					</td>
+				</tr>
+			</c:forEach>
+		</tbody>
+	</table>
+	<div id="add"><p><a href="${ctx }/serviceInfo/inselectMeirongMemb" >添加</a></p></div>
+
+	<!-- 分页组件区 -->
+	<!-- TODO：后期这里可能会持续改进 -->
+	<tags:pagination page="${memberList}" />
+
+
+
+</form>
     	</div>
 	</div>
 	</div>
@@ -82,5 +97,31 @@ DD_belatedPNG.fix('#logo,.navBar,#top1,#top2,#top3,#top4,.nav_icon1,.nav_icon2,.
 <script src="${ctx}/static/layer/layer.js" type="text/javascript"></script>
 <script src="${ctx}/static/js/calendar/calendar.js" type="text/javascript"></script>
 <script src="${ctx}/static/js/calendar/WdatePicker.js" type="text/javascript"></script>
+<script type="text/javascript">
+	function changeBelongExamBatch(path) {
+		$("#searchForm").action = path;
+		$("#searchForm").submit();
+	}
+
+	function dispatchTrainingCourse(controllerUrl, trainingKey) {
+		//window.open(controllerUrl+"?academicKey="+academicKey,"_blank");
+		window.location.href = controllerUrl + "?trainingKey=" + trainingKey;
+
+	}
+	function detailTrainingCourse(controllerUrl, trainingKey) {
+		window.open(controllerUrl + "?trainingKey=" + trainingKey, "_blank",
+				"scrollbars=1","alwaysRaised=1");
+		//window.top.location.href=controllerUrl+"?academicKey="+academicKey;
+
+	}
+	
+</script>
+<script type="text/javascript">
+function dispatchTrainingCourse(controllerUrl, trainingKey) {
+	//window.open(controllerUrl+"?academicKey="+academicKey,"_blank");
+	window.location.href = controllerUrl + "?memberId=" + trainingKey;
+
+}
+</script>
 </body>
 </html>

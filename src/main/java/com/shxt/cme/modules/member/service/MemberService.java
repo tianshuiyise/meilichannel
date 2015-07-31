@@ -1,4 +1,4 @@
-package com.shxt.cme.modules.member.service;
+﻿package com.shxt.cme.modules.member.service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.shxt.cme.domain.Member;
 import com.shxt.cme.domain.Product;
+import com.shxt.cme.domain.Shop;
 import com.shxt.cme.domain.User;
 import com.shxt.cme.domain.Merchont;
 import com.shxt.cme.modules.member.repository.MemberDao;
@@ -27,38 +28,25 @@ public class MemberService {
 		return memberDao.findMerchontType(user);
 	}
 	
-	public Page<Member> findWithPage(Pageable pageable, User user) {
+	public Page<Member> findWithPage(Pageable pageable, Shop shop) {
 
-		return memberDao.findWithPage(pageable, user);
+		return memberDao.findWithPage(pageable, shop);
+	}
+	public Shop findShopInfo1(Merchont merchont) {
+
+		return memberDao.findShopInfo1(merchont);
+	}
+	public Shop findShopInfo2(Merchont merchont) {
+
+		return memberDao.findShopInfo2(merchont);
+	}
+	public Shop findShopInfo3(Merchont merchont) {
+
+		return memberDao.findShopInfo3(merchont);
 	}
 
-	public Page<Member> findWithPage1(Pageable pageable, User user) {
-
-		return memberDao.findWithPage1(pageable, user);
-	}
-
-	public Page<Member> findWithPage2(Pageable pageable, User user) {
-
-		return memberDao.findWithPage2(pageable, user);
-	}
-
-	public Page<Member> findWithPage3(Pageable pageable, User user) {
-
-		return memberDao.findWithPage3(pageable, user);
-	}
-
-	public boolean addInfo1(Member member, User user) {
-		memberDao.insertSelective1(member, user);
-		return true;
-	}
-
-	public boolean addInfo2(Member member, User user) {
-		memberDao.insertSelective2(member, user);
-		return true;
-	}
-
-	public boolean addInfo3(Member member, User user) {
-		memberDao.insertSelective3(member, user);
+	public boolean addInfo(Member member, Shop shop) {
+		memberDao.insertSelective(member, shop);
 		return true;
 	}
 

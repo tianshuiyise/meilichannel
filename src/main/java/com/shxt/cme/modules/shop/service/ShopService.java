@@ -1,4 +1,4 @@
-package com.shxt.cme.modules.shop.service;
+﻿package com.shxt.cme.modules.shop.service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,18 +25,18 @@ public class ShopService {
 	Logger logger = LoggerFactory.getLogger(ShopService.class);
 	
 	
-	public boolean insertShop1(Shop shop,User user){
-		shopDao.insertShop1(shop,user);
+	public boolean insertShop1(Shop shop,Merchont merchont){
+		shopDao.insertShop1(shop,merchont);
 		return true;
 		
 	}
-	public boolean insertShop2(Shop shop,User user){
-		shopDao.insertShop2(shop,user);
+	public boolean insertShop2(Shop shop,Merchont merchont){
+		shopDao.insertShop2(shop,merchont);
 		return true;
 		
 	}
-	public boolean insertShop3(Shop shop,User user){
-		shopDao.insertShop3(shop,user);
+	public boolean insertShop3(Shop shop,Merchont merchont){
+		shopDao.insertShop3(shop,merchont);
 		return true;
 		
 	}
@@ -44,7 +44,20 @@ public class ShopService {
 		return shopDao.findMerchontType(user);
 	}
 	public Shop findShop1(Merchont merchont){
-		return shopDao.findShop1(merchont);
+		
+		Shop shop=shopDao.findShop1(merchont);
+		float shopCordX=0;
+		float shopCordY=0;
+		String shopCord=shop.getShopCord();
+		if(shopCord!=null && !("").equals(shopCord)){
+			String[] code=shopCord.split(",");
+			shopCordX=Float.parseFloat(code[0]);
+			shopCordY=Float.parseFloat(code[1]);
+		}
+		shop.setShopCordX(shopCordX);
+		shop.setShopCordY(shopCordY);
+		
+		return shop;
 	}
 	public Shop findShop2(Merchont merchont){
 		return shopDao.findShop2(merchont);
@@ -52,10 +65,14 @@ public class ShopService {
 	public Shop findShop3(Merchont merchont){
 		return shopDao.findShop3(merchont);
 	}
-	public String updateShop(Shop shop) {
-		if (shopDao.updateShopInfo(shop) == 1) {
-			return "更新成功";
-		}
-		return "更新失败";
+	
+	/**
+	 * @Description: 修改店铺
+	 * @param shop
+	 * @param user
+	 * @return: int
+	 */
+	public int updateShop(Shop shop, User user) {
+		return shopDao.updateShopInfo(shop,user);
 	} 
 }

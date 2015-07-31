@@ -47,7 +47,7 @@ public class ProductController extends BaseController implements
 
 	/**
 	 * 
-	 * @Description:
+	 * @Description: 防止为空
 	 * @param model
 	 * @return String
 	 */
@@ -56,21 +56,28 @@ public class ProductController extends BaseController implements
 		return  "production/product";
 	}
 
+
+	/**
+	 * 
+	 * @Description:查看美容服务作品信息
+	 * @param model
+	 * @return String
+	 */
 	@RequestMapping("beautyProductInfo")
 	public String list1(Model model,Pageable pageable, ServletRequest request,
 			HttpSession session) {
-		// 从请求中取得search_开头的参数及其值，并封装到map中，供后续查询使用
 		String str = "production/product";
 		User user = getCurrentUser(session);
 		Merchont merchont = productService.findMerchontType(user);
+		Shop shop = productService.findShopInfo1(merchont);
 		if (merchont.getMerchontType() == 1
 				|| merchont.getMerchontType() == 4
 				|| merchont.getMerchontType() == 5
 				|| merchont.getMerchontType() == 7) { // 1.商家有查看美容服务的权限
 			Page<Product> productList = productService
-					.findWithPage1(pageable, user);
+					.findWithPage(pageable, shop);
 			model.addAttribute("productList", productList);
-			str ="production/meirongProduct";
+			str ="production/productList";
 		} else if (merchont.getMerchontType() == 2
 				|| merchont.getMerchontType() == 3
 				|| merchont.getMerchontType() == 6) { // 2.商家无查看美容服务的权限
@@ -81,47 +88,58 @@ public class ProductController extends BaseController implements
 		return str;
 	}
 
+	/**
+	 * 
+	 * @Description:查看美发服务作品信息
+	 * @param model
+	 * @return String
+	 */
 	@RequestMapping("hairdressProductInfo")
 	public String list2(Model model,Pageable pageable, ServletRequest request,
 			HttpSession session) {
-		// 从请求中取得search_开头的参数及其值，并封装到map中，供后续查询使用
 		String str = "production/product";
 		User user = getCurrentUser(session);
 		Merchont merchont = productService.findMerchontType(user);
+		Shop shop = productService.findShopInfo2(merchont);
 		if (merchont.getMerchontType() == 2
 				|| merchont.getMerchontType() == 4
 				|| merchont.getMerchontType() == 6
 				|| merchont.getMerchontType() == 7){ // 1.商家有查看美发服务的权限
 			Page<Product> productList = productService
-					.findWithPage1(pageable, user);
+					.findWithPage(pageable, shop);
 			model.addAttribute("productList", productList);
-			str ="production/meifaProduct";
+			str ="production/productList";
 		} else if (merchont.getMerchontType() == 1
 				|| merchont.getMerchontType() == 3
 				|| merchont.getMerchontType() == 5) { // 2.商家无查看美发服务的权限
 			str = "production/product";
 		} else { // 3.无任何权限值
 			str = "production/product";
-		}
-
-		// 
+		} 
 		return str;
 	}
 
+	/**
+	 * 
+	 * @Description:查看美甲服务作品信息
+	 * @param model
+	 * @return String
+	 */
 	@RequestMapping("manicureProductInfo")
 	public String list3(Model model, Pageable pageable, ServletRequest request,
 			HttpSession session) {
 		String str = "production/product";
 		User user = getCurrentUser(session);
 		Merchont merchont = productService.findMerchontType(user);
+		Shop shop = productService.findShopInfo3(merchont);
 		if (merchont.getMerchontType() == 3
 				|| merchont.getMerchontType() == 5
 				|| merchont.getMerchontType() == 6
 				|| merchont.getMerchontType() == 7) { // 1.商家有查看美甲服务的权限
 			Page<Product> productList = productService
-					.findWithPage1(pageable, user);
+					.findWithPage(pageable, shop);
 			model.addAttribute("productList", productList);
-			str ="production/meijiaProduct";
+			str ="production/productList";
 		} else if (merchont.getMerchontType() == 1
 				|| merchont.getMerchontType() == 2
 				|| merchont.getMerchontType() == 4) { // 2.商家无查看美甲服务的权限
@@ -129,8 +147,6 @@ public class ProductController extends BaseController implements
 		} else { // 3.无任何权限值
 			str = "production/product";
 		}
-
-		// 
 		return str;
 	}
 
@@ -141,6 +157,12 @@ public class ProductController extends BaseController implements
 
 	}
 
+	/**
+	 * 
+	 * @Description:控制“添加”的跳转
+	 * @param model
+	 * @return String
+	 */
 	@RequestMapping("inselectMeirongPro")
 	public String inselectMeirongPro() {
 		return "production/meirongProductUpload";
@@ -156,12 +178,20 @@ public class ProductController extends BaseController implements
 		return "production/meijiaProductUpload";
 	}
 
+	/**
+	 * 
+	 * @Description:上传美容服务信息
+	 * @param model
+	 * @return String
+	 */
 	@RequestMapping("/meirongInfoUpload")
-	public String proInfoUpload1(Model model, Product product, User user,
+	public String proInfoUpload1(Model model, Product product,User user,
 			HttpServletRequest request, HttpServletResponse response)
 			throws IllegalStateException, IOException {
 	try{	
-		boolean str = productService.addInfo1(product, user);
+		Merchont merchont = productService.findMerchontType(user);
+		Shop shop = productService.findShopInfo1(merchont);		
+		boolean str = productService.addInfo(product, shop);
 			String message = "";
 			if (str == true) {
 				message = "上传成功";
@@ -178,12 +208,20 @@ public class ProductController extends BaseController implements
 		return  "production/product";
 	}
 
+	/**
+	 * 
+	 * @Description:上传美发服务信息
+	 * @param model
+	 * @return String
+	 */
 	@RequestMapping("/meifaInfoUpload")
 	public String proInfoUpload2(Model model, Product product, User user,
 			HttpServletRequest request, HttpServletResponse response)
 			throws IllegalStateException, IOException {
 	try{	
-		boolean str = productService.addInfo2(product, user);
+		Merchont merchont = productService.findMerchontType(user);
+		Shop shop = productService.findShopInfo2(merchont);	
+		boolean str = productService.addInfo(product, shop);
 			String message = "";
 			if (str == true) {
 				message = "上传成功";
@@ -200,12 +238,20 @@ public class ProductController extends BaseController implements
 		return  "production/product";
 	}
 
+	/**
+	 * 
+	 * @Description:上传美甲服务信息
+	 * @param model
+	 * @return String
+	 */
 	@RequestMapping("/meijiaInfoUpload")
 	public String proInfoUpload3(Model model, Product product, User user,
 			HttpServletRequest request, HttpServletResponse response)
 			throws IllegalStateException, IOException {
 	try{	
-		boolean str = productService.addInfo3(product, user);
+		Merchont merchont = productService.findMerchontType(user);
+		Shop shop = productService.findShopInfo3(merchont);
+		boolean str = productService.addInfo(product, shop);
 			String message = "";
 			if (str == true) {
 				message = "上传成功";
@@ -223,6 +269,12 @@ public class ProductController extends BaseController implements
 		return  "production/product";
 	}
 
+	/**
+	 * 
+	 * @Description:控制“修改”的跳转
+	 * @param model
+	 * @return String
+	 */
 	@RequestMapping("modifyPro")
 	public String modifyPro(Model model, Product product,
 			ServletRequest request, HttpSession session) {
@@ -232,6 +284,12 @@ public class ProductController extends BaseController implements
 
 	}
 
+	/**
+	 * 
+	 * @Description:服务信息修改
+	 * @param model
+	 * @return String
+	 */
 	@RequestMapping("proInfoModify")
 	public String proInfoModify(Model model, Product product,
 			HttpServletRequest request, HttpServletResponse response)
@@ -254,6 +312,12 @@ public class ProductController extends BaseController implements
 
 	}
 
+	/**
+	 * 
+	 * @Description:删除服务信息
+	 * @param model
+	 * @return String
+	 */
 	@RequestMapping("deletePro")
 	public String deletePro(Model model, Product product,
 			ServletRequest request, HttpSession session) {

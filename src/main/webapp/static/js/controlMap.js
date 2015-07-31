@@ -1,34 +1,48 @@
-
-/*初始化地图控件*/
-function initMap(shopCordX,shopCordY,shopAdd){
+/*
+ * by li yi
+ */
+function MyMap(shopCordX,shopCordY,address,cord,allowAutoPosition,enableDragging){
+	this.shopCordX= document.getElementById(shopCordX).getAttribute("value");
+	this.shopCordY= document.getElementById(shopCordY).value;
+	this.shopAdd= document.getElementById(address).value;
+	this.shopCord = document.getElementById(cord);
+	this.allowAutoPosition=allowAutoPosition;
+	this.enableDragging=enableDragging;
+	
+}
+/*	初始化地图控件
+ *  initMap(shopCordX,shopCordY,shopAdd)
+ * */
+MyMap.prototype.init=function(){
+	
+	  var isFirst=true;
 	 //如果没有给定经纬度，获得当前位置的坐标
-	  if(shopCordX==""){
+	  if(this.allowAutoPosition){
 		var geoc = new BMap.Geocoder();
 		var geolocation = new BMap.Geolocation();
 		geolocation.getCurrentPosition(function(r){
 			if(this.getStatus() == BMAP_STATUS_SUCCESS){
 				//map.panTo(r.point);
 				//alert('您的位置：'+r.point.lng+','+r.point.lat);
-				shopCordX=r.point.lng;
-				shopCordY=r.point.lat;
+				this.shopCordX=r.point.lng;
+				this.shopCordY=r.point.lat;
 				var pt = r.point;
 				geoc.getLocation(pt, function(rs){
 				var addComp = rs.addressComponents;
 					//alert(addComp.province + ", " + addComp.city + ", " + addComp.district + ", " + addComp.street + ", " + addComp.streetNumber);
-					shopAdd=addComp.province + ", " + addComp.city + ", " + addComp.district + ", " + addComp.street + ", " + addComp.streetNumber;
+					this.shopAdd=addComp.province + ", " + addComp.city + ", " + addComp.district + ", " + addComp.street + ", " + addComp.streetNumber;
 				});  
-			}
-			else {
+			}else {
 				alert('failed'+this.getStatus());
-			}        
-		},{enableHighAccuracy: true});
-	  }
+			};
+			},{enableHighAccuracy: true,});
+	    }
 	  
 		// 百度地图API功能
 		// 创建Map实例,设置地图允许的最小/大级别
 		var map = new BMap.Map("myMap",{minZoom:4,maxZoom:25});
 		//创建点坐标
-		var point = new BMap.Point(shopCordX, shopCordY);
+		var point = new BMap.Point(this.shopCordX, this.shopCordY);
 		// 初始化地图,设置中心点坐标和地图级别
 		map.centerAndZoom(point, 15);
 		//开启鼠标滚轮缩放
@@ -60,20 +74,36 @@ function initMap(shopCordX,shopCordY,shopAdd){
 		var marker=new BMap.Marker(point);
 		// 将标注添加到地图中
 		map.addOverlay(marker);
+		
+		//信息窗口
+		var opts = {    
+			 width : 250,     // 信息窗口宽度    
+			 height: 100,     // 信息窗口高度    
+			 title : "信息窗口"  // 信息窗口标题   
+			}  ;
+		
+		var address=this.shopAdd;
 		marker.addEventListener("click", function(e){    
-			//alert(e.point.lng + ", " + e.point.lat);
-			//信息窗口
-			var opts = {    
-				 width : 250,     // 信息窗口宽度    
-				 height: 100,     // 信息窗口高度    
-				 title : "信息窗口"  // 信息窗口标题   
-				}  ;
-			var infoWindow = new BMap.InfoWindow("地址："+shopAdd, opts);  // 创建信息窗口对象    
+			if(this.enableDragging && !isFirst){
+				var geoc = new BMap.Geocoder();
+				geoc.getLocation(e.point, function(rs){
+					var addComp = rs.addressComponents;
+					address=addComp.province + ", " + addComp.city + ", " + addComp.district + ", " + addComp.street + ", " + addComp.streetNumber;
+				}); 
+			}
+			var infoWindow = new BMap.InfoWindow("地址："+address, opts);  // 创建信息窗口对象    
 			map.openInfoWindow(infoWindow,  new BMap.Point(e.point.lng,e.point.lat));      // 打开信息窗口
 		});
 		//开启拖拽功能,默认情况下标注不支持拖拽
-		marker.enableDragging();
+		if(this.enableDragging){
+			marker.enableDragging();
+			marker.addEventListener("dragend", function(e){    
+				 //alert("当前位置：" + e.point.lng + ", " + e.point.lat); 
+				 isFirst=false;
+				 shopCord.value=e.point.lng + ", " + e.point.lat;
+				 
+			});
+		}
 		map.addControl(new BMap.OverviewMapControl());    //  缩略图控件
 		map.addControl(new BMap.MapTypeControl());       //   卫星控件
-	
-}
+};

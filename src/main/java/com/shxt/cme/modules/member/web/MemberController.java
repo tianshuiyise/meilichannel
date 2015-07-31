@@ -29,6 +29,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 import com.shxt.cme.domain.Member;
 import com.shxt.cme.domain.Product;
+import com.shxt.cme.domain.Shop;
 import com.shxt.cme.domain.User;
 import com.shxt.cme.domain.Merchont;
 import com.shxt.cme.modules.member.service.MemberService;
@@ -57,19 +58,26 @@ public class MemberController extends BaseController implements
 		return "member/member";
 	}
 
+	/**
+	 * 
+	 * @Description: 查看美容服务人员信息
+	 * @param model
+	 * @return String
+	 */
 	@RequestMapping("beautyServiceInfo")
 	public String listMeirong(Model model, Pageable pageable,
 			ServletRequest request, HttpSession session) {
 		String str = "member/member";
 		User user = getCurrentUser(session);
 		Merchont merchont = memberService.findMerchontType(user);
+		Shop shop = memberService.findShopInfo1(merchont);
 		if (merchont.getMerchontType() == 1
 				|| merchont.getMerchontType() == 4
 				|| merchont.getMerchontType() == 5
 				|| merchont.getMerchontType() == 7) { // 1.商家有查看美容工作人员的权限
-			Page<Member> memberList = memberService.findWithPage1(pageable, user);
+			Page<Member> memberList = memberService.findWithPage(pageable, shop);
 			model.addAttribute("memberList", memberList);
-			str ="member/meirongMember";
+			str ="member/memberList";
 		} else if (merchont.getMerchontType() == 2
 				|| merchont.getMerchontType() == 3
 				|| merchont.getMerchontType() == 6) { // 2.商家无查看美容工作人员的权限
@@ -80,19 +88,26 @@ public class MemberController extends BaseController implements
 		return str;
 	}
 
+	/**
+	 * 
+	 * @Description: 查看美发服务人员信息
+	 * @param model
+	 * @return String
+	 */
 	@RequestMapping("hairdressServiceInfo")
 	public String listMeifa(Model model, Pageable pageable,
 			ServletRequest request, HttpSession session) {
 		String str = "member/member";
 		User user = getCurrentUser(session);
 		Merchont merchont = memberService.findMerchontType(user);
+		Shop shop = memberService.findShopInfo2(merchont);
 		if (merchont.getMerchontType() == 2
 				|| merchont.getMerchontType() == 4
 				|| merchont.getMerchontType() == 6
 				|| merchont.getMerchontType() == 7) { // 1.商家有查看美发工作人员的权限
-			Page<Member> memberList = memberService.findWithPage1(pageable, user);
+			Page<Member> memberList = memberService.findWithPage(pageable, shop);
 			model.addAttribute("memberList", memberList);
-			str ="member/meifaMember";
+			str ="member/memberList";
 		} else if (merchont.getMerchontType() == 1
 				|| merchont.getMerchontType() == 3
 				|| merchont.getMerchontType() == 5) { // 2.商家无查看美发工作人员的权限
@@ -103,19 +118,26 @@ public class MemberController extends BaseController implements
 		return str;
 	}
 
+	/**
+	 * 
+	 * @Description: 查看美甲服务人员信息
+	 * @param model
+	 * @return String
+	 */
 	@RequestMapping("manicureServiceInfo")
 	public String listMeijia(Model model, Pageable pageable,
 			ServletRequest request, HttpSession session) {
 		String str = "member/member";
 		User user = getCurrentUser(session);
 		Merchont merchont = memberService.findMerchontType(user);
+		Shop shop = memberService.findShopInfo3(merchont);
 		if (merchont.getMerchontType() == 3
 				|| merchont.getMerchontType() == 5
 				|| merchont.getMerchontType() == 6
 				|| merchont.getMerchontType() == 7) { // 1.商家有查看美甲工作人员的权限
-			Page<Member> memberList = memberService.findWithPage1(pageable, user);
+			Page<Member> memberList = memberService.findWithPage(pageable, shop);
 			model.addAttribute("memberList", memberList);
-			str ="member/meijiaMember";
+			str ="member/memberList";
 		} else if (merchont.getMerchontType() == 1
 				|| merchont.getMerchontType() == 2
 				|| merchont.getMerchontType() == 4) { // 2.商家无查看美甲工作人员的权限
@@ -133,6 +155,12 @@ public class MemberController extends BaseController implements
 
 	}
 
+	/**
+	 * 
+	 * @Description: 按钮“添加”跳转控制
+	 * @param model
+	 * @return String
+	 */
 	@RequestMapping("inselectMeirongMemb")
 	public String inselectMeirongMemb() {
 		return "member/meirongMemberUpload";
@@ -148,12 +176,20 @@ public class MemberController extends BaseController implements
 		return "member/meijiaMemberUpload";
 	}
 
+	/**
+	 * 
+	 * @Description: 上传美容人员的信息
+	 * @param model
+	 * @return String
+	 */
 	@RequestMapping("/meirongInfoUpload")
 	public String meirongInfoUpload(Model model, Member member, User user,
 			HttpServletRequest request, HttpServletResponse response)
 			throws IllegalStateException, IOException {
 		try {
-			boolean str = memberService.addInfo1(member, user);
+			Merchont merchont = memberService.findMerchontType(user);
+			Shop shop = memberService.findShopInfo1(merchont);
+			boolean str = memberService.addInfo(member, shop);
 			String message = "";
 			if (str == true) {
 				message = "上传成功";
@@ -170,12 +206,20 @@ public class MemberController extends BaseController implements
 		return "member/member";
 	}
 
+	/**
+	 * 
+	 * @Description: 上传美发人员的信息
+	 * @param model
+	 * @return String
+	 */
 	@RequestMapping("/meifaInfoUpload")
 	public String meifaInfoUpload(Model model, Member member, User user,
 			HttpServletRequest request, HttpServletResponse response)
 			throws IllegalStateException, IOException {
 		try {
-			boolean str = memberService.addInfo2(member, user);
+			Merchont merchont = memberService.findMerchontType(user);
+			Shop shop = memberService.findShopInfo3(merchont);
+			boolean str = memberService.addInfo(member, shop);
 			String message = "";
 			if (str == true) {
 				message = "上传成功";
@@ -192,12 +236,20 @@ public class MemberController extends BaseController implements
 		return "member/member";
 	}
 
+	/**
+	 * 
+	 * @Description: 上传美甲人员的信息
+	 * @param model
+	 * @return String
+	 */
 	@RequestMapping("/meijiaInfoUpload")
 	public String meijiaInfoUpload(Model model, Member member, User user,
 			HttpServletRequest request, HttpServletResponse response)
 			throws IllegalStateException, IOException {
 		try {
-			boolean str = memberService.addInfo3(member, user);
+			Merchont merchont = memberService.findMerchontType(user);
+			Shop shop = memberService.findShopInfo3(merchont);
+			boolean str = memberService.addInfo(member, shop);
 			String message = "";
 			if (str == true) {
 				message = "上传成功";
@@ -214,15 +266,28 @@ public class MemberController extends BaseController implements
 		return "member/member";
 	}
 
+	/**
+	 * 
+	 * @Description: 按钮“修改”跳转控制
+	 * @param model
+	 * @return String
+	 */
 	@RequestMapping("modifyMemb")
 	public String modifyMemb(Model model, Member member,
 			ServletRequest request, HttpSession session) {
+		System.out.println(""+member.getMemberId());
 		Member memberInfo = memberService.findInfoMem(member);
 		model.addAttribute("memberInfo", memberInfo);
 		return "member/memberModify";
 
 	}
 
+	/**
+	 * 
+	 * @Description: 服务人员信息的修改
+	 * @param model
+	 * @return String
+	 */
 	@RequestMapping("membInfoModify")
 	public String proInfoModify(Model model, Member member,
 			HttpSession session, HttpServletRequest request,
@@ -247,6 +312,12 @@ public class MemberController extends BaseController implements
 
 	}
 
+	/**
+	 * 
+	 * @Description: 删除服务人员信息
+	 * @param model
+	 * @return String
+	 */
 	@RequestMapping("deleteMemb")
 	public String deleteMemb(Model model, Member member,
 			ServletRequest request, HttpSession session) {

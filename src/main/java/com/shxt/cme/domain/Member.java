@@ -6,7 +6,8 @@ public class Member {
  public String introduction;
  public int    memberType;
  public String merchontId;
- public String imageAddress;
+ public String shopId;
+public String imageAddress;
  public String imageName;
 public String getMemberId() {
 	return memberId;
@@ -50,6 +51,10 @@ public String getImageName() {
 public void setImageName(String imageName) {
 	this.imageName = imageName;
 }
-
- 
+public String getShopId() {
+	return shopId;
+}
+public void setShopId(String shopId) {
+	this.shopId = shopId;
+}
 }

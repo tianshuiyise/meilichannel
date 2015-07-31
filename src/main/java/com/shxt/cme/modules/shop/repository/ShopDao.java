@@ -22,33 +22,33 @@ import com.shxt.framework.utils.DbUtils;
 
 @Repository
 public class ShopDao extends BaseDao{
-	public void insertShop1(Shop shop,User user) {
+	public void insertShop1(Shop shop,Merchont merchont) {
 		// TODO Auto-generated method stub
 		StringBuffer sql = new StringBuffer();
 		sql.append(" insert into  t_shop(shop_id,shop_name,shop_qq,introduction,image_address,shop_type,merchont_id) ");
 		sql.append(" values(?,?,?,?,?,?,?) ");
 		Object[] args=new Object[]{DbUtils.getKey(),shop.getShopName(),shop.getShopQq(),shop.getIntroduction(),
-									shop.getImageAddress(),1,user.getUserId()};
+									shop.getImageAddress(),1,merchont.getMerchontId()};
 		
 		update(sql.toString(), args);
 	}
-	public void insertShop2(Shop shop,User user) {
+	public void insertShop2(Shop shop,Merchont merchont) {
 		// TODO Auto-generated method stub
 		StringBuffer sql = new StringBuffer();
 		sql.append(" insert into  t_shop(shop_id,shop_name,shop_qq,introduction,image_address,shop_type,merchont_id) ");
 		sql.append(" values(?,?,?,?,?,?,?) ");
 		Object[] args=new Object[]{DbUtils.getKey(),shop.getShopName(),shop.getShopQq(),shop.getIntroduction(),
-									shop.getImageName(),2,user.getUserId()};
+									shop.getImageAddress(),2,merchont.getMerchontId()};
 		
 		update(sql.toString(), args);
 	}
-	public void insertShop3(Shop shop,User user) {
+	public void insertShop3(Shop shop,Merchont merchont) {
 		// TODO Auto-generated method stub
 		StringBuffer sql = new StringBuffer();
 		sql.append(" insert into  t_shop(shop_id,shop_name,shop_qq,introduction,image_address,shop_type,merchont_id) ");
 		sql.append(" values(?,?,?,?,?,?,?)  ");
 		Object[] args=new Object[]{DbUtils.getKey(),shop.getShopName(),shop.getShopQq(),shop.getIntroduction(),
-									shop.getImageAddress(),3,user.getUserId()};
+									shop.getImageAddress(),3,merchont.getMerchontId()};
 		
 		update(sql.toString(), args);
 	}
@@ -62,10 +62,13 @@ public class ShopDao extends BaseDao{
 			Shop shop =new Shop();
 			shop.setImageAddress(rs.getString("image_address"));
 			shop.setIntroduction(rs.getString("introduction"));
+			shop.setShopName(rs.getString("shop_name"));
 			shop.setShopId(rs.getString("shop_id"));
 			shop.setShopType(rs.getInt("shop_type"));
 			shop.setShopQq(rs.getString("shop_qq"));
 			shop.setMerchontId(rs.getString("merchont_id"));
+			shop.setShopAdd(rs.getString("shop_add"));
+			shop.setShopCord(rs.getString("shop_cord"));
 			return shop;
 		}
 	}
@@ -93,14 +96,6 @@ public class ShopDao extends BaseDao{
 	return merchont;
 	}
 	}
-	public Shop findShopInfo(Pageable pageable,User user){
-		StringBuffer sql = new StringBuffer();
-		sql.append("SELECT * ");
-		sql.append(" FROM t_shop ");
-		sql.append(" WHERE merchont_id='"+user.getUserId()+"' ");
-		Object[] args=new Object[]{};
-		return queryForObject(sql.toString(), args, new ShopRowMapper());
-	}
 	public Shop findShop1(Merchont merchont){
 		StringBuffer sql = new StringBuffer();
 		sql.append("SELECT * ");
@@ -125,11 +120,22 @@ public class ShopDao extends BaseDao{
 		Object[] args=new Object[]{};
 		return queryForObject(sql.toString(), args, new ShopRowMapper());
 	}
-	public int updateShopInfo(Shop shop){
+	
+	/**
+	 * @Description: 修改店铺
+	 * @param shop
+	 * @param user
+	 * @return: int
+	 */
+	public int updateShopInfo(Shop shop, User user){
 		String sql= "UPDATE  t_shop " + "SET "+ "shop_name='"+shop.getShopName()+"'"
 				+ ",shop_qq='"+shop.getShopQq()+"'" 
 				+ ",introduction='"+shop.getIntroduction()+"'" 
 				+ ",image_address='"+shop.getImageAddress()+"'" 
+				+ ",shop_cord='"+shop.getShopCord()+"'" 
+				+ ",shop_add='"+shop.getShopAdd()+"'" 
+				+ ",modifierKey='"+user.getUserId()+"'" 
+				+ ",modifyDate='"+DbUtils.getTime()+"'" 
 				+ "WHERE shop_id='"+shop.getShopId()+"'";
     	int ss=update(sql, null);
     	return ss;
