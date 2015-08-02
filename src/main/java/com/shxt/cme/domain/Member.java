@@ -1,3 +1,4 @@
+
 package com.shxt.cme.domain;
 
 public class Member {

@@ -29,7 +29,7 @@ DD_belatedPNG.fix('#logo,.navBar,#top1,#top2,#top3,#top4,.nav_icon1,.nav_icon2,.
 <!--主体-->
 <input type="hidden" name="shopId" id="shopId" value="${shop.shopId }"/>
 
-<div id="container11">
+<div class="shopIndex">
   <div id="picbox">
   	<img id="mainpic" src="${shop.imageAddress }" alt="店铺主图片" />
   </div>
@@ -49,13 +49,11 @@ DD_belatedPNG.fix('#logo,.navBar,#top1,#top2,#top3,#top4,.nav_icon1,.nav_icon2,.
       	</c:forEach>
       </li>
       <li></li>
-      <li>联系商家：&nbsp;
-      	<tags:merchontQQ shopQq="${shop.shopQq}"/>
-      </li>
-      <li></li>
     </ul>
   </div>
-  
+  <div id="workAct">
+	<tags:merchontQQ  shopQq="${production.shopQQ}"/>
+  </div>
   <div id="contain">
     <div id="title">
       <ul>
@@ -72,18 +70,18 @@ DD_belatedPNG.fix('#logo,.navBar,#top1,#top2,#top3,#top4,.nav_icon1,.nav_icon2,.
       
       <li id="tag3">
 	      <a href="javascript:void(0);" onclick="switchTag('tag3','content3','${ctx}/mainPage/review','${shop.shopId }');this.blur();return false;">
-	      	<span>累计评价（7）</span>
+	      	<span>累计评价</span>
 	      </a>
       </li>
       <li id="tag4">
 	      <a href="javascript:void(0);" onclick="switchTag('tag4','content4','${ctx}/mainPage/order','${shop.shopId }');this.blur();">
-	      	<span>累计成交量（15）</span>
+	      	<span>累计成交量</span>
 	      </a>
       </li>
       </ul>
     </div>
     <div id="content" class="content1">
-    	<div id="content1" >${shop.introduction }</div>
+    	<div id="content1" ><p>${shop.introduction }</p><div class="map"><div id="caodan"></div></div></div>
     	<div id="content2" class="hidecontent"></div>
     	<div id="content3" class="hidecontent"></div>
 	    <div id="content4" class="hidecontent"></div>
@@ -107,6 +105,7 @@ DD_belatedPNG.fix('#logo,.navBar,#top1,#top2,#top3,#top4,.nav_icon1,.nav_icon2,.
  <%-- 
  <tags:myMap shopCordX="${shop.shopCordX}" shopCordY="${shop.shopCordY }" shopAdd="${shop.shopAdd }"/>
   --%>
+
 </div>
 
 <!--主体end-->
@@ -151,7 +150,7 @@ function getProduct(url,id,content){
 			             var proId=item.proId;
 			             var introduction=item.introduction;
 			             var imageAddress=item.imageAddress;
-			             var str="<div id='workinfo"+i+"'  class='workinfo'><a href='javascript:void(0);' onclick=\"productDetail('${ctx}/mainPage/productDetail','"+proId+"')\"><img src='"+imageAddress+"' alt='作品图片'/></a><a href='javascript:void(0);' onclick=\"productDetail('${ctx}/mainPage/productDetail','"+proId+"')\" >"+proName+":</a><br/>"+introduction+"</div>";
+			             var str="<div id='workinfo"+i+"'  class='workinfo'><p><a href='javascript:void(0);' onclick=\"productDetail('${ctx}/mainPage/productDetail','"+proId+"')\"><img src='"+imageAddress+"' alt='作品图片'/></a></p><p><a href='javascript:void(0);' onclick=\"productDetail('${ctx}/mainPage/productDetail','"+proId+"')\" >"+proName+":</a><br/>"+introduction+"</p></div>";
 		            	 $("#content2").append(str); 
 		             }
 		             if("content3"==content){
@@ -160,17 +159,20 @@ function getProduct(url,id,content){
 		            	 var reviewMes=item.reviewMes;
 		            	 var reviewDate=item.reviewDate;
 		            	 var userName=item.userName;
-		            	 $("#content3").append("<table border=1>   </table>"); 
-		            	 $("#content3 table").append(" <tr><td class='name'>用户名: "+userName+"</td><td class='numb'>订单号："+orderId+"</td><td></td><td class='comtime'>评价时间:"+reviewDate+"</td></tr>"); 
-		            	 $("#content3 table").append(" <tr><td colspan=3 class='assess'>留言："+reviewMes+"</td><td class='comtype'>评价： "+overallStatus+"</td></tr> ");
+
+		            	
+		            	 $("#content3").append("<div class='name'><span>用户名: "+userName+"</span><span>订单号："+orderId+"</span><span>评价时间:"+reviewDate+"</span></div>"); 
+		            	 $("#content3").append("<div class='assess'><span>"+reviewMes+"</span><p>评价： "+overallStatus+"</p></div>");
+
 		             }
 		             if("content4"==content){
 		            	 var proName=item.proName;
 		            	 var memberName=item.memberName;
 		            	 var userName=item.userName;
 		            	 var appointTime=item.appointTime;
-		            	 $("#content4").append("<table border=1>   </table>"); 
-		            	 $("#content4 table").append(" <tr><td class='uname'>客户姓名："+userName+"</td><td class='details'>预约作品："+proName+"  ，    预约人员："+memberName+"</td><td class='dealtime'>下单时间："+appointTime+"</td></tr> ");
+ 
+		            	 $("#content4").append("<table>  <tr><td class='uname'>客户姓名："+userName+"</td><td class='details'>预约作品："+proName+"  ，    预约人员："+memberName+"</td><td class='dealtime'>下单时间："+appointTime+"</td></tr>  </table>"); 
+
 		             }
 				}); 
 			}

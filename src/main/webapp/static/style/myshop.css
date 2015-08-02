@@ -136,169 +136,94 @@ td{
 /*人员信息end*/
 
 /*店铺主页*/
-#picbox{width:400px;height:250px;margin:0px 80px 30px 50px;text-align:center;padding-top:70px;border:1px solid #000;float:left;}
-#shopinfo{font-family:"微软雅黑";font-size:14px;}
-#shopinfo li{height:30px;width:700px;}
-#shopinfo li a{text-decoration: none;color:#000;margin-right:10px;}
-#shopinfo input{margin-right:20px;}
+.shopIndex{width:1200px;position:relative;background:#fff;height:auto;min-height:2000px;overflow:hidden;}
+
+.shopIndex #picbox{
+	width:728px;height:290px;
+	border-right:1px solid #eaeced;
+	border-bottom:1px solid #eaeced;
+	float:left;
+	margin:10px auto 44px 10px;
+	}
+.shopIndex #picbox img{margin:0px 90px 23px 0px;width:634px;height:270px;}
+.shopIndex #shopinfo{float:left;border-bottom:1px solid #eaeced;width:454px;height:157px;color:#535455;}
+.shopIndex #shopinfo li{height:16px;width:300px;}
+.shopIndex #shopinfo li a{text-decoration: none;color:#535455;margin-right:10px;}
+.shopIndex #shopinfo li span{padding:0px 8px;border-left:1px solid #535455;}
+.shopIndex #qq{
+	margin:19px 0px auto 72px;
+	border-radius:5px;
+	float:left;
+	border:0px;
+	}
+.shopIndex #workAct{
+	width:454px;
+	height:142px;
+	float:left;
+	border-bottom:1px solid #eaeced;
+	margin-bottom:44px;
+	}
+
 /*选项卡式导航*/
-#contain {
-width: 760px;
-height: auto;
-border:1px solid #000;
-padding: 20px;
-position:absolute;
-top:380px;
-left:30px;
-}
-#contain1 {width:960px;}
- #title {
-height: 28px;
-}
- #title li {
-float: left;
+#title {height: 50px;width:194px;float:left;margin-left:10px;font-family:"微软雅黑";font-size:12px;}
+#title li {
 list-style-type: none;
-height: 28px;
-line-height: 28px;
-text-align: center;
-margin-right: 1px;
+height: 50px;
+line-height: 50px;
+text-align: left;
+border-right:1px solid #eaeced;
+border-top:1px solid #eaeced;
+width:194px;
 }
- #title ul {
-background-color: #FFFFFF;
-height: 28px;
-}
- #title a {
+#title a {
 text-decoration: none;
-color: #000000;
+color: #232525;;
 display: block;
-width: auto;
-background: #F09 url(/texiao/tab_selected_left_bk2.gif) no-repeat left -29px;
+width: 194px;
 }
- #title a span{
-display: block;
-background: url(/texiao/tab_selected_right_bk2.gif) no-repeat right -29px;
-padding: 0 15px 0 15px;
-}
- #title #tag1 a:hover {
+#title .selectli1 {
 text-decoration: none;
-color: #ffffff;
+color: #232525;
 display: block;
-width: auto;
-background: #C0F url(/texiao/tab_selected_left_bk2.gif) no-repeat left -87px;
-}
- #title #tag1 a:hover span{
-display: block;
-background: url(/texiao/tab_selected_right_bk2.gif) no-repeat right -87px;
-padding: 0 15px 0 15px;
-}
- #title #tag2 a:hover {
-text-decoration: none;
-color: #ffffff;
-display: block;
-width: auto;
-background: #C0F url(/texiao/tab_selected_left_bk2.gif) no-repeat left 0px;
-}
- #title #tag2 a:hover span{
-display: block;
-background: url(/texiao/tab_selected_right_bk2.gif) no-repeat right 0px;
-padding: 0 15px 0 15px;
-}
- #title #tag3 a:hover {
-text-decoration: none;
-color: #ffffff;
-display: block;
-width: auto;
-background:#C0F url(/texiao/tab_selected_left_bk2.gif) no-repeat left -58px;
-}
- #title #tag3 a:hover span{
-display: block;
-background: url(/texiao/tab_selected_right_bk2.gif) no-repeat right -58px;
-padding: 0 15px 0 15px;
-}
- #title #tag4 a:hover {
-text-decoration: none;
-color: #ffffff;
-display: block;
-width: auto;
-background:#C0F url(/texiao/tab_selected_left_bk2.gif) no-repeat left -145px;
-}
- #title #tag4 a:hover span{
-display: block;
-background: url(/texiao/tab_selected_right_bk2.gif) no-repeat right -145px;
-padding: 0 15px 0 15px;
-}
- #title #tag5 a:hover {
-text-decoration: none;
-color: #ffffff;
-display: block;
-width: auto;
-background:#C0F url(/texiao/tab_selected_left_bk2.gif) no-repeat left -174px;
-}
-#contain #title #tag5 a:hover span{
-display: block;
-background: url(/texiao/tab_selected_right_bk2.gif) no-repeat right -174px;
-padding: 0 15px 0 15px;
-}
- #title .selectli1 {
-text-decoration: none;
-color: #ffffff;
-display: block;
-width: auto;
-background:#6C6 url(/texiao/tab_selected_left_bk2.gif) no-repeat left -87px;
+width: 194px;
 }
  #title a .selectspan1 {
 display: block;
-background: url(/texiao/tab_selected_right_bk2.gif) no-repeat right -87px;
-padding: 0 15px 0 15px;
+color:#8e45e0;
 }
  #title .selectli2 {
 text-decoration: none;
-color: #ffffff;
+color: #232525;
 display: block;
-width: auto;
-background:#6C6 url(/texiao/tab_selected_left_bk2.gif) no-repeat left 0px;
+width: 194px;
 }
  #title a .selectspan2 {
 display: block;
-background: url(/texiao/tab_selected_right_bk2.gif) no-repeat right 0px;
-padding: 0 15px 0 15px;
+color:#8e45e0;
 }
  #title .selectli3 {
 text-decoration: none;
-color: #ffffff;
+color: #232525;
 display: block;
-width: auto;
-background:#6C6 url(/texiao/tab_selected_left_bk2.gif) no-repeat left -58px;
+width: 194px;
 }
  #title a .selectspan3 {
 display: block;
-background: url(/texiao/tab_selected_right_bk2.gif) no-repeat right -58px;
-padding: 0 15px 0 15px;
+color:#8e45e0;
 }
 #title .selectli4 {
 text-decoration: none;
-color: #ffffff;
+color: #232525;
 display: block;
-width: auto;
-background:#6C6 url(/texiao/tab_selected_left_bk2.gif) no-repeat left -145px;
+width: 194px;
 }
  #title a .selectspan4 {
 display: block;
-background: url(/texiao/tab_selected_right_bk2.gif) no-repeat right -145px;
-padding: 0 15px 0 15px;
+color:#8e45e0;
 }
- #title .selectli5 {
-text-decoration: none;
-color: #ffffff;
-display: block;
-width: auto;
-background:#6C6 url(/texiao/tab_selected_left_bk2.gif) no-repeat left -174px;
-}
- #title a .selectspan5 {
-display: block;
-background: url(/texiao/tab_selected_right_bk2.gif) no-repeat right -174px;
-padding: 0 15px 0 15px;
-}
+
+ #content{width:969px;height:auto;border-top:1px solid #eaeced;border-left:1px solid #eaeced;float:left;
+ font-family:"微软雅黑";font-size:12px;color:#232525;}
  #content ul {margin: 10px;}
  #content li {margin: 5px; }
  #content li img {margin: 5px;display:block;}
@@ -306,94 +231,26 @@ padding: 0 15px 0 15px;
 height: auto;
 padding: 10px;
 }
-.content1 {
-border-top-width: 3px;
-border-right-width: 1px;
-border-bottom-width: 1px;
-border-left-width: 1px;
-border-top-style: solid;
-border-right-style: solid;
-border-bottom-style: solid;
-border-left-style: solid;
-border-top-color: #3A81C8;
-border-right-color: #3A81C8;
-border-bottom-color: #3A81C8;
-border-left-color: #3A81C8;
-background-color: #DFEBF7;
-}
-.content2 {
-border-top-width: 3px;
-border-right-width: 1px;
-border-bottom-width: 1px;
-border-left-width: 1px;
-border-top-style: solid;
-border-right-style: solid;
-border-bottom-style: solid;
-border-left-style: solid;
-border-top-color: #ff950b;
-border-right-color: #ff950b;
-border-bottom-color: #ff950b;
-border-left-color: #ff950b;
-background-color: #FFECD2;
-}
-.content3 {
-padding: 10px;
-border-top-width: 3px;
-border-right-width: 1px;
-border-bottom-width: 1px;
-border-left-width: 1px;
-border-top-style: solid;
-border-right-style: solid;
-border-bottom-style: solid;
-border-left-style: solid;
-border-top-color: #FE74B8;
-border-right-color: #FE74B8;
-border-bottom-color: #FE74B8;
-border-left-color: #FE74B8;
-background-color: #FFECF5;
-}
-.content4 {
-padding: 10px;
-border-top-width: 3px;
-border-right-width: 1px;
-border-bottom-width: 1px;
-border-left-width: 1px;
-border-top-style: solid;
-border-right-style: solid;
-border-bottom-style: solid;
-border-left-style: solid;
-border-top-color: #00988B;
-border-right-color: #00988B;
-border-bottom-color: #00988B;
-border-left-color: #00988B;
-background-color: #E8FFFD;
-}
-.content5 {
-padding: 10px;
-border-top-width: 3px;
-border-right-width: 1px;
-border-bottom-width: 1px;
-border-left-width: 1px;
-border-top-style: solid;
-border-right-style: solid;
-border-bottom-style: solid;
-border-left-style: solid;
-border-top-color: #A8BC1F;
-border-right-color: #A8BC1F;
-border-bottom-color: #A8BC1F;
-border-left-color: #A8BC1F;
-background-color: #F7FAE2;
-}
 .hidecontent {display:none;}
 /*选项卡式导航end*/
-.workinfo{font-family:"微软雅黑";font-size:14px;margin:30px 0px;}
-.workinfo img{float:left;margin-right:20px;}
-.map{position:absolute;top:380px;right:50px;}
-#myMap{
-    height: 500px;
-    width:300px;
-    
-  } 
+
+#content1 p{margin:10px 12px auto 15px;padding-bottom:10px;color:#abadae;border-bottom:1px solid #eaeced;}
+#content1 .map{margin-top:30px;}
+#caodan{height: 400px;width:941px;} 
+#content2 *{margin:0px;padding:0px;}
+#content2 .workinfo img{height: 400px;width:960px;margin:10px 0px;} 
+#content2 .workinfo p{margin:10px 12px 10px 10px;color:#abadae;}
+#content3 table{width:900px;margin-top:30px;border-collapse:collapse;}
+#content3 .name{width:968px;height:44px;line-height:44px;background:#eaeced;color:#87898a;}
+#content3 .name span{margin:auto 20px;}
+#content3 .assess{border:1px solid #eaeced;height:68px;}
+#content3 .assess span{margin-left:18px;line-height:30px;}
+#content3 .assess p{width:78px;height:68px;line-height:68px;float:right;border-left:1px solid #eaeced;padding-left:30px;color:#ec058c;}
+#content4 table{width:900px;margin-top:30px;}
+#content4 td{width:225px;height:40px;text-align:center;border-right:1px solid #eaeced;}
+#content4 .uname, #content4 .details, #content4 .dealtime{height:42px;background:#eaeced;color:#87898a;}
+#content4 .uname, #content4 .details{border-right:1px solid #fff;}
+
 /*店铺主页end*/
 
 /*评价*/
@@ -407,15 +264,3 @@ background-color: #F7FAE2;
 #quit1{position:absolute;top:550px;left:700px;}
 /*申请退出end*/
 
-/*累计评价*/
-.assess{padding:5px;}
-#content3 table,#content4 table{margin-top:10px;}
-/*累计评价end*/
-
-/*累计成交量*/
-.details{width:600px;}
-/*累计成交量end*/
-
-/*服务人员信息*/
-.personinfo{font-family:"微软雅黑";font-size:14px;margin:30px 0px;}
-.personinfo img{float:left;margin-right:20px;}

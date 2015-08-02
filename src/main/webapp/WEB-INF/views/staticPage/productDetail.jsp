@@ -7,7 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>美丽频道</title>
-<link href="${ctx}/static/style/myshop.css" rel="stylesheet" type="text/css" />
+<link href="${ctx}/static/style/work.css" rel="stylesheet" type="text/css" />
 <link href="${ctx}/static/style/nav.css" rel="stylesheet" type="text/css" />
 <!--[if IE 6]>
 <script src="js/DD_belatedPNG_0.0.8a.js"></script>
@@ -21,53 +21,48 @@ DD_belatedPNG.fix('#logo,.navBar,#top1,#top2,#top3,#top4,.nav_icon1,.nav_icon2,.
 	<c:import url="/WEB-INF/views/commonFile/head.jsp" />
 	<!--头部end-->
 	<!--主体-->
-	<div id="container11">
-		<div id="picbox">
-			<img id="mainpic" src="${production.imageAddress }" alt="店铺主图片" />
-		</div>
+	<div class="container11" id="production">
+        <div id="imgBox"><img src="${production.imageAddress }" alt="店铺主图片" /></div>
 		<form action="${ctx}/mainPage/reserveProduct">
-			<div id="shopinfo">
-				<ul>
-					<li></li>
-					<li>作品名称：&nbsp;<input value="${production.proId }" name="proId" type="hidden"/>${production.proName }</li>
-					<li></li>
-					<li>作品价格：&nbsp;<input value="${production.proPrice }" name="orderPrice" type="hidden"/>￥${production.proPrice }</li>
-					<li></li>
-					<li>服务人员：&nbsp;
-						<select name="memberId">
+		    <div id="workMess">
+			    <ul>
+			      <li></li>
+			      <li>作品名称：&nbsp;<input value="${production.proId }" name="proId" type="hidden"/>${production.proName }</li>
+			      <li></li>
+			      <li>作品价格：&nbsp;<input value="${production.proPrice }" name="orderPrice" type="hidden"/>￥${production.proPrice }</li>
+			      <li></li>
+			      <li>服务人员：&nbsp;<select name="memberId">
 							<option value="0 ">请选择</option>
 							<c:forEach items="${production.memberName }"  var="member" varStatus="status">
 								<option value="${member.memberId} ">${member.memberName }</option>
 							</c:forEach>     
-						</select>
-					</li>
-					<li></li>
-					<li>预约时间：&nbsp;<input type="text" name="appointTime"/></li>
-					<li></li>
-					<li>联系商家：&nbsp;
-						<tags:merchontQQ shopQq="${production.shopQQ}"/>
-					</li>
-					<li></li>
-					<li>
-					
-						<c:choose>
-							<c:when test="${empty sessionScope.user}">
-								<input type="submit" value="预订" disabled="disabled"/>
-								<input type="button" value="收藏" disabled="disabled"/>
-							</c:when>
-							<c:otherwise>
-								<input type="submit" value="预订" />
-								<input type="button" value="收藏" onclick="collection('${ctx}/mainPage/collectionProduction','${production.proId }')"/>
-							</c:otherwise>
-						</c:choose>
-					</li>
-					<li></li>
-				</ul>
+						</select></li>
+			      <li></li>
+			      <li>预约时间：&nbsp;<input id="time" type="text" name="appointTime"/></li>
+			      <li></li>
+               </ul>
+            </div>
+			<div id="workAct">
+		      
+			<tags:merchontQQ  shopQq="${production.shopQQ}"/>
+		      
+				<c:choose>
+					<c:when test="${empty sessionScope.user}">
+					    <input id="collection" type="button" value="" disabled="disabled"/>
+						<input id="submitOrder" type="submit" value="" disabled="disabled"/>
+						
+					</c:when>
+					<c:otherwise>
+					    <input id="collection" type="button" value="" onclick="collection('${ctx}/mainPage/collectionProduction','${production.proId }')"/>
+						<input id="submitOrder" type="submit" value="" />
+						
+					</c:otherwise>
+				</c:choose>
 			</div>
 		</form>
 		<div id="contain1">
-			<div id="title">
-				<ul>
+		    <div id="title">
+		      <ul>
 					<li id="tag1">
 						<a href="javascript:void(0);" onclick="switchTag('tag1','content1','${ctx}/mainPage/member','${production.proId }');this.blur();" class="selectli1">
 							<span class="selectspan1">作品详情</span>
@@ -80,29 +75,35 @@ DD_belatedPNG.fix('#logo,.navBar,#top1,#top2,#top3,#top4,.nav_icon1,.nav_icon2,.
 					</li>
 					<li id="tag3">
 						<a href="javascript:void(0);" onclick="switchTag('tag3','content3','${ctx}/mainPage/review','${production.proId }');this.blur();">
-							<span>累计评价（7）</span>
+							<span>累计评价</span>
 						</a>
 					</li>
 					<li id="tag4">
 						<a href="javascript:void(0);" onclick="switchTag('tag4','content4','${ctx}/mainPage/order','${production.proId }');this.blur();">
-							<span>累计成交量（15）</span>
+							<span>累计成交量</span>
 						</a>
 					</li>
 				</ul>
-			</div>
-			<div id="content" class="content1">
-				<div id="content1">
-					<div class="workinfo">
-						<%-- <img src="${production.imageAddress }" alt="作品图片" /> --%>${production.proName}：<br /> 
-						${production.introduction }
-					</div>
-				</div>
-				<div id="content2" class="hidecontent"></div>
-				<div id="content3" class="hidecontent"></div>
-				<div id="content4" class="hidecontent"></div>
+		    </div>
+		    <div id="content" class="content1">
+		    <div id="content1">
+		      <p><a href="#">${production.proName}：</a><br /> 
+						${production.introduction }</p>
+		      
+		    </div>
+		    <div id="content2" class="hidecontent"></div>
+		    <div id="content3" class="hidecontent"></div>
+		    <div id="content4" class="hidecontent"></div>
+
+
+
+		
+			
 
 			</div>
-		</div>
+		</div> 
+		
+		
 	</div>
 
 		<!--主体end-->
@@ -122,6 +123,7 @@ function collection(path,proId){
 		$("#content2").empty();
 		$("#content3").empty();
 		$("#content4").empty();
+		
 		var d={"proId":id};
 		$.ajax({
 			url:url,
@@ -131,13 +133,17 @@ function collection(path,proId){
 			dataType:"json",
 			data: JSON.stringify(d),
 			success:function(result){
+				//alert(JSON.stringify(result));
 				$.each(result, function(i, item) { 
+					
 		             if("content2"==content){
 		            	 var imageAddress=item.imageAddress;
 		            	 var memberName=item.memberName;
 		            	 var introduction=item.introduction;
-			             var str="<div class='personinfo'><img src='"+imageAddress+"' alt='服务人员照片'/>姓名："+memberName+"<br />"+introduction+"</div>";
-		            	 $("#content2").append(str); 
+			             var str="<div class='server'><div class='serverPic fl'><img src='"+imageAddress+"'><p><br/>"+memberName+"</p></div></div>";
+		            	 var str1="<div class='serverName'><p>"+introduction+"</p></div>";
+			             $("#content2").append(str); 
+			             $("#content2>div").append(str1); 
 		             }
 		             if("content3"==content){
 		            	 var  orderId=item.orderId;
@@ -145,9 +151,10 @@ function collection(path,proId){
 		            	 var reviewMes=item.reviewMes;
 		            	 var reviewDate=item.reviewDate;
 		            	 var userName=item.userName;
-		            	 $("#content3").append("<table border=1>   </table>"); 
-		            	 $("#content3 table").append(" <tr><td class='name'>用户名: "+userName+"</td><td class='numb'>订单号："+orderId+"</td><td></td><td class='comtime'>评价时间:"+reviewDate+"</td></tr>"); 
-		            	 $("#content3 table").append(" <tr><td colspan=3 class='assess'>留言："+reviewMes+"</td><td class='comtype'>评价： "+overallStatus+"</td></tr> ");
+		            	 $("#content3").append("<div class='name'><span>用户名: "+userName+"</span><span>订单号："+orderId+"</span><span>评价时间:"+reviewDate+"</span></div>"); 
+		            	 $("#content3").append("<div class='assess'><span>"+reviewMes+"</span><p>评价： "+overallStatus+"</p></div>");
+		            	
+		            	 
 		             }
 		             
 		             if("content4"==content){
@@ -155,8 +162,8 @@ function collection(path,proId){
 		            	 var memberName=item.memberName;
 		            	 var userName=item.userName;
 		            	 var appointTime=item.appointTime;
-		            	 $("#content4").append("<table border=1>   </table>"); 
-		            	 $("#content4 table").append(" <tr><td class='uname'>客户姓名："+userName+"</td><td class='details'>预约作品："+proName+"  ，    预约人员："+memberName+"</td><td class='dealtime'>下单时间："+appointTime+"</td></tr> ");
+		            	 $("#content4").append("<table>   </table>"); 
+		            	 $("#content4 table").append(" <tr><td class='uname'>客户姓名："+userName+"</td><td colspan=2 class='details'>预约作品："+proName+"  ，    预约人员："+memberName+"</td><td class='dealtime'>下单时间："+appointTime+"</td></tr> ");
 		             }
 				}); 
 			}
@@ -178,7 +185,6 @@ function collection(path,proId){
 			if ("content"+i==content)
 			{
 				document.getElementById(content).className="";
-				
 				getProduct(url,shopid,content);
 				
 			}else{
@@ -188,5 +194,6 @@ function collection(path,proId){
 		}
 	}
 		</script>
+		
 </body>
 </html>

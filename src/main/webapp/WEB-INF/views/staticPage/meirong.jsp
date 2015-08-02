@@ -51,24 +51,39 @@ DD_belatedPNG.fix('#logo,.navBar,#top1,#top2,#top3,#top4,.nav_icon1,.nav_icon2,.
      
      <div id="ranking">
        <div id="ranktext">
-         <span>排序：<a href="###">销售量</a><a href="###">评价</a><a href="###">综合排序</a><a href="###">就近搜索</a></span>
+          <ul>
+            <li id="rank">排序</li>
+            <li><a href="#">销售量</a></li>
+            <li><a href="#">评价</a></li>
+            <li><a href="#">综合排序</a></li>
+            <li><a href="#">就近搜索</a></li>
+          </ul>
        </div>
        <c:forEach items="${shops.content}" var="shop" varStatus="status">
        		<div class="rank-shop">
 	         	<a href="javascript:void(0);" target="_blank" onclick="shopDetail('${ctx}/mainPage/shopDetail','${shop.shopId}')">
 	         		<img src="${shop.imageAddress }" alt="店铺" />
 	         	</a>
-	         	<span>
+	         	<div class="rankName">
 	         		<a href="javascript:void(0);" target="_blank" onclick="shopDetail('${ctx}/mainPage/shopDetail','${shop.shopId}')">${shop.shopName }的店铺</a>
-	         	</span>
-	         	<p>${shop.introduction }</p>
+	         		<p><img src="${ctx}/static/images/location.png" />大连市</p>
+	         	</div>
+	         	<div class="rankDescribe"><p>${shop.introduction }</p></div>
 	       </div>
        </c:forEach>
      </div>
+     <div class="track">
+       <ul>
+         <li><a href="#">推荐</a></li>
+         <li><a href="#">足迹</a></li>
+       </ul>
+    </div>
      <!-- 分页组件区 -->
 	 <tags:pagination page="${shops}"/>
     <%--  <img id="pages" src="${ctx}/static/images/channel/pages.png" alt="页码" /> --%>
     </div>
+    
+    
 </div>
 
 <!--主体end-->

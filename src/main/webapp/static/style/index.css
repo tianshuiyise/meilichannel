@@ -129,14 +129,23 @@ body{background:#f4f5f6;width:100%;_background-attachment:fixed;_background-imag
 	}
 
 /*美容主页*/
-#ranking{position:relative;width:1170px;height:auto;border:1px solid #000;position:absolute;top:300px;margin-left:15px;padding-bottom:15px;font-size:16px;font-family:"微软雅黑";}
-#ranktext{border-bottom:1px solid #000;height:30px;line-height:30px;padding-left:10px;}
-#ranktext span a{text-decoration: none;margin-left:20px;color:#000001;}
-.rank-shop{margin-top:20px;padding:0px 20px;position:relative;}
-.rank-shop span{position:absolute;left:340px;top:10px;}
-.rank-shop p{position:absolute;left:340px;top:50px;width:800px;background:#ffd7de;height:130px;}
-.rank-shop span a{text-decoration: none;color:#000001;}
-.delete{position:absolute;left:1000px;top:10px;}
-.delete input{border:1px solid #000;margin:0px 5px;}
-#pages{position:absolute;top:1400px;left:300px;}
+#ranking{width:960px;height:auto;position:absolute;top:300px;}
+#ranktext ul{float:left;width:942px;height:32px;line-height:32px;margin:0px 10px 3px 10px;background:#87898a;}
+#ranktext ul li{float:left;list-style-type: none;width:102px;text-align:center;}
+#ranktext ul li a{text-decoration: none;width:102px;color:#fff;display:block;}
+#ranktext ul li a:hover,#ranktext ul li a:visited{background:#ff5ea6;}
+#rank{background:#ff5ea6;color:#fff;}
+.rank-shop{width:940px;height:150px;border:1px solid #e0e2e3;float:left;margin:0px 10px 3px 10px;}
+.rank-shop img{width:312px;height:150px;float:left;}
+.rank-shop .rankName{width:222px;height:150px;background:url(../images/rankBg1.png);border-right:1px solid #e0e2e3;position:relative;float:left;}
+.rank-shop .rankName a{text-decoration: none;color:#000001;position:absolute;top:50px;left:45px;}
+.rank-shop .rankName p{position:absolute;top:80px;left:45px;}
+.rank-shop .rankName p img{width:6px;height:8px;margin-right:3px;margin-top:2px;}
+.rank-shop .rankDescribe{background:url(../images/rankBg2.png);width:405px;height:150px;float:left;position:relative;}
+.rank-shop .rankDescribe p{position:absolute;top:40px;left:30px;}
+.track{background:url(../images/rankBg3.png);width:230px;height:642px;position:absolute;top:300px;right:10px;}
+.track ul li{width:115px;height:30px;line-height:30px;text-align:center;background:#87898a;float:left;list-style-type:none;}
+.track ul li a{text-decoration: none;width:115px;color:#fff;display:block;}
+.track ul li a:hover,#ranktext ul li a:visited{background:#ff5ea6;}
+
 /*美容主页end*/
